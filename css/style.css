@@ -1,0 +1,10 @@
+body {
+	background-color: #028080;
+}
+
+#hello_world_div {
+	background-color: #F00;
+	color: #00F;
+	border: 8px solid yellow;
+	border-radius: 100px;
+}
