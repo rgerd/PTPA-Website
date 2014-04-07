@@ -7,7 +7,7 @@
 	<body>
 		<div id="hello_world_div">
 			<?php
-				$message = "Hello world!";
+				$message = "Hello world!!";
 				$tag = "h1";
 				echo "<".$tag.">".$message."</".$tag.">";
 			?>

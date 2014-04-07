@@ -7,5 +7,4 @@ ehthumbs.db
 Thumbs.db
 *.xml
 *.iml
-.idea/**
-.idea/workspace.xml
+.idea
