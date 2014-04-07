@@ -3,8 +3,8 @@ body {
 }
 
 #hello_world_div {
-	background-color: #F00;
-	color: #00F;
-	border: 8px solid yellow;
-	border-radius: 100px;
+	background-color: #004040;
+	color: #888888;
+	border: 2px solid #222;
+	border-radius: 10px;
 }
