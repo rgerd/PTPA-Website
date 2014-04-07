@@ -10,6 +10,7 @@
 				$message = "Hello world!";
 				$tag = "h1";
 				echo "<".$tag.">".$message."</".$tag.">";
+                echo "Moo";
 			?>
 		</div>
 	</body>
