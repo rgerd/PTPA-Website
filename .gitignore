@@ -8,3 +8,5 @@ Thumbs.db
 *.xml
 *.iml
 .idea
+
+.idea/workspace.xml
