@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c089d1c7-d35e-45c5-a119-fac1f26560ac" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-    </list>
+    <list default="true" id="c089d1c7-d35e-45c5-a119-fac1f26560ac" name="Default" comment="" />
     <ignored path="PTPA-Website.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -28,7 +26,7 @@
       <file leaf-file-name="index.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="57" selection-start="280" selection-end="280" vertical-scroll-proportion="0.21712907" vertical-offset="0" max-vertical-offset="829">
+            <state line="17" column="0" selection-start="313" selection-end="313" vertical-scroll-proportion="0.3075995" vertical-offset="0" max-vertical-offset="829">
               <folding />
             </state>
           </provider>
@@ -131,6 +129,7 @@
     <property name="last_opened_file_path" value="/GitHub.app" />
     <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager" selected="PHP Web Application.localhost">
     <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application">
@@ -229,7 +228,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="57" selection-start="280" selection-end="280" vertical-scroll-proportion="0.21712907" vertical-offset="0" max-vertical-offset="829">
+        <state line="17" column="0" selection-start="313" selection-end="313" vertical-scroll-proportion="0.3075995" vertical-offset="0" max-vertical-offset="829">
           <folding />
         </state>
       </provider>
