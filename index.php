@@ -11,7 +11,11 @@
 				$message = "Hello world!!";
 				$tag = "h1";
 				echo "<".$tag.">".$message."</".$tag.">";
+<<<<<<< HEAD
                 echo "MOO";
+=======
+				echo "HELLO";
+>>>>>>> FETCH_HEAD
 			?>
 		</div>
 	</body>
