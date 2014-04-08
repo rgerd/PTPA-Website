@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Hello World</title>
-        <link rel="stylesheet" type="text/css" href="css/style.css"/>
-	</head>
+<?php include 'view/header.php'; ?>
 
-	<body>
 		<div id="hello_world_div">
 			<?php
 				$message = "Hello world!!";
@@ -15,5 +9,5 @@
                 echo "This my change."
 			?>
 		</div>
-	</body>
-</html>
+
+<?php include 'view/footer.php'; ?>
