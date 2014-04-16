@@ -4,6 +4,8 @@
     <title><?php echo $page_title; ?></title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/event_style.css"/>
+    <script type = "text/javascript" src="js/jQuery.js"></script>
+    <script type = "text/javascript" src="js/event_task.js"></script>
 </head>
 <body>
 <div >
