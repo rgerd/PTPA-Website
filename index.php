@@ -1,5 +1,5 @@
 <?php include 'view/header.php'; ?>
-
+<!--
 		<div id="hello_world_div">
 			<?php
 				$message = "Hello world!!";
@@ -9,5 +9,8 @@
                 echo "This my change."
 			?>
 		</div>
+
+-->
+<?php include 'view/event_task.php'; ?>
 
 <?php include 'view/footer.php'; ?>
