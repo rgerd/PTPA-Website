@@ -3,6 +3,17 @@ body {
 	font-family: Verdana;
 }
 
+#nav_bar{
+    background-color: #FFFFFF;
+    border: 2px solid #000000;
+    border-radius: 5px;
+    width: auto;
+    height: 75px;
+}
+#nav_bar li{
+    display: inline;
+}
+
 #hello_world_div {
 	background-color: #404040;
 	color: #FFFFFF;
