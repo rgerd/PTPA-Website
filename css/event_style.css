@@ -5,6 +5,7 @@
 	overflow: hidden;
 	max-width: 500px;
 	background-color: #5F5F5F;
+	margin-left: 10px;
 }
 
 .event_task_header {
@@ -29,6 +30,7 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 50%;
+	cursor: pointer;
 	/*background-attachment: fixed;*/
 }
 
@@ -37,7 +39,7 @@
 }
 
 .event_task_details {
-	position: fixed;
+	clear: both;
 }
 
 .event_signup_info {
