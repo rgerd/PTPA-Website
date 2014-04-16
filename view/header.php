@@ -7,9 +7,10 @@
 </head>
 <body>
 <div id="nav_bar">
-<li>PTPA Website</li>
-<li id="nav_bar_left"><img src="css/images/gear.png" alt="Settings" height="50px" width="50px"/></li>
-<li id="nav_bar_left"><img src="css/images/signout.png" alt="Sign-Out" height="50px" width="50px"/></li>
+    <ul>
+        <li><a href="index.php"><img src="css/images/logo1.png" alt="PT Volunteer"/></a></li>
+        <li><a href=""><img src="css/images/gear.png" alt=""/></a></li>
+        <li><a href=""><img src="css/images/signout.png" alt=""/></a></li>
+    </ul>
 <div/>
 
-<p>THIS IS THE HEADER</p>

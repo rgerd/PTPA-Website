@@ -1,6 +1,7 @@
 body {
 	background-color: #A60000;
 	font-family: Verdana;
+    margin: 15px;
 }
 
 #nav_bar{
@@ -9,9 +10,17 @@ body {
     border-radius: 5px;
     width: auto;
     height: 75px;
+    padding: 5px;
 }
-#nav_bar li{
-    display: inline;
+
+#nav_bar_left{
+    display:block;
+    float:left;
+}
+
+#nav_bar_right{
+    display: block;
+    float: right;
 }
 
 #hello_world_div {
