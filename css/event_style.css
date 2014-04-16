@@ -1,10 +1,19 @@
-.event_task {
+#event_tasks {
 	border: 2px solid black;
 	border-radius: 5px;
+	overflow: hidden;
+	max-width: 500px;
+	margin-left: 10px;
+}
+
+.event_task {
+	border: 2px solid black;
 	padding: 5px;
 	overflow: hidden;
 	max-width: 500px;
 	background-color: #5F5F5F;
+	/*border-radius: 5px;*/
+	/*margin-left: 10px;*/
 }
 
 .event_task_header {
@@ -13,7 +22,7 @@
 
 .event_task_title {
 	font-size: 1.5em;
-	float: left
+	float: left;
 }
 
 .event_task_expander {
@@ -29,11 +38,15 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 50%;
-	/*background-attachment: fixed;*/
+	cursor: pointer;
 }
 
-.signed_up {
-	width: 300px;
+.event_task_expander:hover {
+	background-color: white;
+}
+
+.event_task_details {
+	clear: both;
 }
 
 .event_signup_info {

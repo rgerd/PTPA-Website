@@ -28,9 +28,16 @@ body {
 }
 
 #float_right{
+<<<<<<< HEAD
     float:right;
     margin-left: 5px;
+=======
+    float: right;
+    border-radius: 10px;
+    margin: 0px 2px 0px 2px;
+>>>>>>> FETCH_HEAD
 }
+
 #float_right:hover{
     background-color: #9E9E9E;
 }
