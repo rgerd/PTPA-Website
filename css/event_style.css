@@ -1,11 +1,19 @@
-.event_task {
+#event_tasks {
 	border: 2px solid black;
 	border-radius: 5px;
+	overflow: hidden;
+	max-width: 500px;
+	margin-left: 10px;
+}
+
+.event_task {
+	border: 2px solid black;
 	padding: 5px;
 	overflow: hidden;
 	max-width: 500px;
 	background-color: #5F5F5F;
-	margin-left: 10px;
+	/*border-radius: 5px;*/
+	/*margin-left: 10px;*/
 }
 
 .event_task_header {
