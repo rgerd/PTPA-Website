@@ -31,11 +31,10 @@
 	background-repeat: no-repeat;
 	background-size: 50%;
 	cursor: pointer;
-	/*background-attachment: fixed;*/
 }
 
-.signed_up {
-	
+.event_task_expander:hover {
+	background-color: white;
 }
 
 .event_task_details {
