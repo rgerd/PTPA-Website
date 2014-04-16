@@ -1,17 +1,17 @@
 body {
 	background-color: #A60000;
 	font-family: Verdana;
-    margin: 15px;
+    margin:0px;
+    padding:0px;
 }
 
 #nav_bar{
     background-color: #FFFFFF;
-    border: 2px solid #000000;
-    border-radius: 5px;
+    border-bottom: thick solid  #000000;
     width: auto;
     min-width: 300px;
-    margin:5px;
     height: 65px;
+    margin-bottom: 5px;
     padding: 5px;
 }
 
@@ -21,8 +21,12 @@ body {
 
 #float_right{
     float:right;
-
 }
+#float_right:hover{
+    background-color: #9E9E9E;
+}
+
+
 
 #hello_world_div {
 	background-color: #404040;
