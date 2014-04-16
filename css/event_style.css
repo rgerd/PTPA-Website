@@ -13,7 +13,7 @@
 
 .event_task_title {
 	font-size: 1.5em;
-	float: left
+	float: left;
 }
 
 .event_task_expander {
@@ -33,7 +33,11 @@
 }
 
 .signed_up {
-	width: 300px;
+	
+}
+
+.event_task_details {
+	position: fixed;
 }
 
 .event_signup_info {
