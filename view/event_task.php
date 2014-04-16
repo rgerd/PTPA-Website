@@ -27,3 +27,4 @@ function echoEventTask($title, $slots_full, $total_slots, $signed_up_list) {
 		</div>
 END;
 }
+?>
