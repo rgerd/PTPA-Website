@@ -1,4 +1,4 @@
-<?php include 'view/header.php'; ?>
+<?php $page_title = "Event!"; include 'view/header.php'; ?>
 <!--
 		<div id="hello_world_div">
 			<?php
@@ -11,6 +11,6 @@
 		</div>
 
 -->
-<?php include 'view/event_task.php'; ?>
+<?php include 'view/event.php'; ?>
 
 <?php include 'view/footer.php'; ?>
