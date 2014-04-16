@@ -9,18 +9,19 @@ body {
     border: 2px solid #000000;
     border-radius: 5px;
     width: auto;
-    height: 75px;
+    min-width: 300px;
+    margin:5px;
+    height: 65px;
     padding: 5px;
 }
 
-#nav_bar_left{
-    display:block;
+#float_left{
     float:left;
 }
 
-#nav_bar_right{
-    display: block;
-    float: right;
+#float_right{
+    float:right;
+
 }
 
 #hello_world_div {
