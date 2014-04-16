@@ -2,9 +2,10 @@
     <html>
 <head>
     <title>
-        PTPA-- Final Project
+        <?php echo $page_title; ?>
     </title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/event_task_style.css"/>
 </head>
 
 <body>
