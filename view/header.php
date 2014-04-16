@@ -5,7 +5,7 @@
         <?php echo $page_title; ?>
     </title>
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
-    <link rel="stylesheet" type="text/css" href="css/event_task_style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/event_style.css"/>
 </head>
 
 <body>
