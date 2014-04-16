@@ -28,14 +28,9 @@ body {
 }
 
 #float_right{
-<<<<<<< HEAD
-    float:right;
-    margin-left: 5px;
-=======
     float: right;
     border-radius: 10px;
     margin: 0px 2px 0px 2px;
->>>>>>> FETCH_HEAD
 }
 
 #float_right:hover{
@@ -43,7 +38,10 @@ body {
 }
 
 #page_content{
-    padding: 100px;
+    padding-top: 100px;
+    padding-bottom: 25px;
+    padding-left: 50px;
+    padding-right: 50px;
     height:auto;
     width: auto;
 }
@@ -53,7 +51,6 @@ body {
     padding: 5px;
     height: auto;
     width: auto;
-    border: 1px dotted #FFFFFF;
 }
 
 #hello_world_div {
