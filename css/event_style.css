@@ -1,4 +1,4 @@
-#event_task {
+.event_task {
 	border: 2px solid black;
 	border-radius: 5px;
 	padding: 5px;
@@ -7,12 +7,16 @@
 	background-color: #5F5F5F;
 }
 
-#event_task_title {
+.event_task_header {
+	display: block;
+}
+
+.event_task_title {
 	font-size: 1.5em;
 	float: left
 }
 
-#event_expander {
+.event_task_expander {
 	border: 4px solid black;
 	background-color: #AFAFAF;
 	border-radius: 20px;
@@ -28,26 +32,30 @@
 	/*background-attachment: fixed;*/
 }
 
-#event_signup_info {
+.signed_up {
+	width: 300px;
+}
+
+.event_signup_info {
 	clear: both;
 	float: left;
 	margin-left: 10px;
 	font-size: 0.8em;
 }
 
-#slots_full {
+.slots_full {
 	margin-bottom: 15px;
 }
 
-#sign_up_list {
+.sign_up_list {
 	margin-left: 5px;
 }
 
-#sign_up_list > ul > li {
+.sign_up_list > ul > li {
 	display: block;
 }
 
-#event_sign_up_button {
+.event_sign_up_button {
 	float: right;
 	margin-right: 10px;
 	padding: 5px;
@@ -58,7 +66,7 @@
 	cursor: pointer;
 }
 
-#event_sign_up_button:hover {
+.event_sign_up_button:hover {
 	background-color: #FFF;
 	color: #000;
 }
