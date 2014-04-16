@@ -10,10 +10,12 @@
 <body>
 <div >
     <div id="nav_bar">
-            <div id="float_left"><a href="index.php"><img src="css/images/logo1.png" alt="PT Volunteer" height="60px"/></a></div>
-            <div id="float_right"><a href=""><img src="css/images/gear.png" alt="" height="60px"/></a></div>
-            <div id="float_right"><a href=""><img src="css/images/signout.png" alt="" height="60px" /></a></div>
-
+        <div id="inner_navbar">
+        <div id="float_left"><a href="index.php"><img src="css/images/logo1.png" alt="PT Volunteer" height="60px"/></a></div>
+        <div id="float_right"><a href=""><img src="css/images/gear.png" alt="" height="60px"/></a></div>
+        <div id="float_right"><a href=""><img src="css/images/signout.png" alt="" height="60px" /></a></div>
+        </div>
     </div>
-<div/>
-
+    <div/>
+    <div id="page_content">
+    <div id="view_content">
