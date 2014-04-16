@@ -43,6 +43,10 @@
 	margin-left: 5px;
 }
 
+#sign_up_list > ul > li {
+	display: block;
+}
+
 #event_sign_up_button {
 	float: right;
 	margin-right: 10px;
