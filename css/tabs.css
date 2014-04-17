@@ -38,16 +38,10 @@
 	border: 2px solid black;
 	border-radius: 5px;
 	border-top-left-radius: 0px;
-<<<<<<< HEAD
-	width: 500px;
-	background-color: #ddd;
-	padding: 10px;
-    margin-left: -2px;
-=======
 	display: block;
 	max-width: 500px;
 	background-color: #eee;
 	padding: 10px 0px 10px 0px;
 	overflow:hidden;
->>>>>>> FETCH_HEAD
+	margin-left: -2px;
 }
