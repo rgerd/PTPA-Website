@@ -22,6 +22,15 @@
 	color: #EEE;
 	margin: 0px;
 	cursor: pointer;
+	width: 40%;
+}
+
+#_sign_in.tab {
+	float:left;
+}
+
+#_sign_up.tab {
+	float:right;
 }
 
 .tab.selected {
@@ -29,6 +38,7 @@
 	color: #000;
 	border-bottom: 2px solid #eee;
 	border-left: 2px solid black;
+	border-right: 2px solid black;
 }
 
 
