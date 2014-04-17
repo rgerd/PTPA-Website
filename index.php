@@ -11,7 +11,6 @@
 
 	$page = "view/front.php";
 
-    echo "this is my change test.";
 ?>
 <?php include 'view/header.php'; ?>
 <?php include "$page"; ?>
