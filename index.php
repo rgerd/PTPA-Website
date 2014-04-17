@@ -7,9 +7,9 @@
 		$event_id = $_GET['event_id'];
 		$page_title = "Event!";
 		$page = "view/event.php";
+	} else {
+		$page = "view/front.php";
 	}
-
-	$page = "view/front.php";
 
 ?>
 <?php include 'view/header.php'; ?>
