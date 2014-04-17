@@ -23,7 +23,8 @@
 	color: #EEE;
 	margin: 0px;
 	cursor: pointer;
-	width: 40%;
+	width: 43%;
+	text-align: center;
 }
 
 #_sign_in.tab {
