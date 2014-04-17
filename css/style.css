@@ -29,11 +29,16 @@ body {
 
 #float_right{
     float: right;
-    border-radius: 10px;
-    margin: 0px 2px 0px 2px;
 }
 
-#float_right:hover{
+.header_button {
+    border-radius: 10px;
+    margin: 0px 2px 0px 2px;
+    display: inline-block;
+    padding: 1px;
+}
+
+.header_button:hover {
     background-color: #9E9E9E;
 }
 

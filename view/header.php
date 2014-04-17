@@ -12,8 +12,10 @@
     <div id="nav_bar">
         <div id="inner_navbar">
         <div id="float_left"><a href="index.php"><img src="css/images/logo1.png" alt="PT Volunteer" height="60px"/></a></div>
-        <div id="float_right"><a href=""><img src="css/images/gear.png" alt="" height="60px"/></a></div>
-        <div id="float_right"><a href=""><img src="css/images/signout.png" alt="" height="60px" /></a></div>
+        <div id="float_right">
+            <div class="header_button"><a href=""><img src="css/images/gear.png" alt="User Settings" height="60px"/></a></div>
+            <div class="header_button"><a href=""><img src="css/images/signout.png" alt="Log Out" height="60px"/></a></div>
+        </div>
         </div>
     </div>
     <div/>
