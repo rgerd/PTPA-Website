@@ -57,11 +57,3 @@ body {
     height: auto;
     width: auto;
 }
-
-#hello_world_div {
-	background-color: #404040;
-	color: #FFFFFF;
-	border: 2px solid #000000;
-	border-radius: 10px;
-    text-align: center;
-}
