@@ -8,6 +8,8 @@
 		$page_title = "Event!";
 		$page = "view/event.php";
 	}
+
+	$page = "view/front.php";
 ?>
 <?php include 'view/header.php'; ?>
 <?php include "$page"; ?>
