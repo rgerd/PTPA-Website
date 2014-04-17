@@ -7,13 +7,20 @@
 
 	<div id="sign_in" class="tab_content">
 		<form id="sign_in_form" method="POST" action=".">
-			<input type="text" spellcheck = "false" autocorrect = "false" placeholder="Email"/>
-			<input type="password" spellcheck = "false" autocorrect = "false" placeholder="Password"/>
+			<input type="text" name="email" spellcheck = "false" autocorrect = "false" placeholder="Email"/>
+			<input type="password" name="password" spellcheck = "false" autocorrect = "false" placeholder="Password"/>
 			<input type="submit" spellcheck = "false" autocorrect = "false"  value="Sign In!"/>
 		</form>
 	</div>
 	<div id="sign_up" class="tab_content">
-		SIGN UP
+		<form id="sign_up_form" method="POST" action=".">
+			<input type="text" name="fname" spellcheck = "false" autocorrect = "false" placeholder="First Name"/>
+			<input type="text" name="lname" spellcheck = "false" autocorrect = "false" placeholder="Last Name"/>
+			<input type="text" name="email" spellcheck = "false" autocorrect = "false" placeholder="Email"/>
+			<input type="text" name="pnum" spellcheck = "false" autocorrect = "false" placeholder="Phone Number"/>
+			<input type="password" name="password" spellcheck = "false" autocorrect = "false" placeholder="Password"/>
+			<input type="submit" spellcheck = "false" autocorrect = "false"  value="Sign Up!"/>
+		</form>
 	</div>
     </div>
 </div>
