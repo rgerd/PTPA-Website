@@ -1,4 +1,5 @@
 <div id="tabs">
+    <div id="bounding_tabs">
 	<ul id="tab_bar">
 		<li class="tab" content="#sign_in">Sign In</li>
 		<li class="tab" content="#sign_up">Sign Up</li>
@@ -10,4 +11,5 @@
 	<div id="sign_up" class="tab_content">
 		SIGN UP
 	</div>
+    </div>
 </div>

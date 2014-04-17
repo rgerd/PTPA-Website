@@ -1,3 +1,10 @@
+
+
+#bounding_tabs{
+    border-radius: 5px;
+    border-left: 2px solid black;
+}
+
 .tab {
 	list-style: none;
 	display: inline-block;
@@ -10,6 +17,7 @@
 	margin: 0px;
 }
 
+
 .tab.selected {
 	background-color: #ddd;
 	color: #000;
@@ -17,7 +25,10 @@
 	border-left: 2px solid black;
 }
 
+
 #tab_bar {
+    margin-top: 0px;
+    margin-left: -2px;
 	padding-left: 0px;
 	margin-bottom: -2px;
 }
@@ -29,4 +40,5 @@
 	width: 500px;
 	background-color: #ddd;
 	padding: 10px;
+    margin-left: -2px;
 }
