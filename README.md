@@ -7,3 +7,5 @@ A website for the Park Tudor Parents Association designed to remind people of ta
 
 
 <a href="https://docs.google.com/document/d/1z8W2ogxtDDq_R554EyirIF2NsiHBT0FXGBAwuVykxu8/edit">Dev Notes</a>
+
+<a href="https://docs.google.com/spreadsheets/d/11KgjiaDRsucvn12Vit0ojPwHFD7dQbuShGdDaFXbH1g/edit">Database Design</a>
