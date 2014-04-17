@@ -8,12 +8,13 @@
 	background-color: #800;
 	color: #EEE;
 	margin: 0px;
+	cursor: pointer;
 }
 
 .tab.selected {
-	background-color: #ddd;
+	background-color: #eee;
 	color: #000;
-	border-bottom: 2px solid #ddd;
+	border-bottom: 2px solid #eee;
 	border-left: 2px solid black;
 }
 
@@ -26,7 +27,9 @@
 	border: 2px solid black;
 	border-radius: 5px;
 	border-top-left-radius: 0px;
-	width: 500px;
-	background-color: #ddd;
-	padding: 10px;
+	display: block;
+	max-width: 500px;
+	background-color: #eee;
+	padding: 10px 0px 10px 0px;
+	overflow:hidden;
 }

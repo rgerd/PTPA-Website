@@ -5,7 +5,10 @@
 	</ul>
 
 	<div id="sign_in" class="tab_content">
-		SIGN IN
+		<form id="sign_in_form">
+			<input type="text" placeholder="Email"/>
+			<input type="password" placeholder="Password"/>
+		</form>
 	</div>
 	<div id="sign_up" class="tab_content">
 		SIGN UP
