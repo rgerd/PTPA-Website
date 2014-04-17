@@ -1,6 +1,7 @@
 #tabs {
 	width: 300px;
 	margin: 0px auto;
+	border: 0;
 }
 
 #bounding_tabs {
@@ -45,18 +46,21 @@
 #tab_bar {
     margin-top: 0px;
     margin-left: -2px;
+    margin-right: -2px;
 	padding-left: 0px;
 	margin-bottom: -2px;
+	overflow: hidden;
 }
 
 .tab_content {
-	border: 2px solid black;
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
 	border-radius: 5px;
 	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
 	display: block;
-	/*max-width: 300px;*/
 	background-color: #eee;
 	padding: 0px;
-	overflow:hidden;
+	overflow: hidden;
 	margin-left: -2px;
 }
