@@ -4,11 +4,11 @@ $(document).ready(function() {
 		var expanded = _this.attr("expanded");
 		var dets = _this.parent().parent().find(".event_task_details");
 		if(expanded == "true") {
-			dets.stop().slideToggle(500, function()
+			dets.stop().slideToggle(200, function()
 			{_this.css("background-image", 'url(css/images/plus.png)');});
 			expanded = "false";
 		} else {
-			dets.stop().slideToggle(500, function()
+			dets.stop().slideToggle(200, function()
 			{_this.css("background-image", 'url(css/images/minus.png)');});
 			expanded = "true";
 		}
