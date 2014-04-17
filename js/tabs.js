@@ -18,16 +18,20 @@ $(document).ready(function() {
 
 	$(".tab").click(function() {
 		var __content = $(this).attr("content");
+		var index = 0;
 		tabs.each(function() {
 			var _content = this.getAttribute("content");
 			var content = tabs_div.find(_content);
 			if(_content == __content) {
 				$(this).addClass("selected");
+				if(index == 0)
+					$("#bounding_tabs").addClass("selected");
 				content.css("display", "block");
 			} else {
 				$(this).removeClass("selected");
 				content.css("display", "none");
 			}
+			index++;
 		});
 	});
 });
