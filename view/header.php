@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/event_style.css"/>
     <script type = "text/javascript" src="js/jQuery.js"></script>
     <script type = "text/javascript" src="js/event_task.js"></script>
+    <script type = "text/javascript" src="js/header.js"></script>
 </head>
 <body>
 <div >
