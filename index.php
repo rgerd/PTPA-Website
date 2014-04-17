@@ -1,5 +1,5 @@
 <?php
-	include "model/database.php";
+	//include "model/database.php";
 	//include "model/mysql.php";
 
 
