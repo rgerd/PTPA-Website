@@ -67,15 +67,15 @@ input {
 }
 
 input[type=text], input[type=password] {
-    margin: 5px 5px 5px 5px;
+    margin: 0px;
     padding: 5px 2px 5px 2px;
-    border: 1px solid black;
+    border: 1px dotted black;
     /*border-bottom: 1px solid #eee;*/
     border-radius: 3px;
     color: #000;
     display: block;
     background-color: #e0e0e0;
-    /*width: 100%;*/
+    width: 100%;
     outline: none;
 }
 
@@ -88,6 +88,9 @@ input[type=text]:focus, input[type=password]:focus {
     background-color: #ededed;
 }
 
+#input_box{
+    border: 1p dotted white;
+}
 
 ::-webkit-input-placeholder {
    color: #777;

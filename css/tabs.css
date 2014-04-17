@@ -40,9 +40,9 @@
 	border-radius: 5px;
 	border-top-left-radius: 0px;
 	display: block;
-	max-width: 500px;
+	max-width: 300px;
 	background-color: #eee;
-	padding: 10px 0px 10px 0px;
+	padding: 0px;
 	overflow:hidden;
 	margin-left: -2px;
 }
