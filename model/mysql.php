@@ -62,14 +62,14 @@ function add_event($accountID, $date, $title, $desc){
 function add_task($eventID, $desc, $count){
     global $db;
     $query = "INSERT INTO tasks (eventID, desc, count) VALUES ('$eventID', '$desc', '$count')";
-    $results = $db->execute($query);
+    $results = $db->query($query);
     return $results;
 }
 
 function signup($taskID, $accountID, $comment = null){
     global $db;
     $query = "INSERT INTO signups (taskID, accountID, comment) VALUES ('$taskID', '$accountID', '$comment')";
-    $results = $db->execute($query);
+    $results = $db->query($query);
     return $results;
 }
 
@@ -112,7 +112,10 @@ function delete_event($id){
     Registers an event creator
 */
 function register_user($fname, $lname, $email, $phone, $password) {
-    // TODO: IMPLEMENT
+    global $db;
+    $query = "INSERT INTO accounts (fname, lname, email, phone, password) VALUES ('$fname', '$lname', '$email', '$phone', '$password')";
+    $result = $db->query($query);
+    return $result;
 }
 
 /*
@@ -120,6 +123,14 @@ function register_user($fname, $lname, $email, $phone, $password) {
     Used by the register_user method.
 */
 function user_already_registered($email) {
+    global $db;
+    $query = "SELECT ID FROM accounts WHERE email = '$email'";
+    $results = $db->query($query);
+    $results = $results->rowCount();
+    echo $results;
+    if ($results >= 0){
+        return true;
+    }
     return false;
 }
 

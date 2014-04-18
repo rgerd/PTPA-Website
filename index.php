@@ -1,6 +1,9 @@
 <?php
 	include "model/database.php";
 	include "model/mysql.php";
+//
+//user_already_registered("laurelfink12197@gmail.com");
+//echo "success";
 
 	$action = $_POST['action'];
 	$fname = $_POST['fname'];
@@ -29,6 +32,8 @@
 	} else {
 		$page = "view/front.php";
 	}
+
+
 ?>
 <?php include 'view/header.php'; ?>
 <?php include "$page"; ?>
