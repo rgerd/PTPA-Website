@@ -65,3 +65,11 @@
 	overflow: hidden;
 	margin-left: -2px;
 }
+
+.error_message {
+	background-color: #FDD;
+	color: #F22;
+	text-align: center;
+	padding: 5px;
+	display: none;
+}

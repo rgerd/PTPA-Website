@@ -2,18 +2,15 @@ $(document).ready(function() {
 	var tabs_div = $("#tabs");
 	var tabs = tabs_div.find("#tab_bar").children(".tab");
 
-
-	var foundFirstTab = false;
 	tabs.each(function() {
 		var _content = this.getAttribute("content");
 		var content = tabs_div.find(_content);
-		if(!foundFirstTab) {
+		if(this.getAttribute("top") == "true") {
 			$(this).addClass("selected");
 			content.css("display", "block");
 		} else {
 			content.css("display", "none");
 		}
-		foundFirstTab = true;
 	});
 
 	$(".tab").click(function() {
@@ -32,4 +29,6 @@ $(document).ready(function() {
 			index++;
 		});
 	});
+
+	$(".error_message").slideDown(500).delay(5000).slideUp(500);
 });
