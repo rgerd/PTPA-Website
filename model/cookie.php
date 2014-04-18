@@ -10,8 +10,8 @@ function set_cookie_for_user($user_id) {
 	$chars = count($_user_id);
 	$data = "";
 	for($i = 0; $i < $chars; $i++) {
-		$data .= $_user_id[i];
-		$data .= mt_rand(0, 20);
+		$data .= $_user_id[$i];
+		$data .= $i;
 	}
 	echo $data;
 }
