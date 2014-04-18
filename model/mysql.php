@@ -1,28 +1,28 @@
 <?php
-function get_all_events(){
+function get_all_events() {
     global $db;
     $query = 'SELECT * FROM events';
     $result = $db->query($query);
     return $result;
 }
 
-function get_user_events($userID){
+function get_user_events($userID) {
     global $db;
     $query = "SELECT * FROM events WHERE accountID = '$userID'";
     $result = $db->query($query);
     return $result;
 }
 
-function get_users_signedup($taskID){
+function get_users_signedup($taskID) {
     global $db;
     $query = "SELECT * FROM signups WHERE taskID = '$taskID'";
     $result = $db->query($query);
     return $result;
 }
 
-function get_unregistered_user($code){
+function get_unregistered_user($code) {
     global $db;
-    $query = "SELECT * FROM accounts WHERE password = '$code'";
+    $query = "SELECT * FROM accounts WHERE password = '$code' AND registered = 0";
     $results = $db->query($query);
     $results = $results->fetchRow();
     return $results;
@@ -108,6 +108,29 @@ function delete_event($id){
     return $results;
 }
 
+/*
+    Registers an event creator
+*/
+function register_user($fname, $lname, $email, $phone, $password) {
+    // TODO: IMPLEMENT
+}
+
+/*
+    Checks if a user with that email is already registered.
+    Used by the register_user method.
+*/
+function user_already_registered($email) {
+    return false;
+}
+
+/*
+    Authenticates a user when signing in
+*/
+function auth_user($email, $password) {
+    // TODO: IMPLEMENT
+
+    return false;
+}
 
 ?>
 
