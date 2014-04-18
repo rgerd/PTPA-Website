@@ -22,6 +22,7 @@
 			<input class="front_input" type="text" name="pnum" value="<?php if($action == "sign_up") echo $pnum; ?>" spellcheck = "false" autocorrect = "false" placeholder="Phone Number"/>
 			<input class="front_input" type="password" name="password" spellcheck = "false" autocorrect = "false" placeholder="Password"/>
 			<input class="front_input" type="submit" spellcheck = "false" autocorrect = "false"  value="Sign Up!"/>
+			<?php if($sign_up_error_message) echo '<div class="error_message">'.$sign_up_error_message.'</div>'; ?>
 			<input name="action" type="hidden" value="sign_up"/>
 		</form>
 	</div>
