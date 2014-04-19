@@ -2,11 +2,8 @@
 	session_start();
 	include "model/database.php";
 	include "model/mysql.php";
-<<<<<<< HEAD
-//
-//user_already_registered("laurelfink12197@gmail.com");
-//echo "success";
-=======
+
+
 	include "model/cookie.php";
 
 	set_cookie_for_user("hello_world");
@@ -16,7 +13,6 @@
 		$page = "view/home.php";
 	}
 
->>>>>>> FETCH_HEAD
 
 	$action = $_POST['action'];
 	$fname = $_POST['fname'];
