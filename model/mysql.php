@@ -143,5 +143,16 @@ function auth_user($email, $password) {
     return false;
 }
 
+function set_cookie_data($user_id) {
+    
+}
+
+/*
+    Looks up a user by their cookie data and returns their id
+*/
+function get_user_id_by_cookie_data($data) {
+
+}
+
 ?>
 
