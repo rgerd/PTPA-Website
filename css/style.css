@@ -82,10 +82,11 @@ input[type=text], input[type=password] {
 
 input[type=submit] {
     padding: 5px 3px 5px 3px;
-    border-radius: c0px;
+    border-radius: 0px;
     margin: 0px;
     width: 100%;
     font-size: 1.0em;
+    display: inline-block;
 }
 
 input[type=text]:focus, input[type=password]:focus {

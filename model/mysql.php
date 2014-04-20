@@ -135,16 +135,16 @@ function user_already_registered($email) {
 }
 
 /*
-    Authenticates a user when signing in
+    Authenticates a user when signing in & returns their id.
 */
 function auth_user($email, $password) {
     // TODO: IMPLEMENT
 
-    return false;
+    return -1;
 }
 
 function set_cookie_data($user_id) {
-    
+
 }
 
 /*
