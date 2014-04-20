@@ -3,10 +3,7 @@
 	include "model/database.php";
 	include "model/mysql.php";
 
-
 	include "model/cookie.php";
-
-	set_cookie_for_user("hello_world");
 
 	if(isset($_SESSION['USER_ID'])) {
 		$user_id = $_SESSION['USER_ID'];
