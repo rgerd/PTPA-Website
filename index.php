@@ -2,6 +2,7 @@
 	session_start();
 	include "model/database.php";
 	include "model/mysql.php";
+	echo "moo";
 
 	include "model/cookie.php";
 
@@ -50,8 +51,8 @@
 		$page = "view/event.php";
 	}
 
-$page = isset($page) ? $page : "view/front.php";
-//Not sure if you want to change this.
+	$page = isset($page) ? $page : "view/front.php";
+	//Not sure if you want to change this.
 
 	if(!$page) {
 		$page = "view/front.php";

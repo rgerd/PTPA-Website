@@ -38,7 +38,7 @@ function get_user($id){
 
 function get_event($id){
     global $db;
-    $query = "SELECT * FROM events WHERE ID = '$id'";
+    $query = "SELECT * FROM events"; //WHERE ID = '$id'
     $results = $db->exec($query);
     echo $results;
     $results = $results->fetchRow();
@@ -185,13 +185,8 @@ function sanitize($data) {
 function get_tasks_for_event($event_id) {
     global $db;
     $query = "SELECT * FROM tasks WHERE eventID = '$event_id'";
-<<<<<<< HEAD
     $results = $db->query($query);
     return $results->fetchAll();
-=======
-    $result = $db->query($query);
-    return $result;
->>>>>>> FETCH_HEAD
 }
 
 ?>
