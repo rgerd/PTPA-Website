@@ -16,8 +16,10 @@
         <div id="inner_navbar">
         <div id="float_left"><a href="index.php"><img src="css/images/logo1.png" alt="PT Volunteer" height="60px"/></a></div>
         <div id="float_right">
+            <?php if($user_id != -1): ?>
             <div class="header_button"><a href=""><img src="css/images/gear.png" alt="User Settings" height="60px"/></a></div>
             <div class="header_button"><a href=""><img src="css/images/signout.png" alt="Log Out" height="60px"/></a></div>
+            <?php endif; ?>
         </div>
         </div>
     </div>
