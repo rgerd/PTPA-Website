@@ -43,17 +43,16 @@
 		}
 	}
 
-	if(isset($_GET['event_id'])) {
-		$event_id = $_GET['event_id'];
-		$page_title = "Event!";
+	if(isset($_GET['e'])) {
+		$event_id = $_GET['e'];
+		$event = get_event($event_id);
+		$page_title = $event['title'];
 		$page = "view/event.php";
 	}
 
 	if(!$page) {
 		$page = "view/front.php";
 	}
-	$page = "view/home.php";
-
 ?>
 <?php include 'view/header.php'; ?>
 <?php include "$page"; ?>

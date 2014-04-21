@@ -9,5 +9,4 @@ try {
 	echo "PDO ERROR: ".($e ->getMessage())."<br />";
 	die();
 }
-
 ?>
