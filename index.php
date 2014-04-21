@@ -60,6 +60,8 @@
 	if(!$page) {
 		$page = "view/front.php";
 	}
+
+	$page_title = "PT Volunteer";
 ?>
 <?php include 'view/header.php'; ?>
 <?php include "$page"; ?>
