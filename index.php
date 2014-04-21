@@ -2,7 +2,6 @@
 	session_start();
 	include "model/database.php";
 	include "model/mysql.php";
-	echo "moo";
 
 	include "model/cookie.php";
 
