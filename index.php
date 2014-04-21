@@ -2,7 +2,10 @@
 	session_start();
 	include "model/database.php";
 	include "model/mysql.php";
+<<<<<<< HEAD
 //	echo "moo";
+=======
+>>>>>>> FETCH_HEAD
 
 	include "model/cookie.php";
 
