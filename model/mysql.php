@@ -138,8 +138,13 @@ function user_already_registered($email) {
     Authenticates a user when signing in & returns their id.
 */
 function auth_user($email, $password) {
-    // TODO: IMPLEMENT
-
+    global $db;
+    $query = "SELECT ID, email, password FROM accounts WHERE email = '$email' ";
+    $result = $db->query($query);
+    $result = $result->fetch();
+    if ($result['password'] == $password){
+        return $result['ID'];
+    }
     return -1;
 }
 
