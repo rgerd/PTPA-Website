@@ -14,7 +14,7 @@
 	$lname = isset($_POST['lname']) ? $_POST['lname'] : "none";
 	$email = isset($_POST['email']) ? $_POST['email'] : "none";
 	$entered_password = isset($_POST['password']);
-	$password = md5($_POST['password']); // encrypted for security
+	$password = md5(isset($_POST['password']) ? $_POST['password'] : ""); // encrypted for security
 	$pnum = $_POST['pnum'];
 
 	if($action == "sign_in") {
