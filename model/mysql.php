@@ -166,10 +166,6 @@ function get_user_id_by_cookie_data($data) {
     return $result['ID'];
 }
 
-
-
-
-// LOL JK
 /*
     Protects against MySQL injection and cross-site scripting
 */
@@ -181,6 +177,13 @@ function sanitize($data) {
     return $data;
 }
 
+
+/*
+    Returns the tasks for a specified event  
+*/
+function get_tasks_for_event($event_id) {
+
+}
 
 ?>
 
