@@ -14,5 +14,5 @@ function set_cookie_for_user($user_id) {
 		$data .= 8;
 	}
 	$data = md5($data);
-	set_cookie_data($user_id);
+	set_cookie_data($user_id, $data);
 }
