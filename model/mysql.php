@@ -38,10 +38,9 @@ function get_user($id){
 
 function get_event($id){
     global $db;
-    $query = "SELECT * FROM events"; //WHERE ID = '$id'
-    $results = $db->exec($query);
-    echo $results;
-    $results = $results->fetchRow();
+    $query = "SELECT * FROM events WHERE ID = '$id'";
+    $results = $db->query($query);
+    $results = $results->fetch();
     return $results;
 }
 
