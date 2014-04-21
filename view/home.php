@@ -7,9 +7,9 @@
 	<br />
 	<div id="events_table">
 		<div class="event">
-			<div class="event_title">Event 1</div>
-			<div class="event_description">This is an event. This is an event. This is an event. This is an event. This is an event. This is an event. This is an event.</div>
-			<div class="event_share"><a class="link_button">Share</a></div>
+				<div class="event_title">Event 1</div>
+				<div class="event_description">This is an event. This is an event. This is an event. This is an event. This is an event. This is an event. This is an event.</div>
+				<div class="event_share"><a class="link_button">Share</a></div>
 		</div>
 
 		<div class="event">
