@@ -185,8 +185,13 @@ function sanitize($data) {
 function get_tasks_for_event($event_id) {
     global $db;
     $query = "SELECT * FROM tasks WHERE eventID = '$event_id'";
+<<<<<<< HEAD
     $results = $db->query($query);
     return $results->fetchAll();
+=======
+    $result = $db->query($query);
+    return $result;
+>>>>>>> FETCH_HEAD
 }
 
 ?>
