@@ -182,7 +182,10 @@ function sanitize($data) {
     Returns the tasks for a specified event  
 */
 function get_tasks_for_event($event_id) {
-
+    global $db;
+    $query = "SELECT * FROM tasks WHERE eventID = '$event_id'";
+    $result = $db->query($query);
+    return $result;
 }
 
 ?>
