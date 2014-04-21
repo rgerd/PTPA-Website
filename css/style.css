@@ -136,12 +136,34 @@ input[type=submit]._3D:active, a.link_button:active {
    font-size: 1.0em;
 }
 
+#top {
+    display: block;
+    background-color: #000;
+}
+
+#events_table {
+    display: block;
+}
+
+.event {
+    clear: both;
+    display: block;
+    padding: 10px 5px 10px 5px;
+    background-color: #DDD;
+    border: 2px solid black;
+}
+
 .event_title {
     float:left;
-    display: inline-block;
+    display: block;
+    margin-right: 20px;
 }
 
 .event_description {
+    padding-left: 50px;
+    width: 700px;
+    white-space: nowrap;
+    overflow: hidden;
     text-overflow:ellipsis;
     display: inline-block;
     float:left;
@@ -149,4 +171,5 @@ input[type=submit]._3D:active, a.link_button:active {
 
 .event_share {
     float: right;
+    display: block;
 }
