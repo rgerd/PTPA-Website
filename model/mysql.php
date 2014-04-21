@@ -148,15 +148,22 @@ function auth_user($email, $password) {
     return -1;
 }
 
-function set_cookie_data($user_id) {
-
+function set_cookie_data($user_id, $cookie_data) {
+    global $db;
+    $query = "UPDATE accounts SET cookieData='$cookie_data' WHERE ID='$user_id'";
+    $result = $db->exec($query);
+    return $result;
 }
 
 /*
     Looks up a user by their cookie data and returns their id
 */
 function get_user_id_by_cookie_data($data) {
-
+    global $db;
+    $query = "SELECT ID FROM accounts WHERE cookieData = '$data'";
+    $result = $db->query($query);
+    $result = $result->fetch();
+    return $result['ID'];
 }
 
 

@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `password` varchar(20) NOT NULL,
   `registered` int(1) NOT NULL,
   `reminders` int(1) NOT NULL,
+  `cookieData` text,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
