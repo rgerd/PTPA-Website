@@ -9,11 +9,11 @@
 	if($user_id != -1)
 		$page = "view/home.php";
 
-	$action = $_POST['action'];
-	$fname = $_POST['fname'];
-	$lname = $_POST['lname'];
-	$email = $_POST['email'];
-	$entered_password = !(!$_POST['password']);
+	$action = isset($_POST['action']) ? $_POST['action'] : "none";
+	$fname = isset($_POST['fname']) ? $_POST['fname'] : "none";
+	$lname = isset($_POST['lname']) ? $_POST['lname'] : "none";
+	$email = isset($_POST['email']) ? $_POST['email'] : "none";
+	$entered_password = isset($_POST['password']);
 	$password = md5($_POST['password']); // encrypted for security
 	$pnum = $_POST['pnum'];
 
