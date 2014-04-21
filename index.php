@@ -15,7 +15,7 @@
 	$email = isset($_POST['email']) ? $_POST['email'] : "none";
 	$entered_password = isset($_POST['password']);
 	$password = md5(isset($_POST['password']) ? $_POST['password'] : ""); // encrypted for security
-	$pnum = $_POST['pnum'];
+	$pnum = isset($_POST['pnum']) ? $_POST['pnum'] : "none";
 
 	if($action == "sign_in") {
 		$top_tab = "sign_in";
@@ -48,6 +48,9 @@
 		$page_title = "Event!";
 		$page = "view/event.php";
 	}
+
+$page = isset($page) ? $page : "view/front.php";
+//Not sure if you want to change this.
 
 	if(!$page) {
 		$page = "view/front.php";
