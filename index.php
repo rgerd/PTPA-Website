@@ -34,11 +34,16 @@
 		}
 	} else if($action == "sign_up") {
 		$top_tab =  "sign_up";
+		$sign_up_error_message = "A user with this email is already registered!<br /><a href='.'>Forgot your password?</a>";
+		/*
 		if(!$fname || !$lname || !$email || !$entered_password || !$pnum) {
 			$sign_up_error_message = "Please fill in all fields!";
+		} else if(user_exists($email)) {
+			$sign_up_error_message = "This email is already registered!<br /><a href='.'>Forgot your password?</a>";
 		} else {
 			//register_user($fname, $lname, $email, $pnum, $password);
 		}
+		*/
 	}
 
 	if(isset($_GET['event_id'])) {
