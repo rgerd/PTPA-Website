@@ -142,7 +142,7 @@ function auth_user($email, $password) {
     $query = "SELECT ID, email, password FROM accounts WHERE email = '$email' ";
     $result = $db->query($query);
     $result = $result->fetch();
-    if ($result['password'] == $password){
+    if ($result['password'] == $password) {
         return $result['ID'];
     }
     return -1;
@@ -169,7 +169,7 @@ function get_user_id_by_cookie_data($data) {
 
 
 
-// THERE WILL BE A MERGE ERROR HERE
+// LOL JK
 /*
     Protects against MySQL injection and cross-site scripting
 */
