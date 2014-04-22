@@ -17,7 +17,7 @@ function get_users_signedup($taskID) {
     global $db;
     $query = "SELECT * FROM signups WHERE taskID = '$taskID'";
     $result = $db->query($query);
-    return $result;
+    return $result->fetchAll();
 }
 
 function get_unregistered_user($code) {
