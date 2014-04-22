@@ -51,13 +51,9 @@
 	}
 
 	$page = isset($page) ? $page : "view/front.php";
-	//Not sure if you want to change this.
 
-	if(!$page) {
-		$page = "view/front.php";
-	}
-
-	$page_title = "PT Volunteer";
+	if(!isset($page_title))
+		$page_title = "PT Volunteer";
 ?>
 <?php include 'view/header.php'; ?>
 <?php include "$page"; ?>
