@@ -5,6 +5,7 @@
 
 	include "model/cookie.php";
 
+
 	$user_id = isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : -1;
 	if($user_id != -1)
 		$page = "view/home.php";
@@ -51,9 +52,13 @@
 	}
 
 	$page = isset($page) ? $page : "view/front.php";
+	//Not sure if you want to change this.
 
-	if(!isset($page_title))
-		$page_title = "PT Volunteer";
+	if(!$page) {
+		$page = "view/front.php";
+	}
+
+	$page_title = "PT Volunteer";
 ?>
 <?php include 'view/header.php'; ?>
 <?php include "$page"; ?>

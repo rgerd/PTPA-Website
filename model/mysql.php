@@ -3,6 +3,7 @@ function get_all_events() {
     global $db;
     $query = 'SELECT * FROM events';
     $result = $db->query($query);
+    $result = $result->fetchAll();
     return $result;
 }
 
@@ -10,6 +11,7 @@ function get_user_events($userID) {
     global $db;
     $query = "SELECT * FROM events WHERE accountID = '$userID'";
     $result = $db->query($query);
+    $result = $result->fetchAll();
     return $result;
 }
 
@@ -24,7 +26,7 @@ function get_unregistered_user($code) {
     global $db;
     $query = "SELECT * FROM accounts WHERE password = '$code' AND registered = 0";
     $results = $db->query($query);
-    $results = $results->fetchRow();
+    $results = $results->fetch();
     return $results;
 }
 
@@ -32,7 +34,7 @@ function get_user($id){
     global $db;
     $query = "SELECT * FROM accounts WHERE ID = '$id'";
     $results = $db->query($query);
-    $results = $results->fetchRow();
+    $results = $results->fetch();
     return $results;
 }
 
@@ -46,10 +48,10 @@ function get_event($id){
 
 function count_signups($task){
     global $db;
-    $query = "SELECT count(*) FROM signups WHERE taskID = '$task'";
+    $query = "SELECT count(*) as num FROM signups WHERE taskID = '$task'";
     $results = $db->query($query);
-    $results = $results->fetchRow();
-    return $results;
+    $results = $results->fetch();
+    return $results['num'];
 }
 
 function add_event($accountID, $date, $title, $desc){
@@ -63,6 +65,7 @@ function add_task($eventID, $desc, $count){
     global $db;
     $query = "INSERT INTO tasks (eventID, desc, count) VALUES ('$eventID', '$desc', '$count')";
     $results = $db->query($query);
+    $results = $results->fetchAll();
     return $results;
 }
 
@@ -70,6 +73,7 @@ function signup($taskID, $accountID, $comment = null){
     global $db;
     $query = "INSERT INTO signups (taskID, accountID, comment) VALUES ('$taskID', '$accountID', '$comment')";
     $results = $db->query($query);
+    $results = $results->fetchAll();
     return $results;
 }
 
