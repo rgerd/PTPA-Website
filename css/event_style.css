@@ -69,16 +69,18 @@
 }
 
 .event_sign_up_button {
+	display: block;
 	float: right;
 	margin-right: 10px;
 	padding: 5px;
 	border: 2px solid black;
 	border-radius: 10px;
-	margin-top: 10px;
+	margin-top: 20px;
 	background-color: #AFAFAF;
 	cursor: pointer;
 	color: #000;
 	text-decoration: none;
+	font-size: 1.2em;
 }
 
 .event_sign_up_button:hover {
