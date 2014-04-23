@@ -195,8 +195,9 @@ function get_tasks_for_event($event_id) {
 
 /*
     Signs a user up for a task
+    If comments are disabled, the comment will just be an empty string
 */
-function sign_up_for_task($task_id, $user_id) {
+function sign_up_for_task($task_id, $user_id, $comment) {
 
 }
 

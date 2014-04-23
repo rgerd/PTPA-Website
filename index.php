@@ -24,7 +24,7 @@
 		$event_id = $_POST['event'];
 		$task_id = $_POST['task'];
 
-		
+		sign_up_for_task($task_id, $user_id);
 	}
 
 	$page = isset($page) ? $page : "view/front.php";
