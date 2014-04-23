@@ -11,7 +11,8 @@
 			<input class="form_text_field" type="text" name="email" value="<?php if($action == "sign_in") echo $email; ?>" spellcheck = "false" autocorrect = "false" placeholder="Email"/>
 			<input class="form_text_field" type="password" name="password" spellcheck = "false" autocorrect = "false" placeholder="Password"/>
 			<span style="background-color: #E0E0E0;"><input class="footer_button _3D" type="submit" spellcheck = "false" autocorrect = "false"  value="Sign In!"/></span>
-			<?php if($sign_in_error_message) echo '<div class="error_message">'.$sign_in_error_message.'</div>'; ?>
+			<?php $sign_in_error_message = isset($sign_in_error_message) ? $sign_in_error_message : false; ?>
+            <?php if($sign_in_error_message) echo '<div class="error_message">'.$sign_in_error_message.'</div>'; ?>
 			<input name="action" type="hidden" value="sign_in"/>
 		</form>
 	</div>
@@ -23,7 +24,7 @@
 			<input class="form_text_field" type="text" name="pnum" value="<?php if($action == "sign_up") echo $pnum; ?>" spellcheck = "false" autocorrect = "false" placeholder="Phone Number"/>
 			<input class="form_text_field" type="password" name="password" spellcheck = "false" autocorrect = "false" placeholder="Password"/>
 			<span style="background-color: #E0E0E0;"><input class="footer_button _3D" type="submit" spellcheck = "false" autocorrect = "false"  value="Sign Up!"/></span>
-			<?php if($sign_up_error_message) echo '<div class="error_message">'.$sign_up_error_message.'</div>'; ?>
+            <?php if(isset($sign_up_error_message) && $sign_in_error_message) echo '<div class="error_message">'.$sign_up_error_message.'</div>'; ?>
 			<input name="action" type="hidden" value="sign_up"/>
 		</form>
 	</div>
