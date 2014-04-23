@@ -192,5 +192,13 @@ function get_tasks_for_event($event_id) {
     return $results->fetchAll();
 }
 
+
+/*
+    Signs a user up for a task
+*/
+function sign_up_for_task($task_id, $user_id) {
+
+}
+
 ?>
 
