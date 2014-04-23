@@ -1,7 +1,8 @@
 <div id="tabs">
     <div id="bounding_tabs">
 	<ul id="tab_bar">
-		<li id = "_sign_in" class="tab" content="#sign_in" <?php if($top_tab == "sign_in" || !$top_tab) echo 'top="true"'; ?>>Sign In</li>
+        <?php $top_tab = isset($top_tab) ? $top_tab : false; ?>
+		<li id = "_sign_in" class="tab" content="#sign_in" <?php if( $top_tab == "sign_in" || !$top_tab) echo 'top="true"'; ?>>Sign In</li>
 		<li id = "_sign_up" class="tab" content="#sign_up" <?php if($top_tab == "sign_up") echo 'top="true"'; ?>>Sign Up</li>
 	</ul>
 
