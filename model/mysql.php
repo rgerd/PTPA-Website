@@ -69,14 +69,6 @@ function add_task($eventID, $desc, $count){
     return $results;
 }
 
-function signup($taskID, $accountID, $comment = null){
-    global $db;
-    $query = "INSERT INTO signups (taskID, accountID, comment) VALUES ('$taskID', '$accountID', '$comment')";
-    $results = $db->query($query);
-    $results = $results->fetchAll();
-    return $results;
-}
-
 function edit_signup($id, $comment){
     global $db;
     $query = "UPDATE signups SET comment='$comment' WHERE ID='$id'";
@@ -197,8 +189,17 @@ function get_tasks_for_event($event_id) {
     Signs a user up for a task
     If comments are disabled, the comment will just be an empty string
 */
-function sign_up_for_task($task_id, $user_id, $comment) {
-
+function sign_up_for_task($task_id, $user_id, $comment = null) {
+    global $db;
+    $query = "SELECT comments FROM tasks WHERE ID = '$task_id'";
+    $results = $db->query($query)->fetch()['comments'];
+    if($results == 0){
+        $comm = "";
+    }else{
+        $comm = $comment;
+    }
+    $query = "INSERT INTO signups (taskID, accountID, comment) VALUES ('$task_id', '$user_id', '$comm')";
+    $db->exec($query);
 }
 
 ?>
