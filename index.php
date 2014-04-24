@@ -4,7 +4,13 @@
 	include "model/mysql.php";
 	include "model/cookie.php";
 	$action = isset($_POST['action']) ? $_POST['action'] : "none";
+	$action = isset($_GET['a']) ? $_GET['a'] : $action;
 	include "model/registration.php";
+
+	if($action == "sign_out") {
+		setcookie("user", time() - 1);
+		unset($_SESSION['USER_ID']);
+	}
 
 	$user_id = isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : -1;
 	if($user_id != -1)
