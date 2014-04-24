@@ -119,10 +119,16 @@ input[type=submit]._3D, a.link_button {
     margin-left: 0px;
     margin-bottom: -2px;
     padding: 0 10px 0 9px;
+    outline: none;
 }
 
-.css_button:hover{
+.css_button:hover   {
     background-color: dimgrey;
+}
+
+.css_button:active {
+    background-color: #1E1E1E;
+    color: grey;
 }
 
 a.link_button {
