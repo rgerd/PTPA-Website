@@ -3,15 +3,12 @@
 	include "model/database.php";
 	include "model/mysql.php";
 	include "model/cookie.php";
-
+	$action = isset($_POST['action']) ? $_POST['action'] : "none";
+	include "model/registration.php";
 
 	$user_id = isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : -1;
 	if($user_id != -1)
 		$page = "view/home.php";
-
-	$action = isset($_POST['action']) ? $_POST['action'] : "none";
-
-	include "model/registration.php";
 
 	if(isset($_GET['e'])) {
 		$event_id = $_GET['e'];
