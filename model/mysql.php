@@ -109,25 +109,21 @@ function delete_event($id){
 */
 function register_user($fname, $lname, $email, $phone, $password) {
     global $db;
-    $query = "INSERT INTO accounts (fname, lname, email, phone, password) VALUES ('$fname', '$lname', '$email', '$phone', '$password')";
+    $query = "INSERT INTO accounts (fname, lname, email, phone, password, registered) VALUES ('$fname', '$lname', '$email', '$phone', '$password', 1)";
     $result = $db->query($query);
-    return $result;
+    return $result['ID'];
 }
 
 /*
     Checks if a user with that email is already registered.
     Used by the register_user method.
 */
-function user_already_registered($email) {
+function user_exists($email) {
     global $db;
     $query = "SELECT ID FROM accounts WHERE email = '$email'";
     $results = $db->query($query);
     $results = $results->rowCount();
-    echo $results;
-    if ($results >= 0){
-        return true;
-    }
-    return false;
+    return $results > 0;
 }
 
 /*
