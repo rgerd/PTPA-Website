@@ -18,13 +18,13 @@
 	</div>
 	<div id="sign_up" class="tab_content">
 		<form id="sign_up_form" method="POST" action=".">
-			<input class="form_text_field" type="text" name="fname" value="<?php if($action == "sign_up") echo $fname; ?>" spellcheck = "false" autocorrect = "false" placeholder="First Name"/>
-			<input class="form_text_field" type="text" name="lname" value="<?php if($action == "sign_up") echo $lname; ?>" spellcheck = "false" autocorrect = "false" placeholder="Last Name"/>
-			<input class="form_text_field" type="text" name="email" value="<?php if($action == "sign_up") echo $email; ?>" spellcheck = "false" autocorrect = "false" placeholder="Email"/>
+			<input class="form_text_field" type="text" name="fname" value="<?php if($action == "sign_up") echo $fname; ?>" spellcheck = "false" autocorrect = "false" placeholder="First Name" maxlength="50"/>
+			<input class="form_text_field" type="text" name="lname" value="<?php if($action == "sign_up") echo $lname; ?>" spellcheck = "false" autocorrect = "false" placeholder="Last Name" maxlength="50"/>
+			<input class="form_text_field" type="text" name="email" value="<?php if($action == "sign_up") echo $email; ?>" spellcheck = "false" autocorrect = "false" placeholder="Email" maxlength="50"/>
 			<input class="form_text_field" type="text" name="pnum" value="<?php if($action == "sign_up") echo $pnum; ?>" spellcheck = "false" autocorrect = "false" placeholder="Phone Number"/>
 			<input class="form_text_field" type="password" name="password" spellcheck = "false" autocorrect = "false" placeholder="Password"/>
 			<span style="background-color: #E0E0E0;"><input class="css_button" type="submit" spellcheck = "false" autocorrect = "false"  value="Sign Up!"/></span>
-            <?php if(isset($sign_up_error_message) && $sign_in_error_message) echo '<div class="error_message">'.$sign_up_error_message.'</div>'; ?>
+            <?php if(isset($sign_up_error_message)) echo '<div class="error_message">'.$sign_up_error_message.'</div>'; ?>
 			<input name="action" type="hidden" value="sign_up"/>
 		</form>
 	</div>
