@@ -15,6 +15,7 @@ if($action == "sign_in") {
 		if($user_id == -1) {
 			$sign_in_error_message = "Incorrect username or password!";
 		} else {
+			set_cookie_for_user($user_id);
 			$_SESSION['USER_ID'] = $user_id;
 			$page = "view/home.php";
 		}
@@ -27,7 +28,7 @@ if($action == "sign_in") {
 		$sign_up_error_message = "This email is already registered!<br /><a href='.'>Forgot your password?</a>";
 	} else {
 		$user_id = register_user($fname, $lname, $email, $pnum, $password);
-		$set_cookie_for_user($user_id);
+		set_cookie_for_user($user_id);
 		$_SESSION['USER_ID'] = $user_id;
 		$page = "view/home.php";
 	}
