@@ -7,12 +7,11 @@
 	$action = isset($_GET['a']) ? $_GET['a'] : $action;
 	include "model/registration.php";
 
-	if($action == "sign_out") {
-		setcookie("user", time() - 1);
-		unset($_SESSION['USER_ID']);
-	}
+	if($action == "sign_out")
+		clear_cookie_for_user();
 
 	$user_id = isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : -1;
+	
 	if($user_id != -1)
 		$page = "view/home.php";
 

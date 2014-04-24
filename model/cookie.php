@@ -1,6 +1,6 @@
 <?php
-if(!isset($_SESSION['USER_ID']) && isset($_COOKIE['user'])) {
-	$data = $_COOKIE['user'];
+if(!isset($_SESSION['USER_ID']) && isset($_COOKIE['u_id'])) {
+	$data = $_COOKIE['u_id'];
 	$user_id = get_user_id_by_cookie_data($data);
 	$_SESSION['USER_ID'] = $user_id;
 }
@@ -16,5 +16,10 @@ function set_cookie_for_user($user_id) {
 	$data .= time();
 	$data = md5($data);
 	set_cookie_data($user_id, $data);
-	setcookie("user", $data, time() + 60 * 60 * 24 * 30);
+	setcookie("u_id", $data, time() + 60 * 60 * 24 * 30);
+}
+
+function clear_cookie_for_user() {
+	setcookie("u_id", time() - 2048);
+	unset($_SESSION['USER_ID']);
 }
