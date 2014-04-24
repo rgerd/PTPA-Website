@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `lname` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `phone` int(11) DEFAULT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(32) NOT NULL,
   `registered` int(1) NOT NULL,
   `reminders` int(1) NOT NULL,
-  `cookieData` text,
+  `cookieData` varchar(32),
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
