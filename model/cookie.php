@@ -13,6 +13,8 @@ function set_cookie_for_user($user_id) {
 		$data .= $_user_id[$i];
 		$data .= 8;
 	}
+	$data .= time();
 	$data = md5($data);
 	set_cookie_data($user_id, $data);
+	setcookie("user", $data, time() + 60 * 60 * 24 * 30);
 }
