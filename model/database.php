@@ -12,7 +12,7 @@ if(!connect("root")) {
 }
 
 function connect($user) {
-	global $host, $db_name, $db_pass;
+	global $db, $host, $db_name, $db_pass;
 	try {
 		$db = new PDO("mysql:host=$host;dbname=$db_name", $user, $db_pass);
 	} catch(PDOException $e) {
