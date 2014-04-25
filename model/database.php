@@ -16,7 +16,9 @@ function connect($user) {
 	try {
 		$db = new PDO("mysql:host=$host;dbname=$db_name", $user, $db_pass);
 	} catch(PDOException $e) {
+		if($user != "root"){
 		echo "PDO ERROR: ".($e ->getMessage())."<br />";
+		}
 		return false;
 	}
 	return true;
