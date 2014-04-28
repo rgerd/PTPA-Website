@@ -1,1 +1,32 @@
 /*CSS for event creator*/
+
+.edit_event_task {
+	width: 400px;
+	background-color: #eee;
+	border: 1px solid black;
+}
+
+.task_left {
+	display: inline-block;
+}
+
+.task_right {
+	float:right;
+	display: inline-block;
+}
+
+.delete_button {
+
+}
+
+.task_title_input {
+	display: inline-block;
+}
+
+.comments_checkbox {
+	display: inline-block;
+}
+
+.delete_button {
+	display: inline-block;
+}
