@@ -32,6 +32,8 @@
 	$page = isset($page) ? $page : "view/front.php";
 
 	$page_title = "PT Volunteer";
+
+	//$page = "view/event_creator.php";
 ?>
 <?php include 'view/header.php'; ?>
 <?php include "$page"; ?>
