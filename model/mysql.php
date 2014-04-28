@@ -169,7 +169,6 @@ function sanitize($data) {
     return $data;
 }
 
-
 /*
     Returns the tasks for a specified event  
 */
@@ -179,7 +178,6 @@ function get_tasks_for_event($event_id) {
     $results = $db->query($query);
     return $results->fetchAll();
 }
-
 
 /*
     Signs a user up for a task
