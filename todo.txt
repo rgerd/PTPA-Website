@@ -1,0 +1,2 @@
+- Truncate event description
+- Make PDF generation code
