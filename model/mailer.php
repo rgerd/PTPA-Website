@@ -1,4 +1,5 @@
 <?php 
+	include "../model/phpmailer/PHPMailerAutoload.php";
 	function sendMail($recipient, $recipient_name='', $has_attachment=false, $attachment='', $attachment_name='') {
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
