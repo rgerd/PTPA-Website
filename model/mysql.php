@@ -1,4 +1,6 @@
 <?php
+
+/*Returns all events.*/
 function get_all_events() {
     global $db;
     $query = 'SELECT * FROM events';
@@ -7,6 +9,7 @@ function get_all_events() {
     return $result;
 }
 
+/*Returns the events of a specific user.*/
 function get_user_events($userID) {
     global $db;
     $query = "SELECT * FROM events WHERE accountID = '$userID'";
@@ -15,6 +18,7 @@ function get_user_events($userID) {
     return $result;
 }
 
+/*Returns the users signed up for a task.*/
 function get_users_signedup($taskID) {
     global $db;
     $query = "SELECT * FROM signups WHERE taskID = '$taskID'";
@@ -22,6 +26,7 @@ function get_users_signedup($taskID) {
     return $result->fetchAll();
 }
 
+/**/
 function get_unregistered_user($code) {
     global $db;
     $query = "SELECT * FROM accounts WHERE password = '$code' AND registered = 0";
@@ -30,6 +35,7 @@ function get_unregistered_user($code) {
     return $results;
 }
 
+/*Returns user given id*/
 function get_user($id){
     global $db;
     $query = "SELECT * FROM accounts WHERE ID = '$id'";
@@ -38,6 +44,7 @@ function get_user($id){
     return $results;
 }
 
+/*Returns event given id*/
 function get_event($id){
     global $db;
     $query = "SELECT * FROM events WHERE ID = '$id'";
@@ -46,6 +53,7 @@ function get_event($id){
     return $results;
 }
 
+/*Counts number of signups for a task*/
 function count_signups($task){
     global $db;
     $query = "SELECT count(*) as num FROM signups WHERE taskID = '$task'";
@@ -54,6 +62,7 @@ function count_signups($task){
     return $results['num'];
 }
 
+/*Creates new event*/
 function add_event($accountID, $date, $title, $desc){
     global $db;
     $query = "INSERT INTO events (accountID, date, title, desc) VALUES ('$accountID', '$date', '$title', '$desc')";
@@ -61,6 +70,7 @@ function add_event($accountID, $date, $title, $desc){
     return $results;
 }
 
+/*Creates new task*/
 function add_task($eventID, $desc, $count){
     global $db;
     $query = "INSERT INTO tasks (eventID, desc, count) VALUES ('$eventID', '$desc', '$count')";
@@ -69,6 +79,7 @@ function add_task($eventID, $desc, $count){
     return $results;
 }
 
+/*Edits comment of a signup*/
 function edit_signup($id, $comment){
     global $db;
     $query = "UPDATE signups SET comment='$comment' WHERE ID='$id'";
@@ -76,6 +87,7 @@ function edit_signup($id, $comment){
     return $results;
 }
 
+/*Deletes signup given id*/
 function delete_signup($id){
     global $db;
     $query = "DELETE FROM signups WHERE ID = '$id'";
@@ -83,6 +95,7 @@ function delete_signup($id){
     return $results;
 }
 
+/*Edits account information.*/
 function edit_account($id, $fname, $lname, $email, $phone, $pass){
     global $db;
     $query = "UPDATE accounts SET fname='$fname',lname='$lname',email='$email',phone='$phone',password='$pass' WHERE ID='$id'";
@@ -90,6 +103,7 @@ function edit_account($id, $fname, $lname, $email, $phone, $pass){
     return $results;
 }
 
+/*Deletes account given id*/
 function delete_account($id){
     global $db;
     $query = "DELETE FROM accounts WHERE ID = '$id'";
@@ -97,6 +111,7 @@ function delete_account($id){
     return $results;
 }
 
+/*Deletes event given id*/
 function delete_event($id){
     global $db;
     $query = "DELETE FROM events WHERE ID = '$id'";
@@ -140,6 +155,7 @@ function auth_user($email, $password) {
     return -1;
 }
 
+/*Sets cookie data for user*/
 function set_cookie_data($user_id, $cookie_data) {
     global $db;
     $query = "UPDATE accounts SET cookieData='$cookie_data' WHERE ID='$user_id'";
