@@ -30,3 +30,26 @@
 .delete_button {
 	display: inline-block;
 }
+
+.event_top_field{
+    margin: 0px;
+    padding: 5px 2px 5px 2px;
+    color: #000;
+    display: block;
+    background-color: #E0E0E0;
+    width: 100%;
+    outline: none;
+    font-size: 1.0em;
+}
+
+.event_top_div{
+    border: 2px solid black;
+    /*border-radius: 10px;*/
+    display: block;
+    background-color: #eee;
+    padding: 0px;
+    overflow: hidden;
+    width: 300px;
+    margin-bottom: 20px;
+    z-index: 10;
+}
