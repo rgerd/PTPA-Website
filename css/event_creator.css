@@ -1,32 +1,48 @@
 /*CSS for event creator*/
 
+.edit_event_tasks {
+	display: table;
+}
+
 .edit_event_task {
 	width: 400px;
 	background-color: #eee;
 	border: 1px solid black;
-}
-
-.task_left {
-	display: inline-block;
-}
-
-.task_right {
-	float:right;
-	display: inline-block;
+	padding: 5px;
+	overflow: hidden;
+	display: table-row;
+	margin-bottom: 20px;
 }
 
 .delete_button {
-
+	color: black;
+	background-color: red;
+	border-radius: 5px;
+	border: 1px solid black;
+	padding: 3px;
+	display: table-cell;
+	margin: 5px;
 }
 
 .task_title_input {
-	display: inline-block;
+	display: table-cell;
+	margin: 5px;
 }
 
 .comments_checkbox {
-	display: inline-block;
+	display: table-cell;
+	margin: 5px;
 }
 
-.delete_button {
+#add_event_task {
+	border: 1px solid black;
+	background-color: #ddd;
+	border-radius: 5px;
 	display: inline-block;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+#add_event_task:active {
+	background-color: #aaa;
 }
