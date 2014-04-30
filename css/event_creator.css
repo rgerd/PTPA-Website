@@ -39,14 +39,12 @@
 	background-color: #ddd;
 	border-radius: 5px;
 	display: inline-block;
-<<<<<<< HEAD
 	padding: 5px;
 	margin-top: 5px;
 }
 
 #add_event_task:active {
 	background-color: #aaa;
-=======
 }
 
 .event_top_field{
@@ -69,6 +67,4 @@
     overflow: hidden;
     width: 300px;
     margin-bottom: 20px;
-    z-index: 10;
->>>>>>> FETCH_HEAD
 }
