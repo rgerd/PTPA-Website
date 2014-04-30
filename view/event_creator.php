@@ -1,13 +1,29 @@
 <script type="text/javascript" src="js/event_creator.js"></script>
-<div class="event_top_div">
-    <input class="event_top_field" type="text" name="event_name" placeholder="Event Name"/>
-    <input class="event_top_field" type="text" name="event_date" placeholder="Event Date/Time"/>
-    <input class="event_top_field" type="text" name="event_desc" placeholder="Event Description"/>
+<div class="event_creator_top_div">
+    <input class="event_creator_top_field" type="text" name="event_name" placeholder="Event Name"/>
+    <input class="event_creator_top_field" type="text" name="event_date" placeholder="Event Date/Time"/>
+    <textarea class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"></textarea>
 </div>
 
-<div id="edit_event_tasks">
-</div>
+<!--
+	<div id="event_creator_task_header">
+		<div style="display: table-row;">
+			<div style="display: table-cell;">
+				Hello
+			</div>
+			<div style="display: table-cell;">
+				Hello
+			</div>
+			<div style="display: table-cell;">
+				Hello
+			</div>
+			<div style="display: table-cell;">
+				Hello
+			</div>
+		</div>
+	</div>
+	</div>
+-->
+<div id="event_creator_task_container"></div>
 
-<div id="add_event_task">
-Add Task
-</div>
+<div id="event_creator_add_button">Add Task</div>

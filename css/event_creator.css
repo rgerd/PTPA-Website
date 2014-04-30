@@ -1,53 +1,17 @@
 /*CSS for event creator*/
 
-.edit_event_tasks {
-	display: table;
+.event_creator_top_div{
+    border: 2px solid black;
+    /*border-radius: 10px;*/
+    display: block;
+    background-color: #eee;
+    padding: 0px;
+    overflow: hidden;
+    width: 300px;
+    margin-bottom: 20px;
 }
 
-.edit_event_task {
-	width: 400px;
-	background-color: #eee;
-	border: 1px solid black;
-	padding: 5px;
-	overflow: hidden;
-	display: table-row;
-	margin-bottom: 20px;
-}
-
-.delete_button {
-	color: black;
-	background-color: red;
-	border-radius: 5px;
-	border: 1px solid black;
-	padding: 3px;
-	display: table-cell;
-	margin: 5px;
-}
-
-.task_title_input {
-	display: table-cell;
-	margin: 5px;
-}
-
-.comments_checkbox {
-	display: table-cell;
-	margin: 5px;
-}
-
-#add_event_task {
-	border: 1px solid black;
-	background-color: #ddd;
-	border-radius: 5px;
-	display: inline-block;
-	padding: 5px;
-	margin-top: 5px;
-}
-
-#add_event_task:active {
-	background-color: #aaa;
-}
-
-.event_top_field{
+.event_creator_top_field{
     margin: 0px;
     padding: 5px 2px 5px 2px;
     color: #000;
@@ -58,18 +22,59 @@
     font-size: 1.0em;
 }
 
-.slots_input {
-	width: 1em;
-	font-size: 1em;
+#event_creator_task_container {
+	display: table;
 }
 
-.event_top_div{
-    border: 2px solid black;
-    /*border-radius: 10px;*/
-    display: block;
-    background-color: #eee;
-    padding: 0px;
-    overflow: hidden;
-    width: 300px;
-    margin-bottom: 20px;
+.event_creator_task_header {
+	display: table-header-group;
+}
+
+.event_creator_task {
+	width: 400px;
+	background-color: #eee;
+	border: 1px solid black;
+	padding: 5px;
+	overflow: hidden;
+	display: table-row;
+	margin-bottom: 20px;
+}
+
+.event_creator_task_title {
+	display: table-cell;
+	margin: 5px;
+}
+
+.event_creator_slots {
+	width: 1em;
+	font-size: 1em;
+	display: table-cell;
+}
+
+.event_creator_comments_checkbox {
+	display: table-cell;
+	margin: 5px;
+}
+
+.event_creator_delete_button {
+	color: black;
+	background-color: red;
+	border-radius: 5px;
+	border: 1px solid black;
+	padding: 3px;
+	display: table-cell;
+	margin: 5px;
+}
+
+#event_creator_add_button {
+	border: 1px solid black;
+	background-color: #ddd;
+	border-radius: 5px;
+	display: inline-block;
+	padding: 5px;
+	margin-top: 5px;
+}
+
+#event_creator_add_button:active {
+	background-color: #aaa;
 }
