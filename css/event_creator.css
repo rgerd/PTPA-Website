@@ -58,6 +58,11 @@
     font-size: 1.0em;
 }
 
+.slots_input {
+	width: 1em;
+	font-size: 1em;
+}
+
 .event_top_div{
     border: 2px solid black;
     /*border-radius: 10px;*/
