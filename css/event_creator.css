@@ -46,12 +46,27 @@
 
 .event_creator_task_title {
 	display: table-cell;
+    width: 100%;
+    margin: 0px;
+    color: #000;
+    display: block;
+    background-color: #E0E0E0;
+    width: 100%;
+    outline: none;
+    font-size: 1.0em;
 }
 
 .event_creator_slots {
 	width: 1em;
 	font-size: 1em;
 	display: table-cell;
+    width: 2em;
+    margin: 0px;
+    color: #000;
+    display: block;
+    background-color: #E0E0E0;
+    outline: none;
+    font-size: 1.0em
 }
 
 .event_creator_comments_checkbox {
@@ -91,19 +106,7 @@
     width: 300px;
 }
 
-.event_creator_task_title{
-    width: 100%;
-    margin: 0px;
-    color: #000;
-    display: block;
-    background-color: #E0E0E0;
-    width: 100%;
-    outline: none;
-    font-size: 1.0em;
-}
-
 .td_div{
-    /*border: 3px dotted deeppink;*/
     padding: 2px 5px 2px 5px;
 }
 
@@ -113,4 +116,8 @@
 
 #th_delete{
     width: 70px;
+}
+
+#th_signups{
+    text-align: center;
 }
