@@ -24,6 +24,16 @@
 	</div>
 	</div>
 -->
-<div id="event_creator_task_container"></div>
+<div id="event_creator_task_container">
+        <table>
+            <thead>
+            <th>Description</th>
+            <th>Number of Signups</th>
+            <th>Comments</th>
+            <th>\n</th>
+            </thead>
+            <tbody id="table_body"></tbody>
+        </table>
+</div>
 
 <div id="event_creator_add_button">Add Task</div>
