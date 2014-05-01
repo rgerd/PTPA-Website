@@ -2,7 +2,7 @@
 <div class="event_creator_top_div">
     <input class="event_creator_top_field" type="text" name="event_name" placeholder="Event Name"/>
     <input class="event_creator_top_field" type="text" name="event_date" placeholder="Event Date/Time"/>
-    <textarea class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"></textarea>
+    <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"></textarea>
 </div>
 
 <!--
@@ -25,12 +25,12 @@
 	</div>
 -->
 <div id="event_creator_task_container">
-        <table>
+        <table id="event_tasks_table">
             <thead>
-            <th>Description</th>
-            <th>Number of Signups</th>
-            <th>Comments</th>
-            <th>\n</th>
+            <th class="th" id="th_desc">Description</th>
+            <th class="th">Number of <br/> Signups</th>
+            <th class="th">Comments</th>
+            <th class="th" id="th_delete"> </th>
             </thead>
             <tbody id="table_body"></tbody>
         </table>

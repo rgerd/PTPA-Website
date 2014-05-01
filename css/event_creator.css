@@ -22,6 +22,10 @@
     font-size: 1.0em;
 }
 
+#event_creator_textarea{
+    width: 294px;
+}
+
 #event_creator_task_container {
 	display: table;
 }
@@ -42,7 +46,6 @@
 
 .event_creator_task_title {
 	display: table-cell;
-	margin: 5px;
 }
 
 .event_creator_slots {
@@ -77,4 +80,37 @@
 
 #event_creator_add_button:active {
 	background-color: #aaa;
+}
+
+#event_tasks_table{
+    border: 2px solid black;
+    background-color: #eee;
+}
+
+#th_desc{
+    width: 300px;
+}
+
+.event_creator_task_title{
+    width: 100%;
+    margin: 0px;
+    color: #000;
+    display: block;
+    background-color: #E0E0E0;
+    width: 100%;
+    outline: none;
+    font-size: 1.0em;
+}
+
+.td_div{
+    /*border: 3px dotted deeppink;*/
+    padding: 2px 5px 2px 5px;
+}
+
+.th{
+    text-align: left;
+}
+
+#th_delete{
+    width: 70px;
 }
