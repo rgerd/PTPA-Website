@@ -16,20 +16,23 @@
 		$page = "view/home.php";
 
 	if(isset($_GET['e'])) {
-		$event_id = $_GET['e'];
+		$event_id = sanitize($_GET['e']);
 		$event = get_event($event_id);
 		$page_title = $event['title'];
 		$page = "view/event.php";
 	}
 
 	if($action == "save_event") {
-		$event_id = add_event($user_id, $_POST['event_title'], $_POST['event_date'], $_POST['event_desc']);
+		$event_title = sanitize($_POST['event_title']);
+		$event_date = sanitize($_POST['event_date']);
+		$event_desc = sanitize($_POST['event_desc']);
+		$event_id = add_event($user_id, $event_title, $event_date, $event_desc);
 		$event_task_index = 0;
 		while(true) {
 			$v = 'event_task_'.$event_task_index;
 			if(isset($_POST[$v])) {
-				$title = $_POST["$v_title"];
-				$slots = $_POST["$v_slots"];
+				$title = sanitize($_POST["$v_title"]);
+				$slots = sanitize($_POST["$v_slots"]);
 				$comments = isset($_POST["$v_comments"]) ? 1 : 0;
 				add_task($event_id, $event_task_index, $title, $slots, $comments);
 			}
