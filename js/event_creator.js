@@ -53,8 +53,7 @@ function createEventTask(_event_task_id) {
     td_div_slots.className = "td_div";
 	var slots_input = document.createElement("input");
 	slots_input.className = "event_creator_slots";
-	slots_input.type = "text";
-	slots_input.maxLength = 1;
+	slots_input.type = "number";
 	td_div_slots.appendChild(slots_input);
     td_slots.appendChild(td_div_slots);
     container.appendChild(td_slots);
