@@ -62,18 +62,18 @@ function count_signups($task){
     return $results['num'];
 }
 
-/*Creates new event*/
-function add_event($accountID, $date, $title, $desc){
+/*Creates new event and returns id*/
+function add_event($accountID, $title, $date, $desc){
     global $db;
     $query = "INSERT INTO events (accountID, date, title, desc) VALUES ('$accountID', '$date', '$title', '$desc')";
     $results = $db->execute($query);
-    return $results;
+    return $db->lastInsertId();
 }
 
 /*Creates new task*/
-function add_task($eventID, $desc, $count){
+function add_task($eventID, $internalID, $desc, $count, $comments){
     global $db;
-    $query = "INSERT INTO tasks (eventID, desc, count) VALUES ('$eventID', '$desc', '$count')";
+    $query = "INSERT INTO tasks (eventID, desc, count, internalID, comments) VALUES ('$eventID', '$desc', '$count', '$internalID', '$comments')";
     $results = $db->query($query);
     $results = $results->fetchAll();
     return $results;
