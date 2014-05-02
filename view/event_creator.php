@@ -1,4 +1,5 @@
 <script type="text/javascript" src="js/event_creator.js"></script>
+<form method = "POST" action=".">
 <div class="event_creator_top_div">
     <input class="event_creator_top_field" type="text" name="event_name" placeholder="Event Name"/>
     <input class="event_creator_top_field" type="text" name="event_date" placeholder="Event Date/Time"/>
@@ -37,3 +38,7 @@
 </div>
 
 <div id="event_creator_add_button">Add Task</div>
+<br />
+<input class="solid_button" type="submit" value="Save!"/>
+<input type="hidden" name="action" value="save_event"/>
+</form>
