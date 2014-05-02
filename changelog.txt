@@ -1,1 +1,2 @@
 Robert Gerdisch - 4/16/14 - Created change log to log non-code changes (database & server stuff)
+Robert Gerdisch - 5/2/14 - Added internalID to database design in tasks table
