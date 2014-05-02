@@ -17,15 +17,12 @@ function loadMethods() {
 	});
 
 	$(".event_creator_slots").keypress(function(event) {
-		event.preventDefault();
 		// 0 = 48
 		// 9 = 57
 
 		var code = event.which;
-		if(code < 49 || code > 57)
-			return;
-
-		$(this).val((code - 48) + "");
+		if(code < 48 || code > 57)
+			event.preventDefault();
 	});
 }
 
@@ -42,6 +39,7 @@ function createEventTask(_event_task_id) {
     var td_div_title = document.createElement("div");
     td_div_title.className = "td_div";
 	var title_input = document.createElement("input");
+	title_input.name = "event_task_" + _event_task_id + "_title";
 	title_input.className = "event_creator_task_title";
 	title_input.type = "text";
 	td_div_title.appendChild(title_input);
@@ -52,6 +50,7 @@ function createEventTask(_event_task_id) {
     var td_div_slots = document.createElement("div");
     td_div_slots.className = "td_div";
 	var slots_input = document.createElement("input");
+	slots_input.name = "event_task_" + _event_task_id + "_slots";
 	slots_input.className = "event_creator_slots";
 	slots_input.type = "number";
 	td_div_slots.appendChild(slots_input);
@@ -62,6 +61,7 @@ function createEventTask(_event_task_id) {
     var td_div_comments = document.createElement("div");
     td_div_comments.className = "td_div";
 	var comments_input = document.createElement("input");
+	comments_input.name = "event_task_" + _event_task_id + "_comments";
 	comments_input.className = "event_creator_comments_checkbox";
 	comments_input.type = "checkbox";
 	td_div_comments.appendChild(comments_input);
@@ -76,6 +76,12 @@ function createEventTask(_event_task_id) {
 	delete_button.appendChild(delete_text);
 	td_delete.appendChild(delete_button);
     container.appendChild(td_delete);
+
+    var task_id_hidden_input = document.createElement("input");
+    task_id_hidden_input.name = "event_task_" + _event_task_id;
+    task_id_hidden_input.value = _event_task_id;
+    task_id_hidden_input.type = "hidden";
+    container.appendChild(task_id_hidden_input);
 
 	return _container.innerHTML;
 }
