@@ -203,11 +203,7 @@ function sign_up_for_task($task_id, $user_id, $comment = null) {
     global $db;
     $query = "SELECT comments FROM tasks WHERE ID = '$task_id'";
     $results = $db->query($query)->fetch()['comments'];
-    if($results == 0){
-        $comm = "";
-    }else{
-        $comm = $comment;
-    }
+    $comm = $results == 0 ? "" : $comment;
     $query = "INSERT INTO signups (taskID, accountID, comment) VALUES ('$task_id', '$user_id', '$comm')";
     $db->exec($query);
 }
