@@ -28,7 +28,7 @@
         <table id="event_tasks_table">
             <thead>
             <th class="th" id="th_desc">Description</th>
-            <th class="th" id="th_signups">Number<br/>of<br/>Signups</th>
+            <th class="th" id="th_signups">Number&nbspof&nbspSignups</th>
             <th class="th">Comments</th>
             <th class="th" id="th_delete"> </th>
             </thead>
