@@ -22,6 +22,21 @@
 		$page = "view/event.php";
 	}
 
+	if($action == "save_event") {
+		$event_id = add_event($user_id, $_POST['event_title'], $_POST['event_date'], $_POST['event_desc']);
+		$event_task_index = 0;
+		while(true) {
+			$v = 'event_task_'.$event_task_index;
+			if(isset($_POST[$v])) {
+				$title = $_POST["$v_title"];
+				$slots = $_POST["$v_slots"];
+				$comments = isset($_POST["$v_comments"]) ? 1 : 0;
+				add_task($event_id, $event_task_index, $title, $slots, $comments);
+			}
+			$event_task_index++;
+		}
+	}
+
 	if($action == "task_sign_up") {
 		$event_id = $_POST['event'];
 		$task_id = $_POST['task'];
