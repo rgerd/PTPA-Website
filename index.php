@@ -21,7 +21,7 @@
 		$page_title = $event['title'];
 		$page = "view/event.php";
 	}
-
+	
 	if($action == "save_event") {
 		$event_title = sanitize($_POST['event_title']);
 		$event_date = sanitize($_POST['event_date']);
