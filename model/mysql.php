@@ -207,6 +207,5 @@ function sign_up_for_task($task_id, $user_id, $comment = null) {
     $query = "INSERT INTO signups (taskID, accountID, comment) VALUES ('$task_id', '$user_id', '$comm')";
     $db->exec($query);
 }
-
 ?>
 
