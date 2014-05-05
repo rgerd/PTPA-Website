@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `accountID` int(11) NOT NULL,
   `date` date DEFAULT NULL,
   `title` text,
-  `desc` text,
+  `description` text,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -97,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `tasks` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `eventID` int(11) NOT NULL,
   `internalID` int(11) NOT NULL,
-  `desc` text,
+  `description` text,
   `numSlots` int(11) NOT NULL,
   `comments` int(1) NOT NULL,
   PRIMARY KEY (`ID`)
