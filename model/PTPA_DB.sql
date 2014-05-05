@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4.1
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 17, 2014 at 04:13 AM
--- Server version: 5.6.12
--- PHP Version: 5.5.3
+-- Generation Time: May 05, 2014 at 05:59 PM
+-- Server version: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,9 +19,10 @@ SET time_zone = "+00:00";
 --
 -- Database: `PTPA_DB`
 --
+
+
 CREATE DATABASE IF NOT EXISTS `PTPA_DB` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `PTPA_DB`;
-
 -- --------------------------------------------------------
 
 --
@@ -37,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `password` varchar(32) NOT NULL,
   `registered` int(1) NOT NULL,
   `reminders` int(1) NOT NULL,
-  `cookieData` varchar(32),
+  `cookieData` varchar(32) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -95,8 +96,10 @@ CREATE TABLE IF NOT EXISTS `signups` (
 CREATE TABLE IF NOT EXISTS `tasks` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `eventID` int(11) NOT NULL,
+  `internalID` int(11) NOT NULL,
   `desc` text,
   `numSlots` int(11) NOT NULL,
+  `comments` int(1) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
