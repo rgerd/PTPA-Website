@@ -41,4 +41,5 @@
 <br />
 <input class="solid_button" type="submit" value="Save!"/>
 <input type="hidden" name="action" value="save_event"/>
+<?php include 'event_creator_footer.php'; ?>
 </form>
