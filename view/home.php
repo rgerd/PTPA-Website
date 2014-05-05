@@ -1,7 +1,7 @@
 <div id="home">
 	<div id="top">
 		<div style="float:left; display: block;">Events</div>
-		<div  style="float:right; display: block;"><a class="css_button_a" href="#"><div class="css_button_div">Create New Event</div></a></div>
+		<div  style="float:right; display: block;"><a class="css_button_a" href=".?a=create_event"><div class="css_button_div">Create New Event</div></a></div>
 	</div>
 
 	<br />

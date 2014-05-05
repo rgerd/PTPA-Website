@@ -35,6 +35,8 @@
 				$slots = sanitize($_POST["$v_slots"]);
 				$comments = isset($_POST["$v_comments"]) ? 1 : 0;
 				add_task($event_id, $event_task_index, $title, $slots, $comments);
+			} else {
+				break;
 			}
 			$event_task_index++;
 		}
@@ -47,11 +49,13 @@
 		$page = "view/task_sign_up.php";
 	}
 
+	if($action == "create_event") {
+		$page = "view/event_creator.php";
+	}
+
 	$page = isset($page) ? $page : "view/front.php";
 
 	$page_title = "PT Volunteer";
-
-	$page = "view/event_creator.php";
 ?>
 <?php include 'view/header.php'; ?>
 <?php include "$page"; ?>

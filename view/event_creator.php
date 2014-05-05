@@ -1,7 +1,7 @@
 <script type="text/javascript" src="js/event_creator.js"></script>
 <form method = "POST" action=".">
 <div class="event_creator_top_div">
-    <input class="event_creator_top_field" type="text" name="event_name" placeholder="Event Name"/>
+    <input class="event_creator_top_field" type="text" name="event_title" placeholder="Event Name"/>
     <input class="event_creator_top_field" type="text" name="event_date" placeholder="Event Date/Time"/>
     <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"></textarea>
 </div>
