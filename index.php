@@ -58,5 +58,5 @@
 	$page_title = "PT Volunteer";
 ?>
 <?php include 'view/header.php'; ?>
-<?php include "$page"; ?>
+<?php include "$page";?>
 <?php include 'view/footer.php'; ?>
