@@ -13,7 +13,7 @@
 				foreach($_events as $event):
 			?>
 				<tr class="event">
-						<td class="event_title"><?php echo $event['title']; ?></td>
+						<td class="event_title"><a class="hover_link" href=".?e=<?php echo $event['ID']; ?>"><?php echo $event['title']; ?></a></td>
 						<td class="event_description"><?php echo $event['description']; ?></td>
 						<td class="event_share"><a class="css_button_a"><div class="css_button_div_share">Share</div></a></td>
 				</tr>

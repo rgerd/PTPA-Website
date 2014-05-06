@@ -229,6 +229,17 @@ input[type=submit]._3D:active, a.link_button:active {
 
 td.event_title, td.event_description, td.event_share {
     padding: 10px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a.hover_link {
+    text-decoration: none;
+    color: inherit;
+}
+
+a.hover_link:hover {
+    text-decoration: underline;
 }
 
 .footer_div{

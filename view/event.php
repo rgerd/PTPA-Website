@@ -7,7 +7,7 @@
 	?>
 	<div class="event_task">
 		<div class="event_task_header">
-			<div class="event_task_title"><?php echo $task['desc']; ?></div>
+			<div class="event_task_title"><?php echo $task['description']; ?></div>
 			<div class="event_task_expander" expanded="false"></div>
 		</div>
 		<br />

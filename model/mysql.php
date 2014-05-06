@@ -71,9 +71,9 @@ function add_event($accountID, $title, $date, $desc){
 }
 
 /*Creates new task*/
-function add_task($eventID, $internalID, $desc, $count, $comments){
+function add_task($eventID, $internalID, $desc, $numSlots, $comments){
     global $db;
-    $query = "INSERT INTO tasks (eventID, description, count, internalID, comments) VALUES ('$eventID', '$desc', '$count', '$internalID', '$comments')";
+    $query = "INSERT INTO tasks (eventID, description, numSlots, internalID, comments) VALUES ('$eventID', '$desc', '$numSlots', '$internalID', '$comments')";
     $results = $db->exec($query);
 }
 

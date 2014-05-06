@@ -31,9 +31,9 @@
 		while(true) {
 			$v = 'event_task_'.$event_task_index;
 			if(isset($_POST[$v])) {
-				$title = sanitize($_POST["$v_title"]);
-				$slots = sanitize($_POST["$v_slots"]);
-				$comments = isset($_POST["$v_comments"]) ? 1 : 0;
+				$title = sanitize($_POST[$v."_title"]);
+				$slots = sanitize($_POST[$v."_slots"]);
+				$comments = isset($_POST[$v."_comments"]) ? 1 : 0;
 				add_task($event_id, $event_task_index, $title, $slots, $comments);
 			} else {
 				break;
