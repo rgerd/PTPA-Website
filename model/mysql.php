@@ -10,7 +10,7 @@ function get_all_events() {
 }
 
 /*Returns the events of a specific user.*/
-function get_user_events($userID) {
+function get_events_by_user($userID) {
     global $db;
     $query = "SELECT * FROM events WHERE accountID = '$userID'";
     $result = $db->query($query);
