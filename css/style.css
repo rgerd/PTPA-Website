@@ -216,37 +216,19 @@ input[type=submit]._3D:active, a.link_button:active {
 
 #events_table {
     display: block;
+    clear: both;
+    table-layout: fixed;
+    border-collapse: collapse;
 }
 
 .event {
-    clear: both;
-    display: block;
-    padding: 10px 5px 10px 5px;
     background-color: #DDD;
     border: 2px solid black;
     min-height: 20px;
 }
 
-
-.event_title {
-    float:left;
-    /*display: block;*/
-    margin-right: 20px;
-}
-
-.event_description {
-    padding-left: 50px;
-    width: 700px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow:ellipsis;
-    display: inline-block;
-    float:left;
-}
-
-.event_share {
-    float: right;
-    display: block;
+td.event_title, td.event_description, td.event_share {
+    padding: 10px;
 }
 
 .footer_div{
