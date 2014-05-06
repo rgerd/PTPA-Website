@@ -249,3 +249,7 @@ input[type=submit]._3D:active, a.link_button:active {
     display: block;
 }
 
+.footer_div{
+    margin-bottom: 50px;
+}
+
