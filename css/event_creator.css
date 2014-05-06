@@ -134,3 +134,13 @@
 .solid_button:active {
     background-color: #aaa;
 }
+
+.creator_footer{
+    border-top: 2px solid black;
+    height: 50px;
+    background-color: blue;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
