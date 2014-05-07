@@ -51,7 +51,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
 CREATE TABLE IF NOT EXISTS `events` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `accountID` int(11) NOT NULL,
-  `date` date DEFAULT NULL,
+  `event_date` date DEFAULT NULL,
   `title` text,
   `description` text,
   PRIMARY KEY (`ID`)

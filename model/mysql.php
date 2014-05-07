@@ -65,7 +65,7 @@ function count_signups($task){
 /*Creates new event and returns id*/
 function add_event($accountID, $title, $date, $desc){
     global $db;
-    $query = "INSERT INTO events (accountID, date, title, description) VALUES ('$accountID', '$date', '$title', '$desc')";
+    $query = "INSERT INTO events (accountID, event_date, title, description) VALUES ('$accountID', '$date', '$title', '$desc')";
     $results = $db->exec($query);
     return $db->lastInsertId();
 }
