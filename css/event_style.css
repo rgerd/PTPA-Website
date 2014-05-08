@@ -88,3 +88,25 @@
 	color: #000;
 }
 
+.event_details{
+    border: 2px solid black;
+    margin: 10px;
+    margin-bottom: 30px;
+    background-color: #AFAFAF;
+    width: 310px;
+
+}
+
+.details_element{
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.25em;
+    width: 300px;
+    margin: -2px;
+}
+
+#details_title{
+    font-size: 1.25em;
+    font-weight: bold;
+}
