@@ -2,9 +2,15 @@
 <form method = "POST" action=".">
 <div class="event_creator_top_div">
     <input class="event_creator_top_field" type="text" name="event_title" placeholder="Event Name"/>
-    <input class="event_creator_top_field" type="text" name="event_date" placeholder="Event Date/Time"/>
+    <!--<input class="event_creator_top_field" type="text" name="event_date" id="datepicker" placeholder="Event Date/Time"/>-->
     <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"></textarea>
 </div>
+
+<fieldset>
+	<legend>Date</legend>
+	<div id="datepicker"></div>
+</fieldset>
+<input type="hidden" id="event_date_input" name="event_date" />
 
 <!--
 	<div id="event_creator_task_header">

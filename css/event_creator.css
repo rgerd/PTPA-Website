@@ -22,6 +22,10 @@
     font-size: 1.0em;
 }
 
+#datepicker {
+    font-size: 0.5em;
+}
+
 #event_creator_textarea{
     width: 294px;
 }

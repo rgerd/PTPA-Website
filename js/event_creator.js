@@ -7,6 +7,14 @@ $(document).ready(function() {
 		event_task_id++;
 		loadMethods();
 	});
+
+	$("#datepicker").datepicker(
+	{
+		dateFormat: "yy-mm-dd",
+		onSelect: function(date) {
+			$("#event_date_input").val(date);
+		}
+	});
 });
 
 
