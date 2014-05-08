@@ -1,3 +1,9 @@
+<div id="about">
+	Welcome to PT Volunteer. 
+	You can finally organize an event without spending more than a few minutes.
+</div>
+
+
 <div id="tabs">
     <div id="bounding_tabs">
 	<ul id="tab_bar">

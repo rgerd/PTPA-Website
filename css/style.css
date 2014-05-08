@@ -17,6 +17,21 @@ body {
     padding: 5px;
 }
 
+div#about {
+    margin-top: 25px;
+    float:left;
+    font-size: 2em;
+    font-family: Verdana;
+    width: 50%;
+    margin: 10px;
+}
+
+div#tabs {
+    margin-top: 25px;
+    float: right;
+    margin-right: 80px;
+}
+
 #inner_navbar{
     width:97%;
 }
