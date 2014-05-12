@@ -1,6 +1,6 @@
 <div class="event_details">
     <div class="details_element" id="details_title"><?php echo $event['title']; ?></div>
-    <div class="details_element"><?php echo $event['event_date']; ?></div>
+    <div class="details_element"><?php echo date_format(date_create($event['event_date']), 'm/d/Y'); ?></div>
     <div class="details_element"><?php echo $event['description']; ?></div>
 </div>
 <div id="event_tasks">
