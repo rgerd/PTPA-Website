@@ -6,12 +6,12 @@
     <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"></textarea>
 </div>
 
-<fieldset>
-	<legend>Date</legend>
+<fieldset id="date_fieldset">
+	<legend id="date_legend">Date</legend>
 	<div id="datepicker"></div>
 </fieldset>
 <input type="hidden" id="event_date_input" name="event_date" />
-<br />
+<br /><br />
 
 <!-- ALL DAY? 
 <div>
@@ -32,8 +32,7 @@ Time: <input type="number"/> : <input type="number"/>
 </div>
 
 <div id="event_creator_add_button">Add Task</div>
-<br />
-<input class="solid_button" type="submit" value="Save!"/>
+<br /><br />
 <input type="hidden" name="action" value="save_event"/>
 <?php include 'event_creator_footer.php'; ?>
 </form>
