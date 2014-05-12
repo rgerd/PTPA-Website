@@ -86,6 +86,7 @@
 	padding: 3px;
 	display: table-cell;
 	margin: 5px;
+    cursor: pointer;
 }
 
 #event_creator_add_button {
@@ -95,6 +96,7 @@
 	display: inline-block;
 	padding: 5px;
 	margin-top: 5px;
+    cursor: pointer;
 }
 
 #event_creator_add_button:active {
@@ -133,6 +135,9 @@
     display: inline-block;
     padding: 5px;
     margin-top: 5px;
+    font-size: 0.8em;
+    text-decoration: none;
+    color: black;
 }
 
 .solid_button:active {
@@ -141,10 +146,21 @@
 
 .creator_footer{
     border-top: 2px solid black;
-    height: 50px;
-    background-color: blue;
+    height: 80px;
+    background-color: #844;
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
+}
+
+#date_fieldset {
+    display: inline-block;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+#date_legend {
+
 }

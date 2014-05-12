@@ -46,13 +46,17 @@ div#tabs {
 
 .header_button {
     border-radius: 10px;
-    margin: 0px 2px 0px 2px;
+    margin: 2px;/*0px 2px 0px 2px;*/
     display: inline-block;
-    padding: 1px;
+    padding: 2px;
 }
 
 .header_button:hover {
     background-color: #9E9E9E;
+}
+
+.header_button:active {
+    background-color: #5E5E5E;
 }
 
 #page_content{
