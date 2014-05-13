@@ -124,6 +124,7 @@ function register_user($fname, $lname, $email, $phone, $password) {
     global $db;
     $query = "INSERT INTO accounts (fname, lname, email, phone, password, registered) VALUES ('$fname', '$lname', '$email', '$phone', '$password', 1)";
     $result = $db->query($query);
+	$result = $result->fetchAll();
     return $result['ID'];
 }
 

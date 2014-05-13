@@ -10,13 +10,14 @@
 	if($action == "sign_out")
 		clear_cookie_for_user();
 
+$user_id = isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : -1;
 	if($user_id != -1)
 		$page = "view/home.php";
 
 	if($action == "acc")
 		$page = "view/account_manager.php";
 
-	$user_id = isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : -1;
+
 
 	if(isset($_GET['e'])) {
 		$event_id = sanitize($_GET['e']);
