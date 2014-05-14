@@ -105,7 +105,38 @@ function delete_account($id){
 /* IMPLEMENT DIS */
 function delete_event($event_id, $user_id) {
     global $db;
+    $query = "SELECT * FROM events WHERE ID='$event_id'";
+    $result = $db->query($query);
+    $result = $result->fetch();
 
+    if($result['accountID'] != $user_id)
+        return;
+
+    partially_delete_event($event_id);
+
+    $query_tasks = "SELECT * FROM tasks WHERE eventID='$event_id'";
+    $result_tasks = $db->query($query_tasks);
+    $result_tasks = $result_tasks->fetchAll();
+
+    foreach ($result_tasks as $task) {
+        $task_id = $task['ID'];
+        delete_task($task_id);
+
+        $query = "SELECT * FROM signups WHERE taskID = '$task_id'";
+        $result_signup = $db->query($query);
+        $result_signup = $result_signup->fetchAll();
+
+        foreach($result_signup as $signup){
+            delete_signup($signup['ID']);
+        }
+    }
+
+    $query = "SELECT * FROM event_reminders WHERE eventID = '$event_id'";
+    $results = $db->query($query);
+    $results = $results->fetchAll();
+    foreach ($results as $remind){
+        delete_reminder($remind['ID']);
+    }
     // Get the event with the id
     // If the event's user id is NOT equal to the provided user id, return.
 
@@ -126,7 +157,7 @@ function delete_event($event_id, $user_id) {
 function partially_delete_event($id){
     global $db;
     $query = "DELETE FROM events WHERE ID = '$id'";
-    $results = $db->execute($query);
+    $results = $db->exec($query);
     return $results;
 }
 
@@ -135,10 +166,23 @@ function partially_delete_event($id){
 function delete_signup($id){
     global $db;
     $query = "DELETE FROM signups WHERE ID = '$id'";
-    $results = $db->execute($query);
+    $results = $db->exec($query);
     return $results;
 }
 
+function delete_task($id){
+    global $db;
+    $query = "DELETE FROM tasks WHERE ID = '$id'";
+    $results = $db->exec($query);
+    return $results;
+}
+
+function delete_reminder($id){
+    global $db;
+    $query = "DELETE FROM event_reminders WHERE ID = '$id'";
+    $results = $db->exec($query);
+    return $results;
+}
 
 /*
     Registers an event creator
