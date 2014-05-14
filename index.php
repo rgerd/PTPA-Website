@@ -16,7 +16,7 @@
 		$page = "view/home.php";
 
 
-	$event_id = $_GET['e'];
+	$event_id = isset($_GET['e']) ? $_GET['e'] : -1;
 	switch($action) {
 		case "acc":
 			$page = "view/account_manager.php";
