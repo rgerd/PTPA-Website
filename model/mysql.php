@@ -85,14 +85,6 @@ function edit_signup($id, $comment){
     return $results;
 }
 
-/*Deletes signup given id*/
-function delete_signup($id){
-    global $db;
-    $query = "DELETE FROM signups WHERE ID = '$id'";
-    $results = $db->execute($query);
-    return $results;
-}
-
 /*Edits account information.*/
 function edit_account($id, $fname, $lname, $email, $phone, $pass){
     global $db;
@@ -110,12 +102,43 @@ function delete_account($id){
 }
 
 /*Deletes event given id*/
-function delete_event($id){
+/* IMPLEMENT DIS */
+function delete_event($event_id, $user_id) {
+    global $db;
+
+    // Get the event with the id
+    // If the event's user id is NOT equal to the provided user id, return.
+
+    // Delete the event with the id
+    /*
+        for each task with the eventID == event_id :
+            delete the task
+            
+            for every signup with the taskID == this task's id:
+                delete the signup
+
+        for each event reminder with the eventID == event_id:
+            delete the event reminder
+    */
+}
+
+/*Deletes event given id*/
+function partially_delete_event($id){
     global $db;
     $query = "DELETE FROM events WHERE ID = '$id'";
     $results = $db->execute($query);
     return $results;
 }
+
+
+/*Deletes signup given id*/
+function delete_signup($id){
+    global $db;
+    $query = "DELETE FROM signups WHERE ID = '$id'";
+    $results = $db->execute($query);
+    return $results;
+}
+
 
 /*
     Registers an event creator
