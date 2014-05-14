@@ -102,7 +102,6 @@ function delete_account($id){
 }
 
 /*Deletes event given id*/
-/* IMPLEMENT DIS */
 function delete_event($event_id, $user_id) {
     global $db;
     $query = "SELECT * FROM events WHERE ID='$event_id'";
@@ -137,20 +136,6 @@ function delete_event($event_id, $user_id) {
     foreach ($results as $remind){
         delete_reminder($remind['ID']);
     }
-    // Get the event with the id
-    // If the event's user id is NOT equal to the provided user id, return.
-
-    // Delete the event with the id
-    /*
-        for each task with the eventID == event_id :
-            delete the task
-            
-            for every signup with the taskID == this task's id:
-                delete the signup
-
-        for each event reminder with the eventID == event_id:
-            delete the event reminder
-    */
 }
 
 /*Deletes event given id*/
@@ -191,8 +176,8 @@ function register_user($fname, $lname, $email, $phone, $password) {
     global $db;
     $query = "INSERT INTO accounts (fname, lname, email, phone, password, registered) VALUES ('$fname', '$lname', '$email', '$phone', '$password', 1)";
     $result = $db->query($query);
-	$result = $result->fetchAll();
-    return $result['ID'];
+	$result = $result->fetch();
+    //return $result['ID'];
 }
 
 /*
