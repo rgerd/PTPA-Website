@@ -8,53 +8,69 @@
 	include "model/registration.php";
 
 	if($action == "sign_out")
-		clear_cookie_for_user();
+		clear_cookie_for_user();	
 
-$user_id = isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : -1;
+
+	$user_id = isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : -1;
 	if($user_id != -1)
 		$page = "view/home.php";
 
-	if($action == "acc")
-		$page = "view/account_manager.php";
 
+	$event_id = $_GET['e'];
+	switch($action) {
+		case "acc":
+			$page = "view/account_manager.php";
+		break;
+		
+		case "delete":
+			partially_delete_event($event_id);
+			$page = "view/home.php";
+		break;
+		
+		case "reminders":
+		break;
+		
+		case "prev":
+		break;
+		
+		case "task_sign_up":
+			$event_id = $_POST['event'];
+			$task_id = $_POST['task'];
+			$page = "view/task_sign_up.php";
+		break;
 
-
-	if(isset($_GET['e'])) {
-		$event_id = sanitize($_GET['e']);
-		$event = get_event($event_id);
-		$page_title = $event['title'];
-		$page = "view/event.php";
-	}
-
-	if($action == "save_event") {
-		$event_title = sanitize($_POST['event_title']);
-		$event_date = sanitize($_POST['event_date']);
-		$event_desc = sanitize($_POST['event_desc']);
-		$event_id = add_event($user_id, $event_title, $event_date, $event_desc);
-		$event_task_index = 0;
-		while(true) {
-			$v = 'event_task_'.$event_task_index;
-			if(isset($_POST[$v])) {
-				$title = sanitize($_POST[$v."_title"]);
-				$slots = sanitize($_POST[$v."_slots"]);
-				$comments = isset($_POST[$v."_comments"]) ? 1 : 0;
-				add_task($event_id, $event_task_index, $title, $slots, $comments);
-			} else {
-				break;
+		case "save_event":
+			$event_title = sanitize($_POST['event_title']);
+			$event_date = sanitize($_POST['event_date']);
+			$event_desc = sanitize($_POST['event_desc']);
+			$event_id = add_event($user_id, $event_title, $event_date, $event_desc);
+			$event_task_index = 0;
+			while(true) {
+				$v = 'event_task_'.$event_task_index;
+				if(isset($_POST[$v])) {
+					$title = sanitize($_POST[$v."_title"]);
+					$slots = sanitize($_POST[$v."_slots"]);
+					$comments = isset($_POST[$v."_comments"]) ? 1 : 0;
+					add_task($event_id, $event_task_index, $title, $slots, $comments);
+				} else {
+					break;
+				}
+				$event_task_index++;
 			}
-			$event_task_index++;
-		}
-	}
-
-	if($action == "task_sign_up") {
-		$event_id = $_POST['event'];
-		$task_id = $_POST['task'];
-
-		$page = "view/task_sign_up.php";
-	}
-
-	if($action == "create_event") {
-		$page = "view/event_creator.php";
+		break;
+		
+		case "create_event":
+			$page = "view/event_creator.php";
+		break;
+		
+		case "none":
+			if(isset($_GET['e'])) {
+				$event_id = sanitize($_GET['e']);
+				$event = get_event($event_id);
+				$page_title = $event['title'];
+				$page = "view/event.php";
+			}
+		break;
 	}
 
 	$page = isset($page) ? $page : "view/front.php";
