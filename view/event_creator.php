@@ -2,7 +2,6 @@
 <form method = "POST" action=".">
 <div class="event_creator_top_div">
     <input class="event_creator_top_field" type="text" name="event_title" placeholder="Event Name"/>
-    <!--<input class="event_creator_top_field" type="text" name="event_date" id="datepicker" placeholder="Event Date/Time"/>-->
     <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"></textarea>
 </div>
 
@@ -12,12 +11,6 @@
 </fieldset>
 <input type="hidden" id="event_date_input" name="event_date" />
 <br /><br />
-
-<!-- ALL DAY? 
-<div>
-Time: <input type="number"/> : <input type="number"/> 
-</div>
--->
 
 <div id="event_creator_task_container">
         <table id="event_tasks_table">
@@ -36,27 +29,3 @@ Time: <input type="number"/> : <input type="number"/>
 <input type="hidden" name="action" value="save_event"/>
 <?php include 'event_creator_footer.php'; ?>
 </form>
-
-
-
-
-
-<!--
-	<div id="event_creator_task_header">
-		<div style="display: table-row;">
-			<div style="display: table-cell;">
-				Hello
-			</div>
-			<div style="display: table-cell;">
-				Hello
-			</div>
-			<div style="display: table-cell;">
-				Hello
-			</div>
-			<div style="display: table-cell;">
-				Hello
-			</div>
-		</div>
-	</div>
-	</div>
--->
