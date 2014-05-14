@@ -1,6 +1,6 @@
 <div id="home">
 	<div id="top">
-		<div style="float:left; display: block;">Events</div>
+		<div style="float:left; display: block; text-decoration: underline; font-size: 1.5em; color: #999;">Events</div>
 		<div  style="float:right; display: block;"><a class="css_button_a" href=".?a=create_event"><div class="css_button_div">Create New Event</div></a></div>
 	</div>
 
@@ -14,7 +14,7 @@
 			?>
 				<tr class="event">
 						<td class="event_title"><a class="hover_link" href=".?e=<?php echo $event['ID']; ?>"><?php echo $event['title']; ?></a></td>
-						<td class="event_description"><?php echo $event['description']; ?></td>
+						<td class="event_description"><a class="hover_link" href=".?e=<?php echo $event['ID']; ?>"><?php echo $event['description']; ?></a></td>
 						<td class="event_share"><a class="css_button_a"><div class="css_button_div_share">Share</div></a></td>
 				</tr>
 			<?php
