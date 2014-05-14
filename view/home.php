@@ -15,7 +15,7 @@
 				<tr class="event">
 						<td class="event_title"><a class="hover_link" href=".?e=<?php echo $event['ID']; ?>"><?php echo $event['title']; ?></a></td>
 						<td class="event_description"><a class="hover_link" href=".?e=<?php echo $event['ID']; ?>"><?php echo $event['description']; ?></a></td>
-						<td class="event_share"><a class="css_button_a"><div class="css_button_div_share">Share</div></a></td>
+						<td class="event_share"><a class="css_button_a"><button class="css_button_div_share" data-clipboard-text="<?php echo "http://localhost:8888/PTPA-Website/index.php?e=".$event['ID']; ?>">Share</button></a></td>
 				</tr>
 			<?php
 				endforeach;
