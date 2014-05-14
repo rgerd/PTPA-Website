@@ -41,7 +41,7 @@
 		</div>
 		<form action="." method="POST">
 			<input type="submit" class="event_sign_up_button" value="Sign Up"/>
-			<input type="hidden" name="task_sign_up"/>
+			<input type="hidden" name="action" value="task_sign_up"/>
 			<input type="hidden" name="event" value="<?php echo $event_id; ?>"/>
 			<input type="hidden" name="task" value="<?php echo $task['ID']; ?>"/>
 		</form>
