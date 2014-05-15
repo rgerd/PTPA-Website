@@ -27,7 +27,7 @@ if($action == "sign_in") {
 	} else if(user_exists($email)) {
 		$sign_up_error_message = "This email is already registered!<br /><a href='.'>Forgot your password?</a>";
 	} else {
-		$user_id = register_user($fname, $lname, $email, $pnum, $password);
+		$user_id = register_user($fname, $lname, $email, $pnum, $password, 1);
 		set_cookie_for_user($user_id);
 		$_SESSION['USER_ID'] = $user_id;
 		$page = "view/home.php";

@@ -172,12 +172,11 @@ function delete_reminder($id){
 /*
     Registers an event creator
 */
-function register_user($fname, $lname, $email, $phone, $password) {
+function register_user($fname, $lname, $email, $phone, $password, $registered) {
     global $db;
-    $query = "INSERT INTO accounts (fname, lname, email, phone, password, registered) VALUES ('$fname', '$lname', '$email', '$phone', '$password', 1)";
-    $result = $db->query($query);
-	$result = $result->fetch();
-    //return $result['ID'];
+    $query = "INSERT INTO accounts (fname, lname, email, phone, password, registered) VALUES ('$fname', '$lname', '$email', '$phone', '$password', $registered)";
+    $db->exec($query);
+	return $db->lastInsertId();
 }
 
 /*

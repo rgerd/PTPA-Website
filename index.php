@@ -17,6 +17,7 @@
 
 
 	$event_id = isset($_GET['e']) ? $_GET['e'] : -1;
+	$event_id = $event_id == -1 ? (isset($_POST['event']) ? $_POST['event'] : -1) : $event_id;
 	switch($action) {
 		case "acc":
 			$page = "view/account_manager.php";
@@ -33,10 +34,25 @@
 		case "prev":
 		break;
 		
-		case "task_sign_up":
+		case "view_task_sign_up":
 			$event_id = $_POST['event'];
 			$task_id = $_POST['task'];
 			$page = "view/task_sign_up.php";
+		break;
+
+		case "task_sign_up":
+			$account_id = register_user(sanitize($_POST['fname']), sanitize($_POST['lname']), sanitize($_POST['email']), sanitize($_POST['phone']), ' ', 0);
+			$task_id = $_POST['task'];
+
+			if(isset($_POST['comment'])) {
+				sign_up_for_task($task_id, $account_id, sanitize($_POST['comment']));
+			} else {
+				sign_up_for_task($task_id, $account_id);
+			}
+
+			$event = get_event($event_id);
+			$page_title = $event['title'];
+			$page = "view/event.php";
 		break;
 
 		case "save_event":
