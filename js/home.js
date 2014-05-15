@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	$(".css_button_div_share").each(function(i) {
+	$(".share_button").each(function(i) {
 		var clip = new ZeroClipboard($(this), {
 			moviePath: "js/ZeroClipboard/ZeroClipboard.swf"
 		});
