@@ -247,6 +247,16 @@ function get_tasks_for_event($event_id) {
 }
 
 /*
+    Returns a task by id
+*/
+function get_task($task_id) {
+    global $db;
+    $query = "SELECT * FROM tasks WHERE ID = '$task_id'";
+    $results = $db->query($query);
+    return $results->fetch();
+}
+
+/*
     Signs a user up for a task
     If comments are disabled, the comment will just be an empty string
 */
