@@ -85,20 +85,6 @@ input {
     -webkit-box-sizing: border-box;
 }
 
-.form_text_field {
-    margin: 0px;
-    padding: 5px 2px 5px 2px;
-    /*border: 1px dotted black;*/
-    /*border-bottom: 1px solid #eee;*/
-    /*border-radius: 3px;*/
-    color: #000;
-    display: block;
-    background-color: #E0E0E0;
-    width: 100%;
-    outline: none;
-    font-size: 1.0em;
-}
-
 .footer_button {
     padding: 5px 3px 5px 3px;
     border-radius: 0px;
@@ -108,10 +94,40 @@ input {
     display: inline-block;
 }
 
-input[type=submit]._3D, a.link_button {
+.button {
+    color: black;
+    padding: 5px;
+    background-color: grey;
+    border: 2px solid black;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+    text-decoration: none;
+}
+
+.button:hover{
+    background-color: dimgrey;
+}
+
+.button:active{
+    background-color: #1E1E1E;
+    color: grey;
+    border-color: grey;
+}
+
+.share_button {
+    padding: 2px 5px 2px 5px;
+    margin: 0px 5px 0px 0px;
+}
+
+._3D {
     font-size: 0.8em;
     margin-bottom: 5px;
-    box-shadow: 0px 5px #888;
+    /*box-shadow: 0px 5px #888;*/
+    box-shadow: 0px 5px #888, 0px 6px 16px 4px #000;
+    /*, 0px 8px 16px #000;*/
     background-color: #AAA;
     border-radius: 0px;
     border: 0;
@@ -123,111 +139,9 @@ input[type=submit]._3D, a.link_button {
     cursor: pointer;
 }
 
-.css_button{
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
-    width: 300px;
-    font-size: 17px;
-    color: #1E1E1E;
-    background-color: grey;
-    display: block;
-    cursor: pointer;
-    float: left;
-    white-space: nowrap;
-    height: 30px;
-    margin-left: 0px;
-    margin-bottom: -2px;
-    padding: 0 10px 0 9px;
-    outline: none;
-}
-
-.css_button:hover   {
-    background-color: dimgrey;
-}
-
-.css_button:active {
-    background-color: #1E1E1E;
-    color: grey;
-}
-
-.css_button_a{
-    text-decoration: none;
-}
-
-.css_button_div{
-    color: black;
-    padding: 5px;
-    background-color: grey;
-    border: 2px solid black;
-    margin-bottom: 10px;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.css_button_div:hover{
-    background-color: dimgrey;
-}
-
-.css_button_div:active{
-    background-color: #1E1E1E;
-    color: grey;
-    border-color: grey;
-}
-
-.css_button_div_share{
-    color: black;
-    padding: 2px 5px 2px 5px;
-    background-color: grey;
-    border: 2px solid black;
-    border-radius: 3px;
-    cursor: pointer;
-    
-    margin-right: 5px;
-    font-size: inherit;
-    font-family: inherit;
-}
-
-.css_button_div_share:hover{
-    background-color: dimgrey;
-}
-
-.css_button_div_share:active{
-    background-color: #1E1E1E;
-    color: grey;
-    border-color: grey;
-}
-
-a.link_button {
-    box-shadow: 0px 5px #888, 0px 6px 16px 4px #000;/*, 0px 8px 16px #000;*/
-}
-
-.form_text_field:focus {
-    background-color: #ededed;
-}
-
-input[type=submit]._3D:active, a.link_button:active {
+._3D {
     box-shadow: 0px 0px 0px #000;
     top: 5px;
-}
-
-::-webkit-input-placeholder {
-   color: #777;
-   font-size: 1.0em;
-}
-
-:-moz-placeholder { /* Firefox 18- */
-   color: #777;  
-   font-size: 1.0em;
-}
-
-::-moz-placeholder {  /* Firefox 19+ */
-   color: #777;  
-   font-size: 1.0em;
-}
-
-:-ms-input-placeholder {  
-   color: #777;  
-   font-size: 1.0em;
 }
 
 #top {
@@ -267,3 +181,34 @@ a.hover_link:hover {
     margin-bottom: 50px;
 }
 
+.form_text_field {
+    padding: 5px 2px 5px 2px;
+    color: #000;
+    display: block;
+    background-color: #E0E0E0;
+    outline: none;
+    font-size: 1.0em;
+    margin: 2px 0px 2px 0px;
+    border: 1px dotted black;
+    border-radius: 3px;
+}
+
+::-webkit-input-placeholder {
+   color: #777;
+   font-size: 1.0em;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #777;  
+   font-size: 1.0em;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #777;  
+   font-size: 1.0em;
+}
+
+:-ms-input-placeholder {  
+   color: #777;  
+   font-size: 1.0em;
+}

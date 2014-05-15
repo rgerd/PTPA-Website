@@ -74,3 +74,44 @@
 	display: none;
 	width: 300px;
 }
+
+.tab_text_field {
+    margin: 0px;
+    width: 100%;
+    /*border: 1px dotted black;*/
+    /*border-bottom: 1px solid #eee;*/
+    /*border-radius: 3px;*/
+}
+
+.tab_text_field:focus {
+    background-color: #ededed;
+}
+
+.tab_button {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: none;
+    border-right: none;
+    width: 300px;
+    font-size: 17px;
+    color: #1E1E1E;
+    background-color: grey;
+    display: block;
+    cursor: pointer;
+    float: left;
+    white-space: nowrap;
+    height: 30px;
+    margin-left: 0px;
+    margin-bottom: -2px;
+    padding: 0 10px 0 9px;
+    outline: none;
+}
+
+.tab_button:hover   {
+    background-color: dimgrey;
+}
+
+.tab_button:active {
+    background-color: #1E1E1E;
+    color: grey;
+}
