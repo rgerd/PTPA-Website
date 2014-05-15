@@ -53,7 +53,7 @@
 			<input type="hidden" name="task" value="<?php echo $task['ID']; ?>"/>
 		</form>
 		<?php else: ?>
-			<button type="button" class="button task_full_button">Full</button>
+			<button type="button" class="button event_sign_up_button task_full_button">Full</button>
 		<?php endif; ?>
 		</div>
 	</div>
