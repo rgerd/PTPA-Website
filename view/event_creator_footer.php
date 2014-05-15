@@ -1,4 +1,4 @@
-<div class="creator_footer">
+<div class="footer creator_footer">
 	<div style="float:left; margin-left: 10px">
 		<a class="solid_button" href=".">Cancel</a><br />
 		<a class="solid_button" href=".?a=delete&e=<?php echo $event_id; ?>">Delete Event</a>

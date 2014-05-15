@@ -216,3 +216,13 @@ a.hover_link:hover {
    color: #777;  
    font-size: 1.0em;
 }
+
+.footer {
+    border-top: 2px solid black;
+    height: 80px;
+    background-color: #844;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
