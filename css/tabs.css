@@ -83,10 +83,6 @@
     /*border-radius: 3px;*/
 }
 
-.tab_text_field:focus {
-    background-color: #ededed;
-}
-
 .tab_button {
     border-top: 2px solid black;
     border-bottom: 2px solid black;

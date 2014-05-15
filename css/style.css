@@ -193,6 +193,10 @@ a.hover_link:hover {
     border-radius: 3px;
 }
 
+.form_text_field:focus {
+    background-color: #ededed;
+}
+
 ::-webkit-input-placeholder {
    color: #777;
    font-size: 1.0em;
