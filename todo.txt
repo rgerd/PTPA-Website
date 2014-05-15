@@ -1,5 +1,3 @@
-- Truncate event description
+- Truncate event description?
 - Make PDF generation code
-- Figure out how to store times / if the event is all day
-- Add sign up page
 - Make all of the footer buttons work
