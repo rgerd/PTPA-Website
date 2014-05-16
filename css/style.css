@@ -1,8 +1,12 @@
+html{
+    height: 100%;
+}
 body {
 	background-color: #A60000;
 	font-family: Verdana;
     margin:0px;
     padding:0px;
+    height: 100%;
 }
 
 #nav_bar{
@@ -18,10 +22,11 @@ body {
 }
 
 div#about {
+    color: white;
     margin-top: 25px;
     float:left;
     font-size: 2em;
-    font-family: Verdana;
+    font-family: Syncopate;
     width: 50%;
     margin: 10px;
 }
@@ -60,19 +65,26 @@ div#tabs {
 }
 
 #page_content{
-    padding-top: 100px;
-    padding-bottom: 25px;
-    padding-left: 50px;
-    padding-right: 50px;
-    height:auto;
-    width: auto;
+    overflow: hidden;
+    background-color: black;
+    padding-top: 5px;
+    /*padding-bottom: 25px;*/
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 50px;
+    margin-right: 50px;
+    height:100%;
+    /*width: auto;*/
 }
 
 #view_content{
+    overflow: hidden;
+    background-color: black;
     margin: 5px;
     padding: 5px;
-    height: auto;
-    width: auto;
+    padding-top: 100px;
+    /*height: 100%;*/
+    /*width: auto;*/
 }
 
 #sign_in_form {
@@ -189,7 +201,7 @@ a.hover_link:hover {
     outline: none;
     font-size: 1.0em;
     margin: 2px 0px 2px 0px;
-    border: 1px dotted black;
+    /*border: 1px solid black;*/
     border-radius: 3px;
 }
 
