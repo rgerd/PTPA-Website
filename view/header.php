@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="css/tabs.css"/>
     <link rel="stylesheet" type="text/css" href="css/event_creator.css"/>
     <link rel="stylesheet" type="text/css" href="css/jQuery-UI.css"/>
+    <link rel="stylesheet" type="text/css" href="css/button.css"/>
     <script type = "text/javascript" src="js/jQuery.js"></script>
     <script type = "text/javascript" src="js/jQuery-UI.js"></script>
     <script type = "text/javascript" src="js/event_task.js"></script>

@@ -49,21 +49,6 @@ div#tabs {
     float: right;
 }
 
-.header_button {
-    border-radius: 10px;
-    margin: 2px;/*0px 2px 0px 2px;*/
-    display: inline-block;
-    padding: 2px;
-}
-
-.header_button:hover {
-    background-color: #9E9E9E;
-}
-
-.header_button:active {
-    background-color: #5E5E5E;
-}
-
 #page_content{
     overflow: hidden;
     background-color: black;
@@ -95,65 +80,6 @@ input {
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
-}
-
-.footer_button {
-    padding: 5px 3px 5px 3px;
-    border-radius: 0px;
-    margin: 0px;
-    width: 100%;
-    font-size: 1.0em;
-    display: inline-block;
-}
-
-.button {
-    color: black;
-    padding: 5px;
-    background-color: grey;
-    border: 2px solid black;
-    margin-bottom: 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    font-size: inherit;
-    font-family: inherit;
-    text-decoration: none;
-}
-
-.button:hover{
-    background-color: dimgrey;
-}
-
-.button:active{
-    background-color: #1E1E1E;
-    color: grey;
-    border-color: grey;
-}
-
-.share_button {
-    padding: 2px 5px 2px 5px;
-    margin: 0px 5px 0px 0px;
-}
-
-._3D {
-    font-size: 0.8em;
-    margin-bottom: 5px;
-    /*box-shadow: 0px 5px #888;*/
-    box-shadow: 0px 5px #888, 0px 6px 16px 4px #000;
-    /*, 0px 8px 16px #000;*/
-    background-color: #AAA;
-    border-radius: 0px;
-    border: 0;
-    outline: none;
-    position: relative;
-    text-decoration: none;
-    color: black;
-    padding: 2px 5px 2px 5px;
-    cursor: pointer;
-}
-
-._3D {
-    box-shadow: 0px 0px 0px #000;
-    top: 5px;
 }
 
 #top {

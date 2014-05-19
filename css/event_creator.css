@@ -78,31 +78,6 @@
 	margin: 5px;
 }
 
-.event_creator_delete_button {
-	color: black;
-	background-color: red;
-	border-radius: 5px;
-	border: 1px solid black;
-	padding: 3px;
-	display: table-cell;
-	margin: 5px;
-    cursor: pointer;
-}
-
-#event_creator_add_button {
-	border: 1px solid black;
-	background-color: #ddd;
-	border-radius: 5px;
-	display: inline-block;
-	padding: 5px;
-	margin-top: 5px;
-    cursor: pointer;
-}
-
-#event_creator_add_button:active {
-	background-color: #aaa;
-}
-
 #event_tasks_table{
     border: 2px solid black;
     background-color: #eee;
@@ -126,22 +101,6 @@
 
 #th_signups{
     text-align: center;
-}
-
-.solid_button {
-    border: 1px solid black;
-    background-color: #ddd;
-    border-radius: 5px;
-    display: inline-block;
-    padding: 5px;
-    margin-top: 5px;
-    font-size: 0.8em;
-    text-decoration: none;
-    color: black;
-}
-
-.solid_button:active {
-    background-color: #aaa;
 }
 
 .creator_footer{

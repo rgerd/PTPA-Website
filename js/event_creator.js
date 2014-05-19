@@ -78,7 +78,7 @@ function createEventTask(_event_task_id) {
 
     var td_delete = document.createElement("td");
 	var delete_button = document.createElement("div");
-	delete_button.className = "event_creator_delete_button";
+	delete_button.className = "button light_button delete_button";
 	delete_button.setAttribute("task_id", _event_task_id);
 	var delete_text = document.createTextNode("Delete");
 	delete_button.appendChild(delete_text);
