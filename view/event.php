@@ -5,10 +5,11 @@
 </div>
 <div id="event_tasks">
 	<?php
-	$tasks = get_tasks_for_event($event_id);
+	if(!$preview)
+		$tasks = get_tasks_for_event($event_id);
 	foreach($tasks as $task):
-		$signed_up = get_users_signedup($task['ID']);
-		$num_signed_up = count($signed_up);
+		$signed_up = $preview ? 0 : get_users_signedup($task['ID']);
+		$num_signed_up = $preview ? 0 : count($signed_up);
 		$max_num_signed_up = $task["numSlots"];
 		$task_full = $num_signed_up == $max_num_signed_up;
 	?>
@@ -46,12 +47,16 @@
 				<?php endif; ?>
 		</div>
 		<?php if(!$task_full): ?>
+		<?php if(!$preview): ?>
 		<form action="." method="POST">
 			<input type="submit" class="button event_sign_up_button" value="Sign Up"/>
 			<input type="hidden" name="action" value="view_task_sign_up"/>
 			<input type="hidden" name="event" value="<?php echo $event_id; ?>"/>
 			<input type="hidden" name="task" value="<?php echo $task['ID']; ?>"/>
 		</form>
+		<?php else: ?>
+		<div style="display:block;"><button class="button event_sign_up_button">Sign Up</button></div>
+		<?php endif; ?>
 		<?php else: ?>
 			<button type="button" class="button event_sign_up_button task_full_button">Full</button>
 		<?php endif; ?>

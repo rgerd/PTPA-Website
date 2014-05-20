@@ -26,6 +26,5 @@
 
 <div id="event_creator_add_button" class="button event_creator_add_button">Add Task</div>
 <br /><br />
-<input type="hidden" name="action" value="save_event"/>
 <?php include 'event_creator_footer.php'; ?>
 </form>

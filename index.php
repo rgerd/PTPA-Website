@@ -31,9 +31,6 @@
 		case "reminders":
 		break;
 		
-		case "prev":
-		break;
-		
 		case "view_task_sign_up":
 			$event_id = $_POST['event'];
 			$task_id = $_POST['task'];
@@ -55,24 +52,17 @@
 			$page = "view/event.php";
 		break;
 
-		case "save_event":
-			$event_title = sanitize($_POST['event_title']);
-			$event_date = sanitize($_POST['event_date']);
-			$event_desc = sanitize($_POST['event_desc']);
-			$event_id = add_event($user_id, $event_title, $event_date, $event_desc);
-			$event_task_index = 0;
-			while(true) {
-				$v = 'event_task_'.$event_task_index;
-				if(isset($_POST[$v])) {
-					$title = sanitize($_POST[$v."_title"]);
-					$slots = sanitize($_POST[$v."_slots"]);
-					$comments = isset($_POST[$v."_comments"]) ? 1 : 0;
-					add_task($event_id, $event_task_index, $title, $slots, $comments);
-				} else {
-					break;
-				}
-				$event_task_index++;
-			}
+		case "preview_save":
+			//print_r($_SESSION['preview_data']);
+			save_event($_SESSION['preview_data']);
+		break;
+
+		case "Save":
+			save_event($_POST);
+		break;
+
+		case "Preview":
+			$page = "view/event_preview.php";
 		break;
 		
 		case "create_event":
