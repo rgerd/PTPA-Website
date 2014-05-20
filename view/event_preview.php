@@ -1,4 +1,5 @@
 <?php
-	include "event.php";
+	$preview = true;
 	
+	include "event.php";
 ?>
