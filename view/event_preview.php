@@ -27,7 +27,7 @@
 		$event_task_index++;
 	}
 
-	$SESSION['preview_data'] = $_POST;
+	$_SESSION['preview_data'] = $_POST;
 
 	include "view/event.php";
 

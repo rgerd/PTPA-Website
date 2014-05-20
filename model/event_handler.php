@@ -1,5 +1,6 @@
 <?php
 	function save_event($data) {
+		global $user_id;
 		$event_title = sanitize($data['event_title']);
 		$event_date = sanitize($data['event_date']);
 		$event_desc = sanitize($data['event_desc']);

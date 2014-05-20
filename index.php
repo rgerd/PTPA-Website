@@ -6,10 +6,10 @@
 	$action = isset($_POST['action']) ? $_POST['action'] : "none";
 	$action = isset($_GET['a']) ? $_GET['a'] : $action;
 	include "model/registration.php";
+	include "model/event_handler.php";
 
 	if($action == "sign_out")
 		clear_cookie_for_user();	
-
 
 	$user_id = isset($_SESSION['USER_ID']) ? $_SESSION['USER_ID'] : -1;
 	if($user_id != -1)
@@ -53,7 +53,6 @@
 		break;
 
 		case "preview_save":
-			//print_r($_SESSION['preview_data']);
 			save_event($_SESSION['preview_data']);
 		break;
 
