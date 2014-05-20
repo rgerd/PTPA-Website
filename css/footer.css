@@ -1,0 +1,33 @@
+.footer {
+    border-top: 2px solid black;
+    height: 80px;
+    background-color: #844;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.footer_div{
+    margin-bottom: 50px;
+}
+
+.preview_footer{
+    height: 40px;
+    background-color: #FFD700;
+}
+
+.creator_footer{
+    height: 80px;
+}
+
+div.footer_left {
+	float:left; 
+	margin-left: 10px;
+}
+
+div.footer_right {
+	float:right; 
+	text-align:right; 
+	margin-right: 10px;
+}

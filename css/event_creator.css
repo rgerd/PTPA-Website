@@ -103,10 +103,6 @@
     text-align: center;
 }
 
-.creator_footer{
-    height: 80px;
-}
-
 #date_fieldset {
     display: inline-block;
     border: 1px solid black;

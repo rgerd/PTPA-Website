@@ -115,10 +115,6 @@ a.hover_link:hover {
     text-decoration: underline;
 }
 
-.footer_div{
-    margin-bottom: 50px;
-}
-
 .form_text_field {
     padding: 5px 2px 5px 2px;
     color: #000;
@@ -153,14 +149,4 @@ a.hover_link:hover {
 :-ms-input-placeholder {  
    color: #777;  
    font-size: 1.0em;
-}
-
-.footer {
-    border-top: 2px solid black;
-    height: 80px;
-    background-color: #844;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
 }
