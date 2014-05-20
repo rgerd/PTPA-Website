@@ -2,7 +2,7 @@
 	<div class="footer_left">
 		<form method="post" action=".">
 			<input type="hidden" name="action" value="preview_edit"/>
-			<input class="button light_button" type="submit" name="action" value="Edit"/>
+			<input class="button light_button" type="submit" value="Edit"/>
 		</form>
     </div>
     <div class="footer_right">

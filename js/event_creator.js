@@ -35,6 +35,10 @@ function loadMethods() {
 }
 
 function createEventTask(_event_task_id) {
+	createEventTask(_event_task_id, "", "", false);
+}
+
+function createEventTask(_event_task_id, _title, _numSlots, _comments) {
 	var _container = document.createElement("div");
 	
 	var container = document.createElement("tr");
@@ -50,6 +54,7 @@ function createEventTask(_event_task_id) {
 	title_input.name = "event_task_" + _event_task_id + "_title";
 	title_input.className = "event_creator_task_title";
 	title_input.type = "text";
+	title_input.value = _title;
 	td_div_title.appendChild(title_input);
     td_title.appendChild(td_div_title);
     container.appendChild(td_title);
@@ -61,6 +66,7 @@ function createEventTask(_event_task_id) {
 	slots_input.name = "event_task_" + _event_task_id + "_slots";
 	slots_input.className = "event_creator_slots";
 	slots_input.type = "number";
+	slots_input.value = _numSlots;
 	td_div_slots.appendChild(slots_input);
     td_slots.appendChild(td_div_slots);
     container.appendChild(td_slots);
@@ -72,6 +78,7 @@ function createEventTask(_event_task_id) {
 	comments_input.name = "event_task_" + _event_task_id + "_comments";
 	comments_input.className = "event_creator_comments_checkbox";
 	comments_input.type = "checkbox";
+	comments_input.checked = _comments;
 	td_div_comments.appendChild(comments_input);
     td_comments.appendChild(td_div_comments);
     container.appendChild(td_comments);

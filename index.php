@@ -15,7 +15,6 @@
 	if($user_id != -1)
 		$page = "view/home.php";
 
-
 	$event_id = isset($_GET['e']) ? $_GET['e'] : -1;
 	$event_id = $event_id == -1 ? (isset($_POST['event']) ? $_POST['event'] : -1) : $event_id;
 	switch($action) {
@@ -58,6 +57,11 @@
 
 		case "Save":
 			save_event($_POST);
+		break;
+
+		case "preview_edit":
+			$preview = $_SESSION['preview_data'];
+			$page = "view/event_creator.php";
 		break;
 
 		case "Preview":

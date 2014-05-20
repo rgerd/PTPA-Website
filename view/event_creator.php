@@ -1,8 +1,33 @@
 <script type="text/javascript" src="js/event_creator.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#datepicker").datepicker('setDate', '<?php echo $preview['event_date']; ?>');
+        <?php       
+        $event_task_index = 0;
+        while(true):
+            $v = 'event_task_'.$event_task_index;
+            if(isset($preview[$v])):
+                $title = sanitize($preview[$v."_title"]);
+                $slots = sanitize($preview[$v."_slots"]);
+                $comments = isset($preview[$v."_comments"]) ? "true" : "false";
+        ?>
+        $("#table_body").append(createEventTask(event_task_id, "<?php echo $title;?>", "<?php echo $slots;?>", <?php echo $comments; ?>));
+        $("#" + event_task_id).show(0);
+        event_task_id++;
+        <?php   
+            else:
+                break;
+            endif;
+            $event_task_index++;
+        endwhile;
+        ?>
+        loadMethods();
+    });
+</script>
 <form method = "POST" action=".">
 <div class="event_creator_top_div">
-    <input class="event_creator_top_field" type="text" name="event_title" placeholder="Event Name"/>
-    <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"></textarea>
+    <input class="event_creator_top_field" type="text" name="event_title" placeholder="Event Name" value="<?php echo $preview['event_title'];?>"/>
+    <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"><?php echo $preview['event_desc'];?></textarea>
 </div>
 
 <fieldset id="date_fieldset">
