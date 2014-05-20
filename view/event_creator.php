@@ -11,7 +11,8 @@
                 $slots = sanitize($preview[$v."_slots"]);
                 $comments = isset($preview[$v."_comments"]) ? "true" : "false";
         ?>
-        $("#table_body").append(createEventTask(event_task_id, "<?php echo $title;?>", "<?php echo $slots;?>", <?php echo $comments; ?>));
+        createEventTask(event_task_id, "<?php echo $title;?>", "<?php echo $slots;?>", <?php echo $comments; ?>);
+        //$("#table_body").append();
         $("#" + event_task_id).show(0);
         event_task_id++;
         <?php   
@@ -34,7 +35,7 @@
 	<legend id="date_legend">Date</legend>
 	<div id="datepicker"></div>
 </fieldset>
-<input type="hidden" id="event_date_input" name="event_date" />
+<input type="hidden" id="event_date_input" name="event_date" value="<?php echo $preview['event_date']; ?>" />
 <br /><br />
 
 <div id="event_creator_task_container">
