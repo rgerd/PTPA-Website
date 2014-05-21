@@ -62,7 +62,10 @@ function add_event($accountID, $title, $date, $desc){
 
 /*Updates an event after being edited*/
 function update_event($id, $title, $date, $desc) {
-
+    global $db;
+    $query = "UPDATE events SET title='$title', event_date='$date', description='$desc' WHERE ID='$id'";
+    $result = $db->exec($query);
+    return $result;
 }
 
 /*Creates new task*/
@@ -74,7 +77,10 @@ function add_task($eventID, $internalID, $desc, $numSlots, $comments){
 
 /*Updates a task after being edited*/
 function update_task($id, $desc, $numSlots, $comments) {
-    
+    global $db;
+    $query = "UPDATE tasks SET description='$desc', numSlots='$numSlots', comments='$comments' WHERE ID='$id'";
+    $result = $db->exec($query);
+    return $result;
 }
 
 /*Edits comment of a signup*/
