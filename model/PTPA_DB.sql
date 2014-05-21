@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `accounts` (
   `fname` varchar(50) DEFAULT NULL,
   `lname` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `phone` int(11) DEFAULT NULL,
+  `phone` varchar(10) DEFAULT NULL,
   `password` varchar(32) NOT NULL,
   `registered` int(1) NOT NULL,
   `reminders` int(1) NOT NULL,
