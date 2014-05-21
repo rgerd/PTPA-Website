@@ -51,7 +51,7 @@ div#tabs {
 
 #page_content{
     overflow: hidden;
-    background-color: black;
+    /*background-color: black;*/
     padding-top: 5px;
     /*padding-bottom: 25px;*/
     padding-left: 10px;
@@ -64,7 +64,7 @@ div#tabs {
 
 #view_content{
     overflow: hidden;
-    background-color: black;
+    /*background-color: black;*/
     margin: 5px;
     padding: 5px;
     padding-top: 100px;
