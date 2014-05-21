@@ -62,9 +62,9 @@
 		case "preview_edit":
 			$preview_data = $_SESSION['preview_data'];
 			$event = array(
-				"title" => sanitize($_POST['event_title']),
-				"event_date" => sanitize($_POST['event_date']),
-				"description" => sanitize($_POST['event_desc'])
+				"title" => sanitize($preview_data['event_title']),
+				"event_date" => sanitize($preview_data['event_date']),
+				"description" => sanitize($preview_data['event_desc'])
 			);
 			$tasks = parse_tasks($preview_data);
 			$page = "view/event_creator.php";
