@@ -8,7 +8,7 @@
 
 		$tasks = parse_tasks($data);
 		foreach($tasks as $task) {
-			add_task($event_id, $task['internalID'], $task['title'], $task['numSlots'], $task['comments']);
+			add_task($event_id, $task['internalID'], $task['description'], $task['numSlots'], $task['comments']);
 		}
 	}
 
