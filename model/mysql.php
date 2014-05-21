@@ -1,14 +1,4 @@
 <?php
-
-/*Returns all events.*/
-function get_all_events() {
-    global $db;
-    $query = 'SELECT * FROM events';
-    $result = $db->query($query);
-    $result = $result->fetchAll();
-    return $result;
-}
-
 /*Returns the events of a specific user.*/
 function get_events_by_user($userID) {
     global $db;
@@ -70,11 +60,21 @@ function add_event($accountID, $title, $date, $desc){
     return $db->lastInsertId();
 }
 
+/*Updates an event after being edited*/
+function update_event($id, $title, $date, $desc) {
+
+}
+
 /*Creates new task*/
 function add_task($eventID, $internalID, $desc, $numSlots, $comments){
     global $db;
     $query = "INSERT INTO tasks (eventID, description, numSlots, internalID, comments) VALUES ('$eventID', '$desc', '$numSlots', '$internalID', '$comments')";
     $results = $db->exec($query);
+}
+
+/*Updates a task after being edited*/
+function update_task($id, $desc, $numSlots, $comments) {
+    
 }
 
 /*Edits comment of a signup*/
