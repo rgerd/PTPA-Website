@@ -11,10 +11,8 @@
                 $slots = sanitize($preview[$v."_slots"]);
                 $comments = isset($preview[$v."_comments"]) ? "true" : "false";
         ?>
-        createEventTask(event_task_id, "<?php echo $title;?>", "<?php echo $slots;?>", <?php echo $comments; ?>);
-        //$("#table_body").append();
-        $("#" + event_task_id).show(0);
-        event_task_id++;
+        createEventTask("<?php echo $title;?>", "<?php echo $slots;?>", <?php echo $comments; ?>);
+        $("#" + (event_task_id - 1)).show(0);
         <?php   
             else:
                 break;
@@ -39,7 +37,7 @@
 <br /><br />
 
 <div id="event_creator_task_container">
-        <table id="event_tasks_table">
+        <table id="event_tasks_table" style="display:none;">
             <thead>
             <th class="th" id="th_desc">Description</th>
             <th class="th" id="th_signups">Number&nbspof&nbspSignups</th>
