@@ -1,7 +1,14 @@
+<?php				
+$_events = get_events_by_user($user_id);
+$num_events = count($_events);
+?>
+
 <div id="home">
 	<div id="top">
-		<div style="float:left; display: block; text-decoration: underline; font-size: 1.5em; color: #999;">Events</div>
-		<div  style="float:right; display: block;"><a style="text-decoration: none;" href=".?a=create_event"><div class="button">Create New Event</div></a></div>
+		<?php if($num_events != 0): ?>
+		<div style="float:left; display: block; text-decoration: none; font-size: 1.5em; color: #999;">Events</div>
+		<?php endif; ?>
+		<div  style="<?php echo $num_events == 0 ? "text-align:center;" : "float:right;"; ?> display: block;"><a style="text-decoration: none;" href=".?a=create_event"><div class="button">Create New Event</div></a></div>
 	</div>
 
 	<br />
@@ -9,7 +16,6 @@
 	<table id="events_table">
 		<tbody>
 			<?php
-				$_events = get_events_by_user($user_id);
 				foreach($_events as $event):
 			?>
 				<tr class="event">
