@@ -60,7 +60,13 @@
 		break;
 
 		case "preview_edit":
-			$preview = $_SESSION['preview_data'];
+			$preview_data = $_SESSION['preview_data'];
+			$event = array(
+				"title" => sanitize($_POST['event_title']),
+				"event_date" => sanitize($_POST['event_date']),
+				"description" => sanitize($_POST['event_desc'])
+			);
+			$tasks = parse_tasks($preview_data);
 			$page = "view/event_creator.php";
 		break;
 
@@ -76,8 +82,9 @@
 			if(isset($_GET['e'])) {
 				$event_id = sanitize($_GET['e']);
 				$event = get_event($event_id);
+				$tasks = get_tasks_for_event($event_id);
 				$page_title = $event['title'];
-				$page = "view/event.php";
+				$page = $user_id == $event['accountID'] ? "view/event_creator.php" : "view/event.php";
 			}
 		break;
 	}
