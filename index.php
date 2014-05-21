@@ -84,6 +84,7 @@
 				$event = get_event($event_id);
 				$tasks = get_tasks_for_event($event_id);
 				$page_title = $event['title'];
+				$event_exists = true;
 				$page = $user_id == $event['accountID'] ? "view/event_creator.php" : "view/event.php";
 			}
 		break;
