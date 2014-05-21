@@ -7,27 +7,10 @@
 		"description" => sanitize($_POST['event_desc'])
 	);
 
-	$tasks = array();
-
-	$event_task_index = 0;
-	while(true) {
-		$v = 'event_task_'.$event_task_index;
-		if(isset($_POST[$v])) {
-			$title = sanitize($_POST[$v."_title"]);
-			$slots = sanitize($_POST[$v."_slots"]);
-
-			$task = array(
-				"description" => $title,
-				"numSlots" => $slots
-			);
-			array_push($tasks, $task);
-		} else {
-			break;
-		}
-		$event_task_index++;
-	}
+	$tasks = parse_tasks($_POST);
 
 	$_SESSION['preview_data'] = $_POST;
+
 
 	include "view/event.php";
 
