@@ -21,6 +21,10 @@ switch($action) {
 	case "acc":
 		$page = "view/account_manager.php";
 	break;
+
+	case "update_acc":
+		
+	break;
 	
 	case "delete":
 		partially_delete_event($event_id);
