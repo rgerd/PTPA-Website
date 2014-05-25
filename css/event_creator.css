@@ -86,9 +86,18 @@
 }
 
 .td_div{
+    border: none;
     padding: 2px 5px 2px 5px;
     text-align: center;
     vertical-align: middle;
+}
+
+td {
+    border: none;
+}
+
+tr {
+    border: none;
 }
 
 .th{
