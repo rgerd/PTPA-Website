@@ -21,33 +21,30 @@ $(document).ready(function() {
 function loadMethods() {
 	$(".delete_button").click(function() {
 		var id = $(this).attr("task_id");
-		$("#" + id).fadeOut(function() { $(this).remove();});
-
+		//$("#" + id).fadeOut(function() { $(this).remove();});
+		$("#" + id).animate({opacity: "hide"}, "slow", function() { $(this).remove();});
 
 		var _id = parseInt(id);
 		for(var i = _id + 1; i < event_task_id; ++i) {
-			alert(i);
 			var _i = i - 1;
 			$("#" + i).attr("id", function(arr) {return _i;});
-			$("#event_task_" + i + "_title").attr("name", function(arr) {return "#event_task_" + (_i) + "_title";});
-			$("#event_task_" + i + "_title").attr("id", function(arr) {return "#event_task_" + (_i) + "_title";});
-			$("#event_task_" + i + "_slots").attr("name", function(arr) {return "#event_task_" + (_i) + "_slots";});
-			$("#event_task_" + i + "_slots").attr("id", function(arr) {return "#event_task_" + (_i) + "_slots";});
-			$("#event_task_" + i + "_comments").attr("name", function(arr) {return "#event_task_" + (_i) + "_comments";});
-			$("#event_task_" + i + "_comments").attr("id", function(arr) {return "#event_task_" + (_i) + "_comments";});
-			$("#event_task_" + i + "_delete_button").attr("name", function(arr) {return "#event_task_" + (_i) + "_slots";});
+			$("#event_task_" + i + "_title").attr("name", function(arr) {return "event_task_" + (_i) + "_title";});
+			$("#event_task_" + i + "_title").attr("id", function(arr) {return "event_task_" + (_i) + "_title";});
+			$("#event_task_" + i + "_slots").attr("name", function(arr) {return "event_task_" + (_i) + "_slots";});
+			$("#event_task_" + i + "_slots").attr("id", function(arr) {return "event_task_" + (_i) + "_slots";});
+			$("#event_task_" + i + "_comments").attr("name", function(arr) {return "event_task_" + (_i) + "_comments";});
+			$("#event_task_" + i + "_comments").attr("id", function(arr) {return "event_task_" + (_i) + "_comments";});
+			$("#event_task_" + i + "_delete_button").attr("name", function(arr) {return "event_task_" + (_i) + "_slots";});
 			$("#event_task_" + i + "_delete_button").attr("task_id", i - 1);
-			$("#event_task_" + i + "_delete_button").attr("id", function(arr) {return "#event_task_" + (_i) + "_delete_button";});
+			$("#event_task_" + i + "_delete_button").attr("id", function(arr) {return "event_task_" + (_i) + "_delete_button";});
 			$("#event_task_" + i).attr("value", function(arr) {return _i;});
-			$("#event_task_" + i).attr("name", function(arr) {return "#event_task_" + (_i);});
-			$("#event_task_" + i).attr("id", function(arr) {return "#event_task_" + (_i);});
-			$("#event_task_" + i + "_id").attr("name", function(arr) {return "#event_task_" + (_i) + "_id";});
-			$("#event_task_" + i + "_id").attr("id", function(arr) {return "#event_task_" + (_i) + "_id";});
+			$("#event_task_" + i).attr("name", function(arr) {return "event_task_" + (_i);});
+			$("#event_task_" + i).attr("id", function(arr) {return "event_task_" + (_i);});
+			$("#event_task_" + i + "_id").attr("name", function(arr) {return "event_task_" + (_i) + "_id";});
+			$("#event_task_" + i + "_id").attr("id", function(arr) {return "event_task_" + (_i) + "_id";});
 		}
 
 		event_task_id--;
-
-		alert(">" + event_task_id);
 	});
 
 	$(".event_creator_slots").keypress(function(event) {
