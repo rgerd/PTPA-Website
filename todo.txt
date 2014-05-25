@@ -1,7 +1,6 @@
 - Truncate event description?
 - Make PDF generation code
 - Make all of the footer buttons work
-- FIX TASK DELETION
-	- JAVASCRIPT FILE
-	- EVENT_HELPER
-	- EVENT / EVENT_PREVIEW
+- Implement reminders
+- Make changing the password more intuitive
+	- Change password button -> dropdown input
