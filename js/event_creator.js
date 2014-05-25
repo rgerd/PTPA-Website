@@ -1,9 +1,10 @@
 var event_task_id = 0;
 var event_task_table_showing = false;
+var deleted_tasks = [];
 
 $(document).ready(function() {
 	$("#event_creator_add_button").click(function() {
-		createEventTask();
+		createEmptyEventTask();
 		$("#" + (event_task_id - 1)).fadeIn();
 		loadMethods();
 	});
@@ -22,6 +23,11 @@ function loadMethods() {
 	$(".delete_button").click(function() {
 		var id = $(this).attr("task_id");
 		//$("#" + id).fadeOut(function() { $(this).remove();});
+		var __id = $("#event_task_" + id + "_id").val();
+		if(__id != -1 && jQuery.inArray(__id, deleted_tasks) == -1) {
+			deleted_tasks.push(__id);
+			$("#deleted_tasks").attr("value", deleted_tasks.join());
+		}
 		$("#" + id).animate({opacity: "hide"}, "slow", function() { $(this).remove();});
 
 		var _id = parseInt(id);
@@ -57,7 +63,7 @@ function loadMethods() {
 	});
 }
 
-function createEventTask() {
+function createEmptyEventTask() {
 	createEventTask(-1, "", "", false);
 }
 

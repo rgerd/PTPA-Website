@@ -70,7 +70,8 @@ switch($action) {
 		$event = array(
 			"title" => sanitize($preview_data['event_title']),
 			"event_date" => sanitize($preview_data['event_date']),
-			"description" => sanitize($preview_data['event_desc'])
+			"description" => sanitize($preview_data['event_desc']),
+			"deleted_tasks" => sanitize($preview_data['deleted_tasks']),
 		);
 		$tasks = parse_tasks($preview_data);
 		$page = "view/event_creator.php";

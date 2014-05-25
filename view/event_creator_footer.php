@@ -6,6 +6,8 @@
 	}
 ?>
 
+<input type="hidden" id="deleted_tasks" name="deleted_tasks" value=""/>
+
 <div class="footer creator_footer">
 	<div class="footer_left">
 		<a class="button light_button" href=".">Cancel</a><br />

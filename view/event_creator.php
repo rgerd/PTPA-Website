@@ -1,8 +1,12 @@
 <script type="text/javascript" src="js/event_creator.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#datepicker").datepicker('setDate', '<?php echo $event['event_date']; ?>');
+        <?php if(isset($event['deleted_tasks'])):?>
+            deleted_tasks = "<?php echo $event['deleted_tasks']; ?>".split(",");
+            $("#deleted_tasks").attr("value", deleted_tasks.join());
+        <?php endif; ?>
 
+        $("#datepicker").datepicker('setDate', '<?php echo $event['event_date']; ?>');
 
         <?php
             foreach($tasks as $task) {
