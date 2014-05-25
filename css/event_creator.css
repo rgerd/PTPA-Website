@@ -61,10 +61,8 @@
 }
 
 .event_creator_slots {
-	width: 1em;
 	font-size: 1em;
 	display: table-cell;
-    width: 2em;
     margin: 0px;
     color: #000;
     display: block;
@@ -75,7 +73,7 @@
 
 .event_creator_comments_checkbox {
 	display: table-cell;
-	margin: 5px;
+	margin: 5px auto 5px auto;
 }
 
 #event_tasks_table{
@@ -89,6 +87,8 @@
 
 .td_div{
     padding: 2px 5px 2px 5px;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .th{
