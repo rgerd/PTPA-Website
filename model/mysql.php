@@ -43,6 +43,11 @@ function get_event($id){
     return $results;
 }
 
+/*Returns whether or not a user owns an event*/
+function user_owns_event($user_id, $event_id) {
+    return get_event($event_id)['accountID'] == $user_id;
+}
+
 /*Counts number of signups for a task*/
 function count_signups($task){
     global $db;
@@ -65,7 +70,7 @@ function update_event($id, $title, $date, $desc) {
     global $db;
     $query = "UPDATE events SET title='$title', event_date='$date', description='$desc' WHERE ID='$id'";
     $result = $db->exec($query);
-    return $result;
+    return $id;
 }
 
 /*Creates new task*/
@@ -76,9 +81,17 @@ function add_task($eventID, $internalID, $desc, $numSlots, $comments){
 }
 
 /*Updates a task after being edited*/
-function update_task($id, $desc, $numSlots, $comments) {
+function update_task($id, $internalID, $desc, $numSlots, $comments) {
     global $db;
-    $query = "UPDATE tasks SET description='$desc', numSlots='$numSlots', comments='$comments' WHERE ID='$id'";
+    $query = "UPDATE tasks SET internalID='$internalID', description='$desc', numSlots='$numSlots', comments='$comments' WHERE ID='$id'";
+    $result = $db->exec($query);
+    return $result;
+}
+
+/*Deletes all of the tasks from an event after a certain internalID*/
+function delete_extra_tasks($event_id, $last_internalID) {
+    global $db;
+    $query = "DELETE FROM tasks WHERE internalID >= $last_internalID";
     $result = $db->exec($query);
     return $result;
 }

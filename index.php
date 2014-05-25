@@ -52,15 +52,15 @@ switch($action) {
 	break;
 
 	case "preview_save":
-		if(isset($_POST['event_id']))
-			update_event($_POST['event_id'], $_SESSION['preview_data']);
+		if(isset($_POST['event_id']) && $_POST['event_id'] != -1)
+			save_existing_event($_POST['event_id'], $_SESSION['preview_data']);
 		else
 			save_event($_SESSION['preview_data']);
 	break;
 
 	case "Save":
-		if(isset($_POST['event_id']))
-			update_event($_POST['event_id'], $_POST);
+		if(isset($_POST['event_id']) && $_POST['event_id'] != -1)
+			save_existing_event($_POST['event_id'], $_POST);
 		else
 			save_event($_POST);
 	break;
@@ -86,6 +86,7 @@ switch($action) {
 	
 	case "none":
 		if(isset($_GET['e'])) {
+			//echo user_owns_event($user_id, $event_id);
 			$event_id = sanitize($_GET['e']);
 			$event = get_event($event_id);
 			$tasks = get_tasks_for_event($event_id);
@@ -98,7 +99,6 @@ switch($action) {
 $page = isset($page) ? $page : "view/front.php";
 
 $page_title = "PT Volunteer";
-
 
 include 'view/header.php';
 include "$page";

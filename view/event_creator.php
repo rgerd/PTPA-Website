@@ -6,10 +6,11 @@
 
         <?php
             foreach($tasks as $task) {
+                $task_id = $task['ID'];
                 $task_title = $task['description'];
                 $task_slots = $task['numSlots'];
                 $task_comments = $task['comments'] == 1 ? "true" : "false";
-                echo "createEventTask('$task_title', '$task_slots', $task_comments);";
+                echo "createEventTask($task_id, '$task_title', '$task_slots', $task_comments);";
                 echo '$("#" + (event_task_id - 1)).show(0);';
             }
         ?>

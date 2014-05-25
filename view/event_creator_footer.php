@@ -1,3 +1,11 @@
+<?php 
+	if(isset($_POST['event_id'])) {
+		echo '<input type="hidden" name="event_id" value="'.$_POST['event_id'].'"/>';
+	} else if(isset($event_id)) {
+		echo '<input type="hidden" name="event_id" value="'.$event_id.'"/>';
+	}
+?>
+
 <div class="footer creator_footer">
 	<div class="footer_left">
 		<a class="button light_button" href=".">Cancel</a><br />
