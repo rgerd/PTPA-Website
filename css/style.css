@@ -26,7 +26,7 @@ div#about {
     margin-top: 25px;
     float:left;
     font-size: 2em;
-    font-family: Syncopate;
+    font-family: helvetica;/*Syncopate;*/
     width: 50%;
     margin: 10px;
 }
