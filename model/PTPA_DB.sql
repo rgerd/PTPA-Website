@@ -67,9 +67,7 @@ CREATE TABLE IF NOT EXISTS `event_reminders` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `eventID` int(11) NOT NULL,
   `type` int(11) NOT NULL,
-  `dest` varchar(50) NOT NULL,
-  `data` text NOT NULL,
-  `date` date NOT NULL,
+  `reminder_date` date NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
