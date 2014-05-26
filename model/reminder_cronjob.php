@@ -8,6 +8,37 @@ $reminders = get_reminders_for_date($today);
 foreach($reminders as $reminder) {
 	$event_id = $reminder['eventID'];
 	$type = $reminder['type'];
-	$dest = $reminder['dest'];
-	$data = $reminder['data'];
+
+	switch(type) {
+		case 0: # Volunteers
+		send_reminder_to_volunteers($event_id);
+		break;
+		case 1: # Creator
+		send_reminder_to_creator($event_id);
+		break;
+	}
+}
+
+function send_reminder_to_volunteers($event_id) {
+	$general_message = "Hello %s %s, this is a reminder that you signed up for %s, which is occuring on %s. You signed up for the following task: \"%s\"";
+	$comment_message = "Your comment was: \"%s\"";
+
+
+	$event = get_event($event_id);
+	$tasks = get_tasks_for_event($event_id);
+	$volunteers = array();
+
+	foreach($tasks as $task) {
+		$signups = get_users_signed_up($task['ID']);
+		foreach($signups as $signup) {
+			$account = get_user($signup['accountID']);
+			
+			$message = sprintf($general_message, $account['fname'], $account['lname'])
+
+		}
+	}
+}
+
+function send_reminder_to_creator($event_id) {
+
 }
