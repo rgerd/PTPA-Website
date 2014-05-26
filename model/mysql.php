@@ -9,7 +9,7 @@ function get_events_by_user($userID) {
 }
 
 /*Returns the users signed up for a task.*/
-function get_users_signedup($taskID) {
+function get_users_signed_up($taskID) {
     global $db;
     $query = "SELECT * FROM signups WHERE taskID = '$taskID'";
     $result = $db->query($query);
