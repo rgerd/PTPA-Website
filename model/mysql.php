@@ -286,5 +286,15 @@ function sign_up_for_task($task_id, $user_id, $comment = null) {
     $query = "INSERT INTO signups (taskID, accountID, comment) VALUES ('$task_id', '$user_id', '$comm')";
     $db->exec($query);
 }
+
+/*
+    Gets all reminders matching a specified date
+*/ 
+function get_reminders_for_date($date) {
+    global $db;
+    $query = "SELECT * FROM event_reminders WHERE reminder_date = '$date'";
+    $results = $db->query($query);
+    return $results->fetchAll();
+}
 ?>
 
