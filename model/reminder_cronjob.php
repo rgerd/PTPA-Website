@@ -32,8 +32,10 @@ function send_reminder_to_volunteers($event_id) {
 		foreach($signups as $signup) {
 			$account = get_user($signup['accountID']);
 			
-			$message = sprintf($general_message, $account['fname'], $account['lname'], $event['title']);
-
+			$message = sprintf($general_message, $account['fname'], $account['lname'], $event['title'], $event['event_date'], $task['description']);
+			if($task['comments']) 
+				$message .= sprintf($comment_message, $signup['comment']);
+			echo $message."<br />";
 		}
 	}
 }
