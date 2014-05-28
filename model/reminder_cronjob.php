@@ -2,8 +2,7 @@
 include "database.php";
 include "mysql.php";
 
-$today = date('Y-m-d');
-$reminders = get_reminders_for_date($today);
+$reminders = get_reminders_for_today();
 #remove_reminders($reminders);
 foreach($reminders as $reminder) {
 	$event_id = $reminder['eventID'];
@@ -33,7 +32,7 @@ function send_reminder_to_volunteers($event_id) {
 		foreach($signups as $signup) {
 			$account = get_user($signup['accountID']);
 			
-			$message = sprintf($general_message, $account['fname'], $account['lname'])
+			$message = sprintf($general_message, $account['fname'], $account['lname'], $event['title']);
 
 		}
 	}

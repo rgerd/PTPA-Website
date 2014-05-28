@@ -290,9 +290,9 @@ function sign_up_for_task($task_id, $user_id, $comment = null) {
 /*
     Gets all reminders matching a specified date
 */ 
-function get_reminders_for_date($date) {
+function get_reminders_for_today() {
     global $db;
-    $query = "SELECT * FROM event_reminders WHERE reminder_date = '$date'";
+    $query = "SELECT * FROM event_reminders WHERE reminder_date = CURDATE()";
     $results = $db->query($query);
     return $results->fetchAll();
 }
