@@ -19,3 +19,4 @@
     	<input class="button light_button" type="submit" name="action" value="Save"/>
     </div>
 </div>
+</form>

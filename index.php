@@ -107,6 +107,6 @@ $page_title = "PT Volunteer";
 
 include 'view/header.php';
 include "$page";
-include 'view/footer.php';
+include isset($footer) ? $footer : 'view/footer.php';
 
 

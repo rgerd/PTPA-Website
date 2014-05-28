@@ -13,5 +13,4 @@
 
 
 	include "view/event.php";
-
-	include "view/event_preview_footer.php";
+	$footer = "view/event_preview_footer.php";
