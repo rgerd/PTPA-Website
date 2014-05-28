@@ -29,7 +29,7 @@
 
 <fieldset id="date_fieldset">
 	<legend id="date_legend">Date</legend>
-	<div id="datepicker"></div>
+    <div id="datepicker"></div>
 </fieldset>
 <input type="hidden" id="event_date_input" name="event_date" value="<?php echo $event['event_date']; ?>" />
 <br /><br />
