@@ -288,7 +288,7 @@ function sign_up_for_task($task_id, $user_id, $comment = null) {
 }
 
 /*
-    Gets all reminders matching a specified date
+    Gets all reminders matching today
 */ 
 function get_reminders_for_today() {
     global $db;
