@@ -19,8 +19,8 @@ foreach($reminders as $reminder) {
 }
 
 function send_reminder_to_volunteers($event_id) {
-	$general_message = "Hello %s %s, this is a reminder that you signed up for %s, which is occuring on %s. You signed up for the following task: \"%s\"";
-	$comment_message = "Your comment was: \"%s\"";
+	$general_message = "Hello %s %s, this is a reminder that you signed up for %s, which is occuring on %s. You signed up for the following task: \"%s\".";
+	$comment_message = " Your comment was: \"%s\"";
 
 
 	$event = get_event($event_id);
