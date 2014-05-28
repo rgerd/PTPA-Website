@@ -7,8 +7,9 @@
 	<?php
 	if(!$preview)
 		$tasks = get_tasks_for_event($event_id);
+
 	foreach($tasks as $task):
-		$signed_up = $preview ? 0 : get_users_signedup($task['ID']);
+		$signed_up = $preview ? 0 : get_users_signed_up($task['ID']);
 		$num_signed_up = $preview ? 0 : count($signed_up);
 		$max_num_signed_up = $task["numSlots"];
 		$task_full = $num_signed_up == $max_num_signed_up;
