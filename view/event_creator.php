@@ -23,7 +23,6 @@
     });
 </script>
 <form method = "POST" action=".">
-<div style="position: absolute; margin: 0px 50px; height: 500px; left: 0px; overflow: scroll; border: 5px solid black; border-radius: 5px;">
 <div class="event_creator_top_div">
     <input class="event_creator_top_field" type="text" name="event_title" placeholder="Event Name" value="<?php echo $event['title'];?>"/>
     <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"><?php echo $event['description'];?></textarea>
