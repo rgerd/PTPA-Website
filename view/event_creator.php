@@ -46,6 +46,7 @@
 </div>
 
 <div id="event_creator_add_button" class="button event_creator_add_button">Add Task</div>
+
 <br /><br />
 <?php include 'event_creator_footer.php'; ?>
 </form>

@@ -58,7 +58,7 @@ div#tabs {
     padding-right: 10px;
     margin-left: 50px;
     margin-right: 50px;
-    height:100%;
+    height:auto;
     /*width: auto;*/
 }
 
@@ -68,7 +68,7 @@ div#tabs {
     margin: 5px;
     padding: 5px;
     padding-top: 100px;
-    height: 100%;
+    height: auto;
     /*width: auto;*/
 }
 
