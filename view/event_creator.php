@@ -1,3 +1,4 @@
+<?php $footer = 'view/event_creator_footer.php'; ?>
 <script type="text/javascript" src="js/event_creator.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
@@ -22,6 +23,7 @@
     });
 </script>
 <form method = "POST" action=".">
+<div style="position: absolute; margin: 0px 50px; height: 500px; left: 0px; overflow: scroll; border: 5px solid black; border-radius: 5px;">
 <div class="event_creator_top_div">
     <input class="event_creator_top_field" type="text" name="event_title" placeholder="Event Name" value="<?php echo $event['title'];?>"/>
     <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"><?php echo $event['description'];?></textarea>
@@ -46,7 +48,12 @@
 </div>
 
 <div id="event_creator_add_button" class="button event_creator_add_button">Add Task</div>
+<<<<<<< HEAD
 
 <br /><br />
 <?php include 'event_creator_footer.php'; ?>
 </form>
+=======
+</div>
+<br /><br />
+>>>>>>> FETCH_HEAD
