@@ -48,12 +48,5 @@
 </div>
 
 <div id="event_creator_add_button" class="button event_creator_add_button">Add Task</div>
-<<<<<<< HEAD
-
-<br /><br />
-<?php include 'event_creator_footer.php'; ?>
-</form>
-=======
 </div>
 <br /><br />
->>>>>>> FETCH_HEAD
