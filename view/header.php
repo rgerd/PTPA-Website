@@ -21,11 +21,11 @@
 <div >
     <div id="nav_bar">
         <div id="inner_navbar">
-            <div id="float_left" style="background-color:black"><a href="index.php"><img src="css/images/logo_white.png" alt="PT Volunteer" height="60px"/></a></div>
+            <div id="float_left" style="background-color:black"><a href="index.php"><img src="css/images/logo_white.png" alt="PT Volunteer" height="70px"/></a></div>
             <div id="float_right">
                 <?php if($user_id != -1): ?>
-                    <div class="header_button"><a href=".?a=acc"><img src="css/images/gear.png" alt="User Settings" height="60px"/></a></div>
-                    <div class="header_button"><a href=".?a=sign_out"><img src="css/images/signout.png" alt="Log Out" height="60px"/></a></div>
+                    <div class="header_button"><a href=".?a=acc"><img src="css/images/gear_white.png" alt="User Settings" height="60px"/></a></div>
+                    <div class="header_button"><a href=".?a=sign_out"><img src="css/images/signout_white.png" alt="Log Out" height="60px"/></a></div>
                 <?php endif; ?>
             </div>
         </div>
