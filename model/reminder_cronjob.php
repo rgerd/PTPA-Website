@@ -4,6 +4,7 @@
 include "database.php";
 include "mysql.php";
 include "mailer.php";
+include "PDFGenerator.php";
 //incude "plivo.php";
 
 /*
@@ -66,3 +67,6 @@ function send_reminder_to_volunteers($event_id) {
 function send_reminder_to_creator($event_id) {
 
 }
+
+
+
