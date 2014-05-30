@@ -30,7 +30,7 @@
 				$pdf->Cell(40, 7, $account['fname'], 1, 0, 'L');
 				$pdf->Cell(40, 7, $account['lname'], 1, 0, 'L');
 				if($task['comments'])
-					$pdf->Cell(40, 7, $signup['comment'], 1, 0, 'L');
+					$pdf->MultiCell(40, 7, $signup['comment'], 1, 'L', false);
 
 				$pdf->Ln();
 			}
