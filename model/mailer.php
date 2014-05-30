@@ -1,6 +1,6 @@
 <?php 
 	include "../model/phpmailer/PHPMailerAutoload.php";
-	function sendMail($recipient, $recipient_name='', $has_attachment=false, $attachment='', $attachment_name='') {
+	function sendMail($recipient, $recipient_name='', $subject, $body, $has_attachment=false, $attachment='', $attachment_name='') {
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
 		$mail->SMTPAuth = true;
@@ -12,8 +12,8 @@
 		$mail->Password = ",./;'[][]";
 		$mail->SetFrom("ptvolunteer.reminders@gmail.com", "PT Volunteer");
 		$mail->addAddress($recipient, $recipient_name);
-		$mail->Subject = "HELLO THERE";
-		$mail->Body = "HELLO";
+		$mail->Subject = $subject;
+		$mail->Body = $body;
 		if($has_attachment) {
 			$mail->AddStringAttachment($attachment, $attachment_name);
 		}
