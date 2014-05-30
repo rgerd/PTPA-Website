@@ -1,4 +1,6 @@
 <?php
+// ADDED PLIVO CODE, THIS WON'T WORK UNTIL WE INSTALL IT
+
 include "database.php";
 include "mysql.php";
 include "mailer.php";
