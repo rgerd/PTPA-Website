@@ -1,6 +1,15 @@
 <?php
 include "database.php";
 include "mysql.php";
+include "mailer.php";
+//incude "plivo.php";
+
+/*
+$auth_id = "XXXXXXXXXXXXXXXXXXXXXXXXXXX";
+$auth_token = "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+
+$plivo = new RestAPI($auth_id, $auth_token);
+*/
 
 $reminders = get_reminders_for_today();
 #remove_reminders($reminders);
@@ -35,6 +44,18 @@ function send_reminder_to_volunteers($event_id) {
 			$message = sprintf($general_message, $account['fname'], $account['lname'], $event['title'], $event['event_date'], $task['description']);
 			if($task['comments']) 
 				$message .= sprintf($comment_message, $signup['comment']);
+			
+			sendMail($account['email'], $account['fname'].' '.$account['lname'], "PTVolunteer Reminder", $message);
+
+			/*
+			$params = array(
+		        'src' => '1202XXXXXX',
+		        'dst' => $account['phone'],
+		        'text' => $message,
+		        'type' => 'sms',
+		    );
+		    $response = $plivo->send_message($params);
+			*/
 			echo $message."<br />";
 		}
 	}
