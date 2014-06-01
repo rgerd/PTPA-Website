@@ -14,6 +14,7 @@
     <script type = "text/javascript" src="js/event_task.js"></script>
     <script type = "text/javascript" src="js/header.js"></script>
     <script type = "text/javascript" src="js/tabs.js"></script>
+    <script type = "text/javascript" src="js/account_manager.js"></script>
     <script type = "text/javascript" src="js/ZeroClipboard/ZeroClipboard.js"></script>
     <script type = "text/javascript" src="js/home.js"></script>
 </head>

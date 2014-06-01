@@ -23,7 +23,13 @@ switch($action) {
 	break;
 
 	case "update_acc":
-		
+		if($_POST['change_password'] == "yes" && isset($_POST['pword']) && strlen($_POST['pword']) > 0) {
+			$new_password = md5($_POST['pword']);
+		} else {
+			$new_password = "";
+		}
+
+		edit_account($user_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], $new_password);
 	break;
 	
 	case "delete":

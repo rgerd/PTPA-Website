@@ -105,10 +105,10 @@ function edit_signup($id, $comment){
 }
 
 /*Edits account information.*/
-function edit_account($id, $fname, $lname, $email, $phone, $pass){
+function edit_account($id, $fname, $lname, $email, $phone, $pass) {
     global $db;
-    $query = "UPDATE accounts SET fname='$fname',lname='$lname',email='$email',phone='$phone',password='$pass' WHERE ID='$id'";
-    $results = $db->execute($query);
+    $query = "UPDATE accounts SET fname='$fname', lname='$lname', email='$email', phone='$phone'".($pass == "" ? "" : ", password='$pass'")." WHERE ID='$id'";
+    $results = $db->query($query);
     return $results;
 }
 

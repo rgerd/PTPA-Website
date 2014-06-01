@@ -146,6 +146,7 @@ a.hover_link:hover {
     margin: 2px 0px 2px 0px;
     /*border: 1px solid black;*/
     border-radius: 3px;
+    width: 200px;
 }
 
 .form_text_field:focus {
