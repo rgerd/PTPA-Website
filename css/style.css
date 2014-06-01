@@ -115,6 +115,18 @@ td.event_title, td.event_description, td.event_share {
     cursor: pointer;
 }
 
+#info {
+    display: none; 
+    position: fixed; 
+    background-color: white; 
+    border-radius: 10px; 
+    padding: 10px;
+    border: 2px solid black;
+    z-index: 100;
+    width: 100px;
+    text-align: center;
+}
+
 a.hover_link {
     text-decoration: none;
     color: inherit;
