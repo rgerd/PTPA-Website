@@ -4,3 +4,4 @@
 - Implement reminders
 - Make changing the password more intuitive
 	- Change password button -> dropdown input
+- Look at this http://www.noisetexturegenerator.com/
