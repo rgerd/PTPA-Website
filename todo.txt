@@ -2,6 +2,4 @@
 - Make PDF generation code
 - Make all of the footer buttons work
 - Implement reminders
-- Make changing the password more intuitive
-	- Change password button -> dropdown input
 - Look at this http://www.noisetexturegenerator.com/
