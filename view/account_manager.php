@@ -1,7 +1,7 @@
 <?php $user = get_user($user_id); ?>
 
-<span style="text-decoration: underline;">Account Manager</span>
-<div style="float:left; display: block; text-decoration: none; font-size: 1.5em; color: #999;">Account Manager</div>
+<!--<span style="text-decoration: underline;">Account Manager</span>-->
+<div style="display: block; text-decoration: none; font-size: 1.5em; color: #999;">Account Manager</div>
 
 <div stye="margin-left: 50px;">
 	<form method="POST" action=".">
