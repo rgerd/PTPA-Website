@@ -16,7 +16,7 @@
         <table> 
         <?php foreach($reminders as $reminder): ?>
             <tr>
-                <td><div><?php echo $reminder['reminder_date']; ?></div></td>
+                <td><div><?php echo convert_date($reminder['reminder_date'], 'm/d/Y'); ?></div></td>
                 <td><button>Delete</button></td>
 
             </tr>

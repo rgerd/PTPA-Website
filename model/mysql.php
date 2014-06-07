@@ -306,3 +306,10 @@ function get_reminders_for_event($event_id) {
     $results = $db->query($query);
     return $results->fetchAll();
 }
+
+/*
+    Converts a date to a different format
+*/
+function convert_date($date, $format) {
+    return date($format, strtotime($date));
+}
