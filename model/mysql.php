@@ -296,5 +296,13 @@ function get_reminders_for_today() {
     $results = $db->query($query);
     return $results->fetchAll();
 }
-?>
 
+/*
+    Gets all reminders for an event
+*/
+function get_reminders_for_event($event_id) {
+    global $db;
+    $query = "SELECT * FROM event_reminders WHERE eventID = '$event_id'";
+    $results = $db->query($query);
+    return $results->fetchAll();
+}
