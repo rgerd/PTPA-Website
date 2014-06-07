@@ -39,8 +39,10 @@ switch($action) {
 	
 	case "Reminders":
 		$event_id = $_POST['event_id'];
+		$event = get_event($event_id);
+		$reminders = get_reminders_for_event($event_id);
 		$page = "view/reminders.php";
-		
+
 	break;
 	
 	case "view_task_sign_up":
