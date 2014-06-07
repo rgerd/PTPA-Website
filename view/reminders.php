@@ -2,23 +2,25 @@
 <div style="text-decoration: underline;">Reminders</div>
 <br />
 <div>
-    Event: <?php echo $event_title; ?><br />
-    Date: <?php echo $event_date; ?><br />
-    Description: <?php echo $event_desc; ?>
+    Event: <?php echo $event['title']; ?><br />
+    Date: <?php echo $event['event_date']; ?><br />
+    Description: <?php echo $event['description']; ?>
 </div>
 <br /><br />
 <div>
     <form method="post" action=".">
-        <input type="checkbox" name="week_before"/> Week Before <br />
-        <input type="checkbox" name="day_before"/> Day Before <br />
+        <input type="checkbox" name="week_before"/> A week before <br />
+        <input type="checkbox" name="day_before"/> The day before <br />
         <br />
         <button>Add Custom Date</button>
-        <table>
+        <table> 
+        <?php foreach($reminders as $reminder): ?>
             <tr>
-                <td><div>06/07/14</div></td>
+                <td><div><?php echo $reminder['reminder_date']; ?></div></td>
                 <td><button>Delete</button></td>
 
             </tr>
+        <?php endforeach; ?>
         </table>
         <br />
         <input type="submit" value="Save"/>
