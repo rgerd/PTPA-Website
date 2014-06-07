@@ -37,7 +37,10 @@ switch($action) {
 		$page = "view/home.php";
 	break;
 	
-	case "reminders":
+	case "Reminders":
+		$event_id = $_POST['event_id'];
+		$page = "view/reminders.php";
+		
 	break;
 	
 	case "view_task_sign_up":
@@ -97,7 +100,6 @@ switch($action) {
 	
 	case "none":
 		if(isset($_GET['e'])) {
-			//echo user_owns_event($user_id, $event_id);
 			$event_id = sanitize($_GET['e']);
 			$event = get_event($event_id);
 			$tasks = get_tasks_for_event($event_id);
