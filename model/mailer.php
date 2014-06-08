@@ -18,11 +18,12 @@
 			$mail->AddStringAttachment($attachment, $attachment_name);
 		}
 
-		//$send_result = $mail->Send();
+		$send_result = $mail->Send();
 
 		if(!$send_result) {
 			echo $mail->ErrorInfo;
 		}
+
 		return $send_result;
 	}
 ?>
