@@ -1,10 +1,10 @@
 <?php
 // ADDED PLIVO CODE, THIS WON'T WORK UNTIL WE INSTALL IT
-
 include "database.php";
 include "mysql.php";
 include "mailer.php";
-include "PDFGenerator.php";
+//include "PDFGenerator.php";
+
 //incude "plivo.php";
 
 /*
@@ -15,7 +15,7 @@ $plivo = new RestAPI($auth_id, $auth_token);
 */
 
 $reminders = get_reminders_for_today();
-#remove_reminders($reminders);
+
 foreach($reminders as $reminder) {
 	$event_id = $reminder['eventID'];
 	$type = $reminder['type'];
@@ -28,6 +28,8 @@ foreach($reminders as $reminder) {
 		send_reminder_to_creator($event_id);
 		break;
 	}
+
+	//remove_reminder($reminder['ID']);
 	echo "Reminders sent.";
 }
 
@@ -48,7 +50,7 @@ function send_reminder_to_volunteers($event_id) {
 			$message = sprintf($general_message, $account['fname'], $account['lname'], $event['title'], $event['event_date'], $task['description']);
 			if($task['comments']) 
 				$message .= sprintf($comment_message, $signup['comment']);
-			
+
 			sendMail($account['email'], $account['fname'].' '.$account['lname'], "PTVolunteer Reminder", $message);
 
 			/*
