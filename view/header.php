@@ -35,5 +35,8 @@
     </div>
 </div>
 <?php endif; ?>
-<div id="page_content" <?php if($user_id == -1) echo "class='front'"; ?>>
-    <div id="view_content">
+<?php if($user_id == -1 && $event_id != -1): ?>
+    <a href="."><div><img height="70px" src="css/images/logo1.png"/></div></a>
+<?php endif; ?>
+<div id="page_content" <?php if($user_id == -1) echo "class='front".($event_id != -1 ? " event" : "")."'"; ?>>
+    <div id="view_content" <?php if($user_id == -1) echo "class='front'"; ?>>
