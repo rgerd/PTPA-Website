@@ -249,8 +249,8 @@ function get_user_id_by_cookie_data($data) {
 function sanitize($data) {
     $data = str_replace("<", "&lt;", $data);
     $data = str_replace(">", "&gt;", $data);
-    //$data = str_replace("\"", "", $data);
-    //$data = str_replace("'", "", $data);
+    $data = str_replace('"', '\"', $data);
+    $data = str_replace("'", "\'", $data);
     return $data;
 }
 
@@ -292,9 +292,11 @@ function sign_up_for_task($task_id, $user_id, $comment = null) {
 */ 
 function get_reminders_for_today() {
     global $db;
+    $reminders = array();
     $query = "SELECT * FROM event_reminders WHERE reminder_date = CURDATE()";
     $results = $db->query($query);
-    return $results->fetchAll();
+    $reminders = $results->fetchAll();
+    return $reminders;
 }
 
 /*
@@ -310,9 +312,13 @@ function get_reminders_for_event($event_id) {
 /*
     Adds a reminder to an event
 */
-function add_reminder($event_id, $date) {
+function add_reminder($event_id, $date_type, $date) {
     global $db;
-    $query = "INSERT INTO event_reminders (eventID, type, reminder_date) VALUES ('$event_id', 1, '$date')";
+    if($date_type == 0) {
+        $query = "INSERT INTO event_reminders (eventID, type, date_type, reminder_date) VALUES ('$event_id', 1, $date_type, '$date')";
+    } else {
+        $query = "INSERT INTO event_reminders (eventID, type, date_type) VALUES ('$event_id', 1, $date_type)";
+    }
     $db->exec($query);
 }
 
