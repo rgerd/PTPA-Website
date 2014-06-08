@@ -55,7 +55,19 @@
 
 		foreach($reminders as $reminder) {
 			if($reminder['ID'] == '-1')
-				add_reminder($event_id, $reminder['date']);
+				add_reminder($event_id, 0, $reminder['date']);
+		}
+
+		if(isset($data['day_before']) && !isset($data['day_before_id'])) {
+			add_reminder($event_id, 1, "");	
+		} else if(!isset($data['day_before']) && isset($data['day_before_id'])) {
+			delete_reminder($data['day_before_id']);
+		}
+
+		if(isset($data['week_before']) && !isset($data['week_before_id'])) {
+			add_reminder($event_id, 2, "");	
+		} else if(!isset($data['week_before']) && isset($data['week_before_id'])) {
+			delete_reminder($data['week_before_id']);
 		}
 	}
 

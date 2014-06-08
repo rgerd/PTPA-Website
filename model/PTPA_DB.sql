@@ -61,12 +61,13 @@ CREATE TABLE IF NOT EXISTS `events` (
 
 --
 -- Table structure for table `event_reminders`
---
+-- date_type can be an int(2) because it goes from 0 (00 in binary) to 2 (10)
 
 CREATE TABLE IF NOT EXISTS `event_reminders` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `eventID` int(11) NOT NULL,
   `type` int(11) NOT NULL,
+  `date_type` int(2) NOT NULL,
   `reminder_date` date NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
