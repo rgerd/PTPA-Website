@@ -3,10 +3,10 @@ var event_task_table_showing = false;
 var deleted_tasks = [];
 
 $(document).ready(function() {
+	loadMethods();
 	$("#event_creator_add_button").click(function() {
 		createEmptyEventTask();
 		$("#" + (event_task_id - 1)).fadeIn();
-		loadMethods();
 	});
 
 	$("#datepicker").datepicker(
@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 
 function loadMethods() {
-	$(".delete_button").click(function() {
+	$("#event_tasks_table").on("click", ".delete_button", function() {
 		var id = $(this).attr("task_id");
 		//$("#" + id).fadeOut(function() { $(this).remove();});
 		var __id = $("#event_task_" + id + "_id").val();

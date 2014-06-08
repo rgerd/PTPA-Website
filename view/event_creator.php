@@ -19,7 +19,6 @@
                 echo '$("#" + (event_task_id - 1)).show(0);';
             }
         ?>
-        loadMethods();
     });
 </script>
 <form method = "POST" action=".">
