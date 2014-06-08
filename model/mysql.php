@@ -308,6 +308,15 @@ function get_reminders_for_event($event_id) {
 }
 
 /*
+    Adds a reminder to an event
+*/
+function add_reminder($event_id, $date) {
+    global $db;
+    $query = "INSERT INTO event_reminders (eventID, type, reminder_date) VALUES ('$event_id', 1, '$date')";
+    $db->exec($query);
+}
+
+/*
     Converts a date to a different format
 */
 function convert_date($date, $format) {

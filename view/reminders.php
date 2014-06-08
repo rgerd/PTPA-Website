@@ -33,7 +33,9 @@
             <tbody id="table_body"></tbody>
         </table>
         <br />
-        <input type="hidden" name="deleted_reminders" value=""/>
+        <input type="hidden" id="deleted_reminders" name="deleted_reminders" value=""/>
+        <input type="hidden" name="action" value="save_event_reminders"/>
+        <input type="hidden" name="event_id" value="<?php echo $event_id; ?>"/>
         <input type="submit" value="Save"/>
     </form>
 </div>

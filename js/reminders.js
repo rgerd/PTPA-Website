@@ -48,7 +48,13 @@ function loadMethods() {
 
 function addNewReminder() {
 	var _date = document.getElementById("reminder_date").value;
+	if(_date == "") {
+		alert("Please select a date!");
+		return;
+	}
 	createReminder(-1, _date);
+	$("#datepicker").datepicker('setDate');
+	$("#reminder_date").val("");
 }
 
 /*

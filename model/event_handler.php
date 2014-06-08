@@ -22,7 +22,6 @@
 		$event_desc = sanitize($data['event_desc']);
 		update_event($event_id, $event_title, $event_date, $event_desc);
 
-		$last_internalID = 0;
 		if(isset($data['deleted_tasks'])) {
 			$deleted_tasks = explode(",", sanitize($data['deleted_tasks']));
 			foreach($deleted_tasks as $task) {
@@ -38,8 +37,26 @@
 				update_task($task['ID'], $task['internalID'], $task['description'], $task['numSlots'], $task['comments']);
 			}
 		}
+	}
 
-		//delete_extra_tasks($event_id, $last_internalID);
+	function save_event_reminders($event_id, $data) {
+		global $user_id;
+		if(!user_owns_event($user_id, $event_id))
+			return;
+
+		if(isset($data['deleted_reminders'])) {
+			$deleted_reminders = explode(",", sanitize($data['deleted_reminders']));
+			foreach($deleted_reminders as $reminder) {
+				delete_reminder($reminder);
+			}
+		}
+
+		$reminders = parse_reminders($data);
+
+		foreach($reminders as $reminder) {
+			if($reminder['ID'] == '-1')
+				add_reminder($event_id, $reminder['date']);
+		}
 	}
 
 	function parse_tasks($task_data) {
@@ -68,4 +85,27 @@
 			$event_task_index++;
 		}
 		return $tasks;
+	}
+
+	function parse_reminders($reminder_data) {
+		$reminders = array();
+
+		$reminder_index = 0;
+		while(true) {
+			$v = 'reminder_'.$reminder_index;
+			if(isset($reminder_data[$v])) {
+				$id = sanitize($reminder_data[$v."_id"]);
+				$date = sanitize($reminder_data[$v."_date"]);
+
+				$reminder = array(
+					"ID" => $id,
+					"date" => $date,
+				);
+				array_push($reminders, $reminder);
+			} else {
+				break;
+			}
+			$reminder_index++;
+		}
+		return $reminders;
 	}

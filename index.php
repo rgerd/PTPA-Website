@@ -42,7 +42,6 @@ switch($action) {
 		$event = get_event($event_id);
 		$reminders = get_reminders_for_event($event_id);
 		$page = "view/reminders.php";
-
 	break;
 	
 	case "view_task_sign_up":
@@ -64,6 +63,15 @@ switch($action) {
 		$event = get_event($event_id);
 		$page_title = $event['title'];
 		$page = "view/event.php";
+	break;
+
+	case "save_event_reminders":
+		$event_id = $_POST['event_id'];
+		save_event_reminders($event_id, $_POST);
+
+		$event = get_event($event_id);
+		$reminders = get_reminders_for_event($event_id);
+		$page = "view/reminders.php";
 	break;
 
 	case "preview_save":
