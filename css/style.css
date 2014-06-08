@@ -17,7 +17,7 @@ body {
     position: fixed;
     z-index: 10;
     background-color: black;
-    border-bottom: thick solid white;
+    /*border-bottom: thick solid white;*/
     width: 100%;
     min-width: 300px;
     height: 75px;
@@ -37,6 +37,7 @@ div#about {
     /*width: 48%;*/
     margin: 10px;
     text-align: center;
+    margin-bottom: 50px;
 }
 
 div#tabs {
@@ -71,10 +72,18 @@ div#tabs {
     min-height: 85%;
     border-radius: 10px;
     /*width: auto;*/
+    border: 2px solid black;
 }
 
 #page_content.front {
-    margin-top: 50px;
+    /*margin-top: 50px;*/
+    position: absolute;
+    top: 50px;
+    margin-bottom: 50px;
+}
+
+#page_content.event {
+    top: 75px;
 }
 
 #view_content{
@@ -84,8 +93,14 @@ div#tabs {
     padding: 5px;
     padding-top: 100px;
     height: auto;
+    padding-bottom: 20px;
     /*min-height: 85%;*/
     /*width: auto;*/
+}
+
+#view_content.front {
+    padding-top: 30px;
+    padding-bottom: 20px;
 }
 
 #sign_in_form {
@@ -158,6 +173,13 @@ a.hover_link:hover {
 
 .form_text_field:focus {
     background-color: #ededed;
+}
+
+#page_title {
+    display: block; 
+    text-decoration: none; 
+    font-size: 1.5em; 
+    color: #888;
 }
 
 ::-webkit-input-placeholder {
