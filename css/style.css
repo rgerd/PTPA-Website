@@ -29,19 +29,20 @@ body {
 }
 
 div#about {
-    color: white;
-    margin-top: 25px;
-    float:left;
-    font-size: 2em;
+    color: black; /* white */
+    /*margin-top: 25px;*/
+    /*float:left;*/
+    font-size: 1.6em; /* 2em */
     font-family: helvetica;
-    width: 50%;
+    /*width: 48%;*/
     margin: 10px;
+    text-align: center;
 }
 
 div#tabs {
     margin-top: 25px;
-    float: right;
-    margin-right: 80px;
+    /*float: right;*/
+    /*margin-right: 80px;*/
 }
 
 #inner_navbar{
@@ -58,7 +59,8 @@ div#tabs {
 
 #page_content{
     overflow: hidden;
-    background-color: white;
+    background-color: #FFDDDD; /*white;*/
+    /*margin-top: 50px;*/
     padding-top: 5px;
     /*padding-bottom: 25px;*/
     padding-left: 10px;
@@ -67,7 +69,12 @@ div#tabs {
     margin-right: 100px;
     height:auto;
     min-height: 85%;
+    border-radius: 10px;
     /*width: auto;*/
+}
+
+#page_content.front {
+    margin-top: 50px;
 }
 
 #view_content{

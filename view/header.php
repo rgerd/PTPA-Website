@@ -20,6 +20,7 @@
 </head>
 <body>
 <!--<div id="info"></div>--> <!-- UNCOMMENT TO ENABLE INFO BOX -->
+<?php if($user_id != -1): ?>
 <div >
     <div id="nav_bar">
         <div id="inner_navbar">
@@ -33,5 +34,6 @@
         </div>
     </div>
 </div>
-<div id="page_content">
+<?php endif; ?>
+<div id="page_content" <?php if($user_id == -1) echo "class='front'"; ?>>
     <div id="view_content">
