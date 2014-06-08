@@ -1,7 +1,7 @@
 <?php $user = get_user($user_id); ?>
 
 <!--<span style="text-decoration: underline;">Account Manager</span>-->
-<div style="display: block; text-decoration: none; font-size: 1.5em; color: #999;">Account Manager</div>
+<div id="page_title">Account Manager</div>
 
 <div stye="margin-left: 50px;">
 	<form method="POST" action=".">
@@ -13,9 +13,8 @@
 		
 		<input class="form_text_field" id="pword_input" style="display: none;" type="password" name="pword" placeholder="New Password"/>
 		<input type="hidden" id="change_password" name="change_password" value="no"/>
-		<button id="new_pword" type="button">Change Password</button>
-		
-		<br />
+		<button id="new_pword" class="button light_button" style="font-size: 0.6em;" type="button">Change Password</button>
+		<br /><br />
 		<input style="margin-left: 0px" class="button" type="submit" value="Save"/><br />
 		<a class="button" href=".">Cancel</a>
 	</form>
