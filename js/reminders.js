@@ -16,7 +16,7 @@ $(document).ready(function() {
 });
 
 function loadMethods() {
-	$(".delete_button").click(function() {
+	$("#reminders_table").on("click", ".delete_button", function() {
 		var id = $(this).attr("reminder_id");
 		//$("#" + id).fadeOut(function() { $(this).remove();});
 		var __id = $("#reminder_" + id + "_id").val();
@@ -42,7 +42,6 @@ function loadMethods() {
 			$("#reminder_" + i + "_id").attr("name", function(arr) {return "reminder_" + (_i) + "_id";});
 			$("#reminder_" + i + "_id").attr("id", function(arr) {return "reminder_" + (_i) + "_id";});
 		}
-		console.log(reminder_id);
 		reminder_id--;
 	});
 }
@@ -50,7 +49,6 @@ function loadMethods() {
 function addNewReminder() {
 	var _date = document.getElementById("reminder_date").value;
 	createReminder(-1, _date);
-	loadMethods();
 }
 
 /*
