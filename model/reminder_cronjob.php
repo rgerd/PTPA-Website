@@ -28,6 +28,7 @@ foreach($reminders as $reminder) {
 		send_reminder_to_creator($event_id);
 		break;
 	}
+	echo "Reminders sent.";
 }
 
 function send_reminder_to_volunteers($event_id) {
@@ -59,7 +60,7 @@ function send_reminder_to_volunteers($event_id) {
 		    );
 		    $response = $plivo->send_message($params);
 			*/
-			echo $message."<br />";
+			# echo $message."<br />";
 		}
 	}
 }
