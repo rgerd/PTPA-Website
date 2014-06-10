@@ -10,7 +10,7 @@
 	border: 2px solid black;
 	padding: 5px;
 	overflow: hidden;
-	max-width: 500px;
+	/*max-width: 500px;*/
 	background-color: #5F5F5F;
 	/*border-radius: 5px;*/
 	/*margin-left: 10px;*/
@@ -23,7 +23,7 @@
 .event_task_title {
 	font-size: 1.5em;
 	float: left;
-	width: 90%;
+	width: 85%;
 	margin-bottom: 3px; /* The button is 3px larger than a single line */
 }
 

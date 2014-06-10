@@ -51,4 +51,14 @@ $(document).ready(function() {
 			left: x + 10
 		});
 	}
+
+
+	$(".phone_number").keypress(function(event) {
+		// 0 = 48
+		// 9 = 57
+
+		var code = event.which;
+		if(code < 48 || code > 57)
+			event.preventDefault();
+	});
 });

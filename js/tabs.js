@@ -30,5 +30,5 @@ $(document).ready(function() {
 		});
 	});
 
-	$(".error_message").slideDown(500).delay(5000).slideUp(500);
+	$(".error_message").slideDown(450).delay(10000).slideUp(450);
 });
