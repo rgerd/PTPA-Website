@@ -16,6 +16,14 @@ function get_users_signed_up($taskID) {
     return $result->fetchAll();
 }
 
+/* Returns the signup with the given user and task id */
+function get_signup($taskID, $userID) {
+    global $db;
+    $query = "SELECT * FROM signups WHERE taskID = '$taskID' AND accountID = '$userID'";
+    $result = $db->query($query);
+    return $result->fetch();
+}
+
 /**/
 function get_unregistered_user($code) {
     global $db;
@@ -96,19 +104,11 @@ function delete_extra_tasks($event_id, $last_internalID) {
     return $result;
 }
 
-/*Edits comment of a signup*/
-function edit_signup($id, $comment){
-    global $db;
-    $query = "UPDATE signups SET comment='$comment' WHERE ID='$id'";
-    $results = $db->execute($query);
-    return $results;
-}
-
 /*Edits account information.*/
 function edit_account($id, $fname, $lname, $email, $phone, $pass) {
     global $db;
     $query = "UPDATE accounts SET fname='$fname', lname='$lname', email='$email', phone='$phone'".($pass == "" ? "" : ", password='$pass'")." WHERE ID='$id'";
-    $results = $db->query($query);
+    $results = $db->exec($query);
     return $results;
 }
 
@@ -204,7 +204,7 @@ function register_user($fname, $lname, $email, $phone, $password, $registered) {
 */
 function user_exists($email) {
     global $db;
-    $query = "SELECT ID FROM accounts WHERE email = '$email'";
+    $query = "SELECT ID FROM accounts WHERE email = '$email' AND registered = 1";
     $results = $db->query($query);
     $results = $results->rowCount();
     return $results > 0;
@@ -285,6 +285,14 @@ function sign_up_for_task($task_id, $user_id, $comment = null) {
     $comm = $results == 0 ? "" : $comment;
     $query = "INSERT INTO signups (taskID, accountID, comment) VALUES ('$task_id', '$user_id', '$comm')";
     $db->exec($query);
+}
+
+/*Edits comment of a signup*/
+function edit_signup($id, $comment){
+    global $db;
+    $query = "UPDATE signups SET comment='$comment' WHERE ID='$id'";
+    $results = $db->exec($query);
+    return $results;
 }
 
 /*

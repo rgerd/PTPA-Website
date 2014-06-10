@@ -9,6 +9,7 @@
 		$tasks = get_tasks_for_event($event_id);
 
 	foreach($tasks as $task):
+		$task_id = $task['ID'];
 		$signed_up = $preview ? 0 : get_users_signed_up($task['ID']);
 		$num_signed_up = $preview ? 0 : count($signed_up);
 		$max_num_signed_up = $task["numSlots"];
@@ -35,7 +36,7 @@
 							$user_ = get_user($user['accountID']);
 						?>
 							<li><?php 
-								echo $user_['fname']." ".$user_['lname'];
+								echo "<b>".$user_['fname']." ".$user_['lname']."</b>";
 								if($task['comments'])
 									echo ": ".$user['comment'];
 							?></li>
@@ -47,17 +48,24 @@
 				</div>
 				<?php endif; ?>
 		</div>
-		<?php if(!$task_full): ?>
-		<?php if(!$preview): ?>
-		<form action="." method="POST">
-			<input type="submit" class="button event_sign_up_button" value="Sign Up"/>
-			<input type="hidden" name="action" value="view_task_sign_up"/>
-			<input type="hidden" name="event" value="<?php echo $event_id; ?>"/>
-			<input type="hidden" name="task" value="<?php echo $task['ID']; ?>"/>
-		</form>
-		<?php else: ?>
-		<div style="display:block;"><button class="button event_sign_up_button">Sign Up</button></div>
-		<?php endif; ?>
+		<?php if($volunteer_id != -1 && get_signup($task_id, $volunteer_id) !== false): ?>
+			<form action="." method="POST">
+				<input type="submit" class="button event_sign_up_button" value="Edit"/>
+				<input type="hidden" name="action" value="view_task_sign_up"/>
+				<input type="hidden" name="event" value="<?php echo $event_id; ?>"/>
+				<input type="hidden" name="task" value="<?php echo $task['ID']; ?>"/>
+			</form>
+		<?php elseif(!$task_full): ?>
+			<?php if(!$preview): ?>
+				<form action="." method="POST">
+					<input type="submit" class="button event_sign_up_button" value="Sign Up"/>
+					<input type="hidden" name="action" value="view_task_sign_up"/>
+					<input type="hidden" name="event" value="<?php echo $event_id; ?>"/>
+					<input type="hidden" name="task" value="<?php echo $task['ID']; ?>"/>
+				</form>
+			<?php else: ?>
+				<div style="display:block;"><button class="button event_sign_up_button">Sign Up</button></div>
+			<?php endif; ?>
 		<?php else: ?>
 			<button type="button" class="button event_sign_up_button task_full_button">Full</button>
 		<?php endif; ?>
