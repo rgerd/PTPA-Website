@@ -85,7 +85,7 @@ function add_event($accountID, $title, $date, $desc) {
 
 /*Updates an event after being edited*/
 function update_event($id, $title, $date, $desc) {
-    $query = "UPDATE events SET title=?, event_date=?, description=? WHERE ID=?";
+    $query = "UPDATE events SET title = ?, event_date = ?, description = ? WHERE ID = ?";
     execute_query($query, array($title, $date, $desc, $id));
     return $id;
 }
@@ -98,13 +98,13 @@ function add_task($eventID, $internalID, $desc, $numSlots, $comments) {
 
 /*Updates a task after being edited*/
 function update_task($id, $internalID, $desc, $numSlots, $comments) {
-    $query = "UPDATE tasks SET internalID=?, description=?, numSlots=?, comments=? WHERE ID=?";
+    $query = "UPDATE tasks SET internalID = ?, description = ?, numSlots = ?, comments = ? WHERE ID = ?";
     execute_query($query, array($internalID, $desc, $numSlots, $comments, $id));
 }
 
 /*Edits account information.*/
 function edit_account($id, $fname, $lname, $email, $phone, $pass) {
-    $query = "UPDATE accounts SET fname=?, lname=?, email=?, phone=?".($pass == "" ? "" : ", password=?")." WHERE ID=?";
+    $query = "UPDATE accounts SET fname = ?, lname = ?, email = ?, phone = ?".($pass == "" ? "" : ", password=?")." WHERE ID = ?";
     execute_query($query, array($fname, $lname, $email, $phone, $pass, $id));
 }
 
@@ -117,38 +117,33 @@ function delete_account($id) {
 /*Deletes event given id*/
 function delete_event($event_id, $user_id) {
     global $db;
-    $query = "SELECT * FROM events WHERE ID='$event_id'";
-    $result = $db->query($query);
-    $result = $result->fetch();
+    $query = "SELECT * FROM events WHERE ID = ?";
+    $result = execute_query($query, array($event_id))->fetch();
 
     if($result['accountID'] != $user_id)
         return;
 
     partially_delete_event($event_id);
 
-    $query_tasks = "SELECT * FROM tasks WHERE eventID='$event_id'";
-    $result_tasks = $db->query($query_tasks);
-    $result_tasks = $result_tasks->fetchAll();
+    $query_tasks = "SELECT * FROM tasks WHERE eventID = ?";
+    $result_tasks = execute_query($query_tasks, array($event_id))->fetchAll();
 
     foreach ($result_tasks as $task) {
         $task_id = $task['ID'];
         delete_task($task_id);
 
         $query = "SELECT * FROM signups WHERE taskID = '$task_id'";
-        $result_signup = $db->query($query);
-        $result_signup = $result_signup->fetchAll();
+        $result_signup = execute_query($query, array($task_id))->fetchAll();
 
-        foreach($result_signup as $signup){
+        foreach($result_signup as $signup)
             delete_signup($signup['ID']);
-        }
     }
 
-    $query = "SELECT * FROM event_reminders WHERE eventID = '$event_id'";
-    $results = $db->query($query);
-    $results = $results->fetchAll();
-    foreach ($results as $remind){
-        delete_reminder($remind['ID']);
-    }
+    $query = "SELECT * FROM event_reminders WHERE eventID = ?";
+    $results = execute_query($query, array($event_id))->fetchAll();
+
+    foreach ($results as $reminder)
+        delete_reminder($reminder['ID']);
 }
 
 /*Deletes event given id*/
@@ -275,7 +270,6 @@ function get_reminders_for_event($event_id) {
 */
 function add_reminder($event_id, $date_type, $date) {
     $query = "INSERT INTO event_reminders (eventID, type, date_type".($date_type == 0 ? ", reminder_date" : "").") VALUES (?, 1, ?".($date_type == 0 ? ", ?" : "").")";    
-
     execute_query($query, func_get_args()));
 }
 
