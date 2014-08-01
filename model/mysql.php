@@ -1,54 +1,67 @@
 <?php
+function execute_query($query, $vals = array(), $sanitize = true, $debug = false) {
+    global $db;
+
+    if($sanitize)
+        foreach($vals as &$val)
+            $val = sanitize($val);
+
+    unset($val);
+
+    if($debug) {
+        echo "QUERY: ".$query."<br /><br />";
+        echo "VALUES: <br />";
+        print_r($vals);
+        echo "<br /><br />";
+    }
+   
+    $result = $db->prepare($query);
+    
+    $exec_success = $result->execute($vals);
+
+    if($debug) {
+        echo "PREPARATION ".((!$result) ? "UNSUCCESSFUL" : "SUCCESSFUL")."<br />";
+        echo "EXECUTION ".($exec_success ? "SUCCESSFUL" : "UNSUCCESSFUL")."<br />";
+        echo "<br />";
+    }
+
+    return $result;
+}
+
 /*Returns the events of a specific user.*/
 function get_events_by_user($userID) {
-    global $db;
-    $query = "SELECT * FROM events WHERE accountID = '$userID'";
-    $result = $db->query($query);
-    $result = $result->fetchAll();
-    return $result;
+    $query = "SELECT * FROM events WHERE accountID = ?";
+    return execute_query($query, func_get_args())->fetchAll();
 }
 
 /*Returns the users signed up for a task.*/
 function get_users_signed_up($taskID) {
-    global $db;
-    $query = "SELECT * FROM signups WHERE taskID = '$taskID'";
-    $result = $db->query($query);
-    return $result->fetchAll();
+    $query = "SELECT * FROM signups WHERE taskID = ?";
+    return execute_query($query, func_get_args())->fetchAll();
 }
 
 /* Returns the signup with the given user and task id */
 function get_signup($taskID, $userID) {
-    global $db;
-    $query = "SELECT * FROM signups WHERE taskID = '$taskID' AND accountID = '$userID'";
-    $result = $db->query($query);
-    return $result->fetch();
+    $query = "SELECT * FROM signups WHERE taskID = ? AND accountID = ?";
+    return execute_query($query, func_get_args())->fetch();
 }
 
 /**/
 function get_unregistered_user($code) {
-    global $db;
-    $query = "SELECT * FROM accounts WHERE password = '$code' AND registered = 0";
-    $results = $db->query($query);
-    $results = $results->fetch();
-    return $results;
+    $query = "SELECT * FROM accounts WHERE password = ? AND registered = 0";
+    return execute_query($query, func_get_args())->fetch();
 }
 
 /*Returns user given id*/
-function get_user($id){
-    global $db;
-    $query = "SELECT * FROM accounts WHERE ID = '$id'";
-    $results = $db->query($query);
-    $results = $results->fetch();
-    return $results;
+function get_user($id) {
+    $query = "SELECT * FROM accounts WHERE ID = ?";
+    return execute_query($query, func_get_args())->fetch();
 }
 
 /*Returns event given id*/
-function get_event($id){
-    global $db;
-    $query = "SELECT * FROM events WHERE ID = '$id'";
-    $results = $db->query($query);
-    $results = $results->fetch();
-    return $results;
+function get_event($id) {
+    $query = "SELECT * FROM events WHERE ID = ?";
+    return execute_query($query, func_get_args())->fetch();
 }
 
 /*Returns whether or not a user owns an event*/
@@ -57,67 +70,48 @@ function user_owns_event($user_id, $event_id) {
 }
 
 /*Counts number of signups for a task*/
-function count_signups($task){
-    global $db;
-    $query = "SELECT count(*) as num FROM signups WHERE taskID = '$task'";
-    $results = $db->query($query);
-    $results = $results->fetch();
-    return $results['num'];
+function count_signups($taskID) {
+    $query = "SELECT count(*) as num FROM signups WHERE taskID = ?";
+    return execute_query($query, func_get_args())->fetch()['num'];
 }
 
 /*Creates new event and returns id*/
-function add_event($accountID, $title, $date, $desc){
+function add_event($accountID, $title, $date, $desc) {
     global $db;
-    $query = "INSERT INTO events (accountID, event_date, title, description) VALUES ('$accountID', '$date', '$title', '$desc')";
-    $results = $db->exec($query);
+    $query = "INSERT INTO events (accountID, event_date, title, description) VALUES (?, ?, ?, ?)";
+    execute_query($query, func_get_args());
     return $db->lastInsertId();
 }
 
 /*Updates an event after being edited*/
 function update_event($id, $title, $date, $desc) {
-    global $db;
-    $query = "UPDATE events SET title='$title', event_date='$date', description='$desc' WHERE ID='$id'";
-    $result = $db->exec($query);
+    $query = "UPDATE events SET title=?, event_date=?, description=? WHERE ID=?";
+    execute_query($query, array($title, $date, $desc, $id));
     return $id;
 }
 
 /*Creates new task*/
-function add_task($eventID, $internalID, $desc, $numSlots, $comments){
-    global $db;
-    $query = "INSERT INTO tasks (eventID, description, numSlots, internalID, comments) VALUES ('$eventID', '$desc', '$numSlots', '$internalID', '$comments')";
-    $results = $db->exec($query);
+function add_task($eventID, $internalID, $desc, $numSlots, $comments) {
+    $query = "INSERT INTO tasks (eventID, internalID, description, numSlots, comments) VALUES (?, ?, ?, ?, ?)";
+    execute_query($query, func_get_args());
 }
 
 /*Updates a task after being edited*/
 function update_task($id, $internalID, $desc, $numSlots, $comments) {
-    global $db;
-    $query = "UPDATE tasks SET internalID='$internalID', description='$desc', numSlots='$numSlots', comments='$comments' WHERE ID='$id'";
-    $result = $db->exec($query);
-    return $result;
-}
-
-/*Deletes all of the tasks from an event after a certain internalID*/
-function delete_extra_tasks($event_id, $last_internalID) {
-    global $db;
-    $query = "DELETE FROM tasks WHERE internalID >= $last_internalID";
-    $result = $db->exec($query);
-    return $result;
+    $query = "UPDATE tasks SET internalID=?, description=?, numSlots=?, comments=? WHERE ID=?";
+    execute_query($query, array($internalID, $desc, $numSlots, $comments, $id));
 }
 
 /*Edits account information.*/
 function edit_account($id, $fname, $lname, $email, $phone, $pass) {
-    global $db;
-    $query = "UPDATE accounts SET fname='$fname', lname='$lname', email='$email', phone='$phone'".($pass == "" ? "" : ", password='$pass'")." WHERE ID='$id'";
-    $results = $db->exec($query);
-    return $results;
+    $query = "UPDATE accounts SET fname=?, lname=?, email=?, phone=?".($pass == "" ? "" : ", password=?")." WHERE ID=?";
+    execute_query($query, array($fname, $lname, $email, $phone, $pass, $id));
 }
 
 /*Deletes account given id*/
-function delete_account($id){
-    global $db;
-    $query = "DELETE FROM accounts WHERE ID = '$id'";
-    $results = $db->execute($query);
-    return $results;
+function delete_account($id) {
+    $query = "DELETE FROM accounts WHERE ID = ?";
+    execute_query($query, func_get_args());
 }
 
 /*Deletes event given id*/
@@ -158,34 +152,26 @@ function delete_event($event_id, $user_id) {
 }
 
 /*Deletes event given id*/
-function partially_delete_event($id){
-    global $db;
-    $query = "DELETE FROM events WHERE ID = '$id'";
-    $results = $db->exec($query);
-    return $results;
+function partially_delete_event($id) {
+    $query = "DELETE FROM events WHERE ID = ?";
+    execute_query($query, func_get_args());
 }
 
 
 /*Deletes signup given id*/
-function delete_signup($id){
-    global $db;
-    $query = "DELETE FROM signups WHERE ID = '$id'";
-    $results = $db->exec($query);
-    return $results;
+function delete_signup($id) {
+    $query = "DELETE FROM signups WHERE ID = ?";
+    execute_query($query, func_get_args());
 }
 
-function delete_task($id){
-    global $db;
-    $query = "DELETE FROM tasks WHERE ID = '$id'";
-    $results = $db->exec($query);
-    return $results;
+function delete_task($id) {
+    $query = "DELETE FROM tasks WHERE ID = ?";
+    execute_query($query, func_get_args());
 }
 
-function delete_reminder($id){
-    global $db;
-    $query = "DELETE FROM event_reminders WHERE ID = '$id'";
-    $results = $db->exec($query);
-    return $results;
+function delete_reminder($id) {
+    $query = "DELETE FROM event_reminders WHERE ID = ?";
+    execute_query($query, func_get_args());
 }
 
 /*
@@ -193,8 +179,8 @@ function delete_reminder($id){
 */
 function register_user($fname, $lname, $email, $phone, $password, $registered) {
     global $db;
-    $query = "INSERT INTO accounts (fname, lname, email, phone, password, registered) VALUES ('$fname', '$lname', '$email', '$phone', '$password', $registered)";
-    $db->exec($query);
+    $query = "INSERT INTO accounts (fname, lname, email, phone, password, registered) VALUES (?, ?, ?, ?, ?, ?)";
+    execute_query($query, func_get_args());
 	return $db->lastInsertId();
 }
 
@@ -203,44 +189,101 @@ function register_user($fname, $lname, $email, $phone, $password, $registered) {
     Used by the register_user method.
 */
 function user_exists($email) {
-    global $db;
-    $query = "SELECT ID FROM accounts WHERE email = '$email' AND registered = 1";
-    $results = $db->query($query);
-    $results = $results->rowCount();
-    return $results > 0;
+    $query = "SELECT ID FROM accounts WHERE email = ? AND registered = 1";
+    return execute_query($query, func_get_args())->rowCount() > 0;
 }
 
 /*
-    Authenticates a user when signing in & returns their id.
+    Authenticates a registered user when signing in & returns their id.
 */
 function auth_user($email, $password) {
-    global $db;
-    $query = "SELECT ID, email, password FROM accounts WHERE email = '$email' ";
-    $result = $db->query($query);
-    $result = $result->fetch();
-    if ($result['password'] == $password) {
+    $query = "SELECT ID, email, password FROM accounts WHERE email = ? AND registered = 1";
+    $result = execute_query($query, array($email))->fetch();
+    
+    if ($result['password'] == $password)
         return $result['ID'];
-    }
     return -1;
 }
 
 /*Sets cookie data for user*/
 function set_cookie_data($user_id, $cookie_data) {
-    global $db;
-    $query = "UPDATE accounts SET cookieData='$cookie_data' WHERE ID='$user_id'";
-    $result = $db->exec($query);
-    return $result;
+    $query = "UPDATE accounts SET cookieData = ? WHERE ID = ?";
+    execute_query($query, array($cookie_data, $user_id));
 }
 
 /*
     Looks up a user by their cookie data and returns their id
 */
 function get_user_id_by_cookie_data($data) {
-    global $db;
-    $query = "SELECT ID FROM accounts WHERE cookieData = '$data'";
-    $result = $db->query($query);
-    $result = $result->fetch();
-    return $result['ID'];
+    $query = "SELECT ID FROM accounts WHERE cookieData = ?";
+    return execute_query($query, func_get_args())->fetch()['ID'];
+}
+
+/*
+    Returns the tasks for a specified event  
+*/
+function get_tasks_for_event($event_id) {
+    $query = "SELECT * FROM tasks WHERE eventID = ?";
+    return execute_query($query, func_get_args())->fetchAll();
+}
+
+/*
+    Returns a task by id
+*/
+function get_task($task_id) {
+    $query = "SELECT * FROM tasks WHERE ID = ?";
+    return execute_query($query, func_get_args())->fetch();
+}
+
+/*
+    Signs a user up for a task
+    If comments are disabled, the comment will just be an empty string
+*/
+function sign_up_for_task($task_id, $user_id, $comment = null) {
+    $query = "SELECT comments FROM tasks WHERE ID = ?";
+    $results = execute_query($query, array($task_id))->fetch()['comments'];
+
+    $comm = $results == 0 ? "" : $comment;
+    $query = "INSERT INTO signups (taskID, accountID, comment) VALUES (?, ?, ?)";
+    execute_query($query, array($task_id, $user_id, $comm));
+}
+
+/*Edits comment of a signup*/
+function edit_signup($id, $comment){
+    $query = "UPDATE signups SET comment = ? WHERE ID = ?";
+    execute_query($query, array($comment, $id));
+}
+
+/*
+    Gets all reminders matching today
+*/ 
+function get_reminders_for_today() {
+    $query = "SELECT * FROM event_reminders WHERE reminder_date = CURDATE()";
+    return execute_query($query)->fetchAll();
+}
+
+/*
+    Gets all reminders for an event
+*/
+function get_reminders_for_event($event_id) {
+    $query = "SELECT * FROM event_reminders WHERE eventID = ?";
+    return execute_query($query, func_get_args())->fetchAll();
+}
+
+/*
+    Adds a reminder to an event
+*/
+function add_reminder($event_id, $date_type, $date) {
+    $query = "INSERT INTO event_reminders (eventID, type, date_type".($date_type == 0 ? ", reminder_date" : "").") VALUES (?, 1, ?".($date_type == 0 ? ", ?" : "").")";    
+
+    execute_query($query, func_get_args()));
+}
+
+/*
+    Converts a date to a different format
+*/
+function convert_date($date, $format) {
+    return date($format, strtotime($date));
 }
 
 /*
@@ -252,87 +295,4 @@ function sanitize($data) {
     $data = str_replace('"', '\"', $data);
     $data = str_replace("'", "\'", $data);
     return $data;
-}
-
-/*
-    Returns the tasks for a specified event  
-*/
-function get_tasks_for_event($event_id) {
-    global $db;
-    $query = "SELECT * FROM tasks WHERE eventID = '$event_id'";
-    $results = $db->query($query);
-    return $results->fetchAll();
-}
-
-/*
-    Returns a task by id
-*/
-function get_task($task_id) {
-    global $db;
-    $query = "SELECT * FROM tasks WHERE ID = '$task_id'";
-    $results = $db->query($query);
-    return $results->fetch();
-}
-
-/*
-    Signs a user up for a task
-    If comments are disabled, the comment will just be an empty string
-*/
-function sign_up_for_task($task_id, $user_id, $comment = null) {
-    global $db;
-    $query = "SELECT comments FROM tasks WHERE ID = '$task_id'";
-    $results = $db->query($query)->fetch()['comments'];
-    $comm = $results == 0 ? "" : $comment;
-    $query = "INSERT INTO signups (taskID, accountID, comment) VALUES ('$task_id', '$user_id', '$comm')";
-    $db->exec($query);
-}
-
-/*Edits comment of a signup*/
-function edit_signup($id, $comment){
-    global $db;
-    $query = "UPDATE signups SET comment='$comment' WHERE ID='$id'";
-    $results = $db->exec($query);
-    return $results;
-}
-
-/*
-    Gets all reminders matching today
-*/ 
-function get_reminders_for_today() {
-    global $db;
-    $reminders = array();
-    $query = "SELECT * FROM event_reminders WHERE reminder_date = CURDATE()";
-    $results = $db->query($query);
-    $reminders = $results->fetchAll();
-    return $reminders;
-}
-
-/*
-    Gets all reminders for an event
-*/
-function get_reminders_for_event($event_id) {
-    global $db;
-    $query = "SELECT * FROM event_reminders WHERE eventID = '$event_id'";
-    $results = $db->query($query);
-    return $results->fetchAll();
-}
-
-/*
-    Adds a reminder to an event
-*/
-function add_reminder($event_id, $date_type, $date) {
-    global $db;
-    if($date_type == 0) {
-        $query = "INSERT INTO event_reminders (eventID, type, date_type, reminder_date) VALUES ('$event_id', 1, $date_type, '$date')";
-    } else {
-        $query = "INSERT INTO event_reminders (eventID, type, date_type) VALUES ('$event_id', 1, $date_type)";
-    }
-    $db->exec($query);
-}
-
-/*
-    Converts a date to a different format
-*/
-function convert_date($date, $format) {
-    return date($format, strtotime($date));
 }
