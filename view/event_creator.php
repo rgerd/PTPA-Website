@@ -8,7 +8,6 @@
         <?php endif; ?>
 
         $("#datepicker").datepicker('setDate', '<?php echo $event['event_date']; ?>');
-
         <?php
             foreach($tasks as $task) {
                 $task_id = $task['ID'];
