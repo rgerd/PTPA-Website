@@ -270,7 +270,7 @@ function get_reminders_for_event($event_id) {
 */
 function add_reminder($event_id, $date_type, $date) {
     $query = "INSERT INTO event_reminders (eventID, type, date_type".($date_type == 0 ? ", reminder_date" : "").") VALUES (?, 1, ?".($date_type == 0 ? ", ?" : "").")";    
-    execute_query($query, func_get_args()));
+    execute_query($query, func_get_args());
 }
 
 /*
