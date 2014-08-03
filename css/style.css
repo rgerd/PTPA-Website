@@ -124,7 +124,9 @@ input {
 }
 
 #events_table {
-    display: block;
+    /*display: block;*/
+    width: 95%;
+    margin: 0px auto 0px auto;
     clear: both;
     table-layout: fixed;
     border-collapse: collapse;
@@ -140,6 +142,24 @@ td.event_title, td.event_description, td.event_share {
     padding: 10px;
     text-decoration: none;
     cursor: pointer;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+td.event_title {
+    text-align: left;
+    width: 20%;/*100px;*/
+}
+
+td.event_share {
+    text-align: right;
+    width: 20%;/*100px;*/
+}
+
+td.event_description {
+    text-align: left;
+    width: 60%;/*600px;*/
 }
 
 #info {

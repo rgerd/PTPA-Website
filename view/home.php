@@ -20,7 +20,7 @@ $num_events = count($_events);
 			?>
 				<tr class="event">
 						<td class="event_title"><a class="hover_link" href=".?e=<?php echo $event['ID']; ?>"><?php echo $event['title']; ?></a></td>
-						<td class="event_description"><a class="hover_link" href=".?e=<?php echo $event['ID']; ?>"><?php echo $event['description']; ?></a></td>
+						<td class="event_description"><a class="hover_link" href=".?e=<?php echo $event['ID']; ?>"><?php echo removeAllNewLines($event['description'], true); ?></a></td>
 						<td class="event_share"><button class="button share_button" data-clipboard-text="<?php echo "http://localhost:8888/PTPA-Website/index.php?e=".$event['ID']; ?>">Share</button></td>
 				</tr>
 			<?php

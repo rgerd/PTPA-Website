@@ -59,7 +59,8 @@
 
         }
         ?>
-        <input type="submit" class="button light_button" value="Save"/>
+        <input type="submit" class="button light_button" value="Save"/><br />
+        <a href=".?e=<?php echo $event_id;?>" class="button light_button">Cancel</a>
     </form>
 </div>
 <input type="hidden" id="reminder_date" value=""/>

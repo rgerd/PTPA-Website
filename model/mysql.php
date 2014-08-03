@@ -269,8 +269,11 @@ function get_reminders_for_event($event_id) {
     Adds a reminder to an event
 */
 function add_reminder($event_id, $date_type, $date) {
-    $query = "INSERT INTO event_reminders (eventID, type, date_type".($date_type == 0 ? ", reminder_date" : "").") VALUES (?, 1, ?".($date_type == 0 ? ", ?" : "").")";    
-    execute_query($query, func_get_args());
+    $query = "INSERT INTO event_reminders (eventID, type, date_type".($date_type == 0 ? ", reminder_date" : "").") VALUES (?, 1, ?".($date_type == 0 ? ", ?" : "").")";
+    $params = array($event_id, $date_type);
+    if($date_type == 0)
+        array_push($params, $date);
+    execute_query($query, $params);
 }
 
 /*
@@ -320,4 +323,17 @@ function sanitizeHTML($data) {
     $data = str_replace("\r", "", $data);
 
     return $data; 
+}
+
+function removeAllNewLines($data, $spaces=false) {
+    $line_breaks = array("<br />", "<br/>", "<BR />", "<BR/>", "<br >", "<br>", "<BR >", "<BR>");
+    $data = str_replace($line_breaks, "\n", $data);
+    $data = removeJSNewLines($data, $spaces);
+    return $data;
+}
+
+function removeJSNewLines($data, $spaces = false) {
+    $data = str_replace("\n", " ", $data);
+    $data = str_replace("\r", " ", $data);
+    return $data;
 }
