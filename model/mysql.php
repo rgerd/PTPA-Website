@@ -4,7 +4,7 @@ function execute_query($query, $vals = array(), $sanitize = true, $debug = false
 
     if($sanitize)
         foreach($vals as &$val)
-            $val = sanitize($val);
+            $val = sanitizeMySQL($val);
 
     unset($val);
 
@@ -78,7 +78,7 @@ function count_signups($taskID) {
 /*Creates new event and returns id*/
 function add_event($accountID, $title, $date, $desc) {
     global $db;
-    $query = "INSERT INTO events (accountID, event_date, title, description) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO events (accountID, title, event_date, description) VALUES (?, ?, ?, ?)";
     execute_query($query, func_get_args());
     return $db->lastInsertId();
 }
@@ -283,10 +283,48 @@ function convert_date($date, $format) {
 /*
     Protects against MySQL injection and cross-site scripting
 */
-function sanitize($data) {
+function sanitizeMySQL($data) {
     $data = str_replace("<", "&lt;", $data);
     $data = str_replace(">", "&gt;", $data);
+
+    $data = str_replace('\"', '"', $data);
     $data = str_replace('"', '\"', $data);
+
+    $data = str_replace("\'", "'", $data);
     $data = str_replace("'", "\'", $data);
+
+    $data = nl2br($data);
+
     return $data;
+}
+
+function sanitizeJS($data) {
+    $data = str_replace('\"', '"', $data);
+    $data = str_replace('"', '\"', $data);
+
+    $data = str_replace("\'", "'", $data);
+    $data = str_replace("'", "\'", $data);
+
+    $data = str_replace("&lt;", "<", $data);
+    $data = str_replace("&gt;", ">", $data);
+
+    $line_breaks = array("<br />", "<br/>", "<BR />", "<BR/>");
+    $data = str_replace($line_breaks, "\n", $data);
+
+    return $data;
+}
+
+function sanitizeHTML($data) {
+    $line_breaks = array("<br />", "<br/>", "<BR />", "<BR/>");
+    $data = str_replace($line_breaks, "\n", $data);
+
+    $data = str_replace("<", "&lt;", $data);
+    $data = str_replace(">", "&gt;", $data);
+
+    $data = str_replace('\"', '"', $data);
+    $data = str_replace("\'", "'", $data);
+
+    $data = nl2br($data);
+
+    return $data; 
 }

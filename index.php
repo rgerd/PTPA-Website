@@ -76,11 +76,11 @@ switch($action) {
 		} else {
 			if($volunteer_id != -1 && isset($_POST['editing'])) {
 				$signup_id = $_POST['signup'];
-				edit_account($volunteer_id, sanitize($_POST['fname']), sanitize($_POST['lname']), sanitize($_POST['email']), sanitize($_POST['phone']), ' ');
-				edit_signup($signup_id, sanitize($_POST['comment']));
+				edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], ' ');
+				edit_signup($signup_id, $_POST['comment']);
 			} else {
 				if($volunteer_id == -1) {
-					$account_id = register_user(sanitize($_POST['fname']), sanitize($_POST['lname']), sanitize($_POST['email']), sanitize($_POST['phone']), ' ', 0);
+					$account_id = register_user($_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], ' ', 0);
 				} else {
 					$account_id = $volunteer_id;
 				}
@@ -88,7 +88,7 @@ switch($action) {
 				$_SESSION['VOL_ID'] = $account_id;
 				$volunteer_id = $account_id;
 				if(isset($_POST['comment'])) {
-					sign_up_for_task($task_id, $account_id, sanitize($_POST['comment']));
+					sign_up_for_task($task_id, $account_id, $_POST['comment']);
 				} else {
 					sign_up_for_task($task_id, $account_id);
 				}
@@ -131,12 +131,12 @@ switch($action) {
 	case "preview_edit":
 		$preview_data = $_SESSION['preview_data'];
 		$event = array(
-			"title" => sanitize($preview_data['event_title']),
-			"event_date" => sanitize($preview_data['event_date']),
-			"description" => sanitize($preview_data['event_desc']),
-			"deleted_tasks" => sanitize($preview_data['deleted_tasks']),
+			"title" => $preview_data['event_title'],
+			"event_date" => $preview_data['event_date'],
+			"description" => $preview_data['event_desc'],
+			"deleted_tasks" => $preview_data['deleted_tasks']
 		);
-		$tasks = parse_tasks($preview_data);
+		$tasks = parse_tasks($preview_data, JS);
 		$page = "view/event_creator.php";
 	break;
 
@@ -150,7 +150,7 @@ switch($action) {
 	
 	case "none":
 		if(isset($_GET['e'])) {
-			$event_id = sanitize($_GET['e']);
+			$event_id = $_GET['e'];
 			$event = get_event($event_id);
 			$tasks = get_tasks_for_event($event_id);
 			$page_title = $event['title'];

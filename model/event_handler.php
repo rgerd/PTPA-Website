@@ -1,9 +1,13 @@
 <?php
+	define("HTML", "html");
+	define("JS", "js");
+	define("NONE", "none");
+
 	function save_event($data) {
 		global $user_id;
-		$event_title = sanitize($data['event_title']);
-		$event_date = sanitize($data['event_date']);
-		$event_desc = sanitize($data['event_desc']);
+		$event_title = $data['event_title'];
+		$event_date = $data['event_date'];
+		$event_desc = $data['event_desc'];
 		$event_id = add_event($user_id, $event_title, $event_date, $event_desc);
 
 		$tasks = parse_tasks($data);
@@ -17,13 +21,13 @@
 		if(!user_owns_event($user_id, $event_id))
 			return;
 
-		$event_title = sanitize($data['event_title']);
-		$event_date = sanitize($data['event_date']);
-		$event_desc = sanitize($data['event_desc']);
+		$event_title = $data['event_title'];
+		$event_date = $data['event_date'];
+		$event_desc = $data['event_desc'];
 		update_event($event_id, $event_title, $event_date, $event_desc);
 
 		if(isset($data['deleted_tasks'])) {
-			$deleted_tasks = explode(",", sanitize($data['deleted_tasks']));
+			$deleted_tasks = explode(",", $data['deleted_tasks']);
 			foreach($deleted_tasks as $task) {
 				delete_task($task);
 			}
@@ -45,7 +49,7 @@
 			return;
 
 		if(isset($data['deleted_reminders'])) {
-			$deleted_reminders = explode(",", sanitize($data['deleted_reminders']));
+			$deleted_reminders = explode(",", $data['deleted_reminders']);
 			foreach($deleted_reminders as $reminder) {
 				delete_reminder($reminder);
 			}
@@ -71,17 +75,23 @@
 		}
 	}
 
-	function parse_tasks($task_data) {
+	function parse_tasks($task_data, $target = NONE) {
 		$tasks = array();
 
 		$event_task_index = 0;
 		while(true) {
 			$v = 'event_task_'.$event_task_index;
 			if(isset($task_data[$v])) {
-				$id = sanitize($task_data[$v."_id"]);
-				$title = sanitize($task_data[$v."_title"]);
-				$slots = sanitize($task_data[$v."_slots"]);
+				$id = $task_data[$v."_id"];
+				$title = $task_data[$v."_title"];
+				$slots = $task_data[$v."_slots"];
 				$comments = isset($task_data[$v."_comments"]) ? 1 : 0;
+
+				if($target == HTML) {
+					$title = sanitizeHTML($title);
+				} else if($target == JS) {
+					$title = sanitizeJS($title);
+				}
 
 				$task = array(
 					"ID" => $id,
@@ -106,8 +116,8 @@
 		while(true) {
 			$v = 'reminder_'.$reminder_index;
 			if(isset($reminder_data[$v])) {
-				$id = sanitize($reminder_data[$v."_id"]);
-				$date = sanitize($reminder_data[$v."_date"]);
+				$id = $reminder_data[$v."_id"];
+				$date = $reminder_data[$v."_date"];
 
 				$reminder = array(
 					"ID" => $id,
