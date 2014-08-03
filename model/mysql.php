@@ -284,17 +284,9 @@ function convert_date($date, $format) {
     Protects against MySQL injection and cross-site scripting
 */
 function sanitizeMySQL($data) {
-    $data = str_replace("<", "&lt;", $data);
-    $data = str_replace(">", "&gt;", $data);
-
-    $data = str_replace('\"', '"', $data);
+    $data = sanitizeHTML($data);
     $data = str_replace('"', '\"', $data);
-
-    $data = str_replace("\'", "'", $data);
     $data = str_replace("'", "\'", $data);
-
-    $data = nl2br($data);
-
     return $data;
 }
 
@@ -308,15 +300,14 @@ function sanitizeJS($data) {
     $data = str_replace("&lt;", "<", $data);
     $data = str_replace("&gt;", ">", $data);
 
-    $line_breaks = array("<br />", "<br/>", "<BR />", "<BR/>");
+    $line_breaks = array("<br />", "<br/>", "<BR />", "<BR/>", "<br >", "<br>", "<BR >", "<BR>");
     $data = str_replace($line_breaks, "\n", $data);
 
     return $data;
 }
 
 function sanitizeHTML($data) {
-    $line_breaks = array("<br />", "<br/>", "<BR />", "<BR/>");
-    $data = str_replace($line_breaks, "\n", $data);
+    $data = sanitizeJS($data);
 
     $data = str_replace("<", "&lt;", $data);
     $data = str_replace(">", "&gt;", $data);
@@ -325,6 +316,8 @@ function sanitizeHTML($data) {
     $data = str_replace("\'", "'", $data);
 
     $data = nl2br($data);
+    $data = str_replace("\n", "", $data);
+    $data = str_replace("\r", "", $data);
 
     return $data; 
 }
