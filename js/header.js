@@ -1,9 +1,6 @@
 $(document).ready(function() {
 	$("#nav_bar").on('dragstart', function(event) {event.preventDefault();});
 
-
-
-
 	var info_width;
 
 	$(".info_request").mouseenter(function(event) {
@@ -52,13 +49,18 @@ $(document).ready(function() {
 		});
 	}
 
+	var LEFT = 37;
+	var RIGHT = 39;
+	var DELETE = 46;
+	var BACKSPACE = 8;
+	var ZERO = 48;
+	var NINE = 57;
 
 	$(".phone_number").keypress(function(event) {
 		// 0 = 48
 		// 9 = 57
-
 		var code = event.which;
-		if(code < 48 || code > 57)
+		if(code < ZERO || code > NINE)
 			event.preventDefault();
 	});
 });

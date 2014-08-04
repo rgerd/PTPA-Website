@@ -5,19 +5,21 @@
 </div>
 <div id="event_tasks">
 	<?php
+	$preview = isset($preview) && $preview;
+
 	if(!$preview)
 		$tasks = get_tasks_for_event($event_id);
 
 	foreach($tasks as $task):
 		$task_id = $task['ID'];
 		$signed_up = $preview ? 0 : get_users_signed_up($task['ID']);
-		$num_signed_up = $preview ? 0 : count($signed_up);
+		$num_signed_up = $preview? 0 : count($signed_up);
 		$max_num_signed_up = $task["numSlots"];
 		$task_full = $num_signed_up == $max_num_signed_up;
 	?>
 	<div class="event_task">
 		<div class="event_task_header">
-			<div class="event_task_title"><?php echo $task['description']; ?></div>
+			<div class="event_task_title"><?php echo sanitizeHTML($task['description']); ?></div>
 			<div class="event_task_expander" expanded="false"></div>
 		</div>
 		<br />

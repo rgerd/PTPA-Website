@@ -2,8 +2,7 @@
 	border: 2px solid black;
 	border-radius: 5px;
 	overflow: hidden;
-	max-width: 500px;
-	margin-left: 10px;
+	backface-visibility: hidden;
 }
 
 .event_task {
@@ -96,10 +95,11 @@
 
 .event_details{
     border: 2px solid black;
-    margin: 10px;
+    /*margin: 10px;*/
     margin-bottom: 30px;
     background-color: #AFAFAF;
-    width: 310px;
+    width: 90%;
+    margin: 10px auto 10px auto;
 }
 
 .details_element{
@@ -107,7 +107,6 @@
     border-radius: 5px;
     padding: 5px;
     font-size: 1.25em;
-    width: 300px;
     margin: -2px;
 }
 

@@ -82,13 +82,13 @@ div#tabs {
 
 #page_content.front {
     /*margin-top: 50px;*/
-    position: absolute;
-    top: 50px;
+    /*position: absolute;*/
+    margin-top: 50px;
     margin-bottom: 50px;
 }
 
 #page_content.event {
-    top: 75px;
+    margin-top: 0px;
 }
 
 #view_content{

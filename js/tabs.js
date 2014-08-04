@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	$("#sign_in_focus").focus();
 	var tabs_div = $("#tabs");
 	var tabs = tabs_div.find("#tab_bar").children(".tab");
 
@@ -22,6 +23,7 @@ $(document).ready(function() {
 			if(_content == __content) {
 				$(this).addClass("selected");
 				content.css("display", "block");
+				$(_content + "_focus").focus();
 			} else {
 				$(this).removeClass("selected");
 				content.css("display", "none");

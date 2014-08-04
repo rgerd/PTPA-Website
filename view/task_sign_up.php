@@ -28,10 +28,10 @@
 	<?php if(isset($signup)): ?>
 		<input type="hidden" name="signup" value="<?php echo $signup['ID']; ?>"/>
 	<?php endif; ?>
-	<input class="form_text_field" type="text" name="fname" placeholder="First Name" value="<?php echo $data['fname']; ?>"/>
-	<input class="form_text_field" type="text" name="lname" placeholder="Last Name" value="<?php echo $data['lname']; ?>"/>
-	<input class="form_text_field" type="text" name="email" placeholder="Email" value="<?php echo $data['email']; ?>"/>
-	<input class="form_text_field phone_number" maxlength="10" type="text" name="phone" placeholder="Phone Number"  value="<?php echo $data['phone']; ?>"/>
+	<input class="form_text_field" type="text" name="fname" placeholder="First Name" value="<?php if(isset($data['fname'])) echo $data['fname']; ?>" autofocus/>
+	<input class="form_text_field" type="text" name="lname" placeholder="Last Name" value="<?php if(isset($data['lname'])) echo $data['lname']; ?>"/>
+	<input class="form_text_field" type="text" name="email" placeholder="Email" value="<?php if(isset($data['email'])) echo $data['email']; ?>"/>
+	<input class="form_text_field phone_number" maxlength="10" type="text" name="phone" placeholder="Phone Number"  value="<?php if(isset($data['phone'])) echo $data['phone']; ?>"/>
 	<?php if($comments_enabled): ?>
 	<textarea class="form_text_field" type="text" name="comment" rows="4" placeholder="Comment"><?php echo isset($signup['comment']) ? $signup['comment'] : $_POST['comment']; ?></textarea>
 	<?php endif; ?>
