@@ -77,7 +77,8 @@ switch($action) {
 			if($volunteer_id != -1 && isset($_POST['editing'])) {
 				$signup_id = $_POST['signup'];
 				edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], ' ');
-				edit_signup($signup_id, $_POST['comment']);
+				if(isset($_POST["comment"]))
+					edit_signup_comment($signup_id, $_POST['comment']);
 			} else {
 				if($volunteer_id == -1) {
 					$account_id = register_user($_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], ' ', 0);

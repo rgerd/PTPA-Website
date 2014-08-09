@@ -15,7 +15,7 @@
 		foreach($tasks as $task) {
 			$signups = get_users_signed_up($task['ID']);
 			$pdf->SetFont("Courier", "B", 14);
-			$pdf->Cell(0, 10, $task['description'], 0, 1, 'L');
+			$pdf->Cell(0, 10, sanitizeHTML($task['description']), 0, 1, 'L');
 
 			$pdf->SetFont("Courier", "", 12);
 			$pdf->Cell(40, 7, "First Name", 1, 0, 'C');

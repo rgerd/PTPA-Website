@@ -18,6 +18,13 @@
 
 	$editing = $volunteer_id != -1 && $signup['accountID'] == $volunteer_id;
 
+
+	if($comments_enabled) {
+		if(isset($signup["comment"]))
+			$comment = $signup["comment"];
+		if(isset($_POST["comment"]))
+			$comment = $_POST["comment"];
+	}
 ?>
 <div id="page_title" style="font-size: 1.5em; margin-top: -10px"><?php echo $task['description']; ?></div>
 <br />
@@ -33,7 +40,7 @@
 	<input class="form_text_field" type="text" name="email" placeholder="Email" value="<?php if(isset($data['email'])) echo $data['email']; ?>"/>
 	<input class="form_text_field phone_number" maxlength="10" type="text" name="phone" placeholder="Phone Number"  value="<?php if(isset($data['phone'])) echo $data['phone']; ?>"/>
 	<?php if($comments_enabled): ?>
-	<textarea class="form_text_field" type="text" name="comment" rows="4" placeholder="Comment"><?php echo isset($signup['comment']) ? $signup['comment'] : $_POST['comment']; ?></textarea>
+	<textarea class="form_text_field" type="text" name="comment" rows="4" placeholder="Comment"><?php if(isset($comment)) echo $comment; ?></textarea>
 	<?php endif; ?>
 	<br />
 	<?php if(isset($sign_up_error_message)):

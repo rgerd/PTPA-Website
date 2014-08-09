@@ -244,7 +244,7 @@ function sign_up_for_task($task_id, $user_id, $comment = null) {
 }
 
 /*Edits comment of a signup*/
-function edit_signup($id, $comment){
+function edit_signup_comment($id, $comment){
     $query = "UPDATE signups SET comment = ? WHERE ID = ?";
     execute_query($query, array($comment, $id));
 }
