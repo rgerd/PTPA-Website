@@ -1,15 +1,10 @@
 <?php
-$host = "localhost";
-$db_name = "PTPA_DB";
-$db_user = "root";
-$db_pass = "root";
+$host = "127.0.0.1";
+$db_name = "ptcs_ptpa_db";
+$db_user = "ptcs_user";
+$db_pass = ",;[./']";
 
-
-if(!connect("root")) {
-	if(!connect("user")) {
-		die();
-	}
-}
+connect($db_user);
 
 function connect($user) {
 	global $db, $host, $db_name, $db_pass;

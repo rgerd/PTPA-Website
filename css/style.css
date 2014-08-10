@@ -87,8 +87,8 @@ div#tabs {
     margin-bottom: 50px;
 }
 
-#page_content.event {
-    margin-top: 0px;
+#page_content.front.event {
+    margin-top: 10px;
 }
 
 #view_content{
@@ -101,11 +101,19 @@ div#tabs {
     padding-bottom: 20px;
     /*min-height: 85%;*/
     /*width: auto;*/
+
+    border: none;
+    background-color: inherit;
 }
 
 #view_content.front {
     padding-top: 30px;
     padding-bottom: 20px;
+}
+
+#view_content.front.event {
+    padding-top: 20px;
+    padding-bottom: 0px;
 }
 
 #sign_in_form {

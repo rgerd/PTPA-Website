@@ -17,6 +17,8 @@ if($user_id != -1)
 
 //unset($_SESSION['VOL_ID']);
 $volunteer_id = isset($_SESSION['VOL_ID']) ? $_SESSION['VOL_ID'] : -1;
+if($volunteer_id != -1)
+	$volunteer = get_user($volunteer_id);
 
 $event_id = isset($_GET['e']) ? $_GET['e'] : -1;
 $event_id = $event_id == -1 ? (isset($_POST['event']) ? $_POST['event'] : -1) : $event_id;
@@ -49,8 +51,9 @@ switch($action) {
 	
 	case "view_task_sign_up":
 		$event_id = $_POST['event'];
+		$event = get_event($event_id);
 		$task_id = $_POST['task'];
-		$page = "view/task_sign_up.php";
+		$page = "view/event.php";
 	break;
 
 	case "task_sign_up":
@@ -102,8 +105,18 @@ switch($action) {
 		} else {
 			$event = get_event($event_id);
 			$page_title = $event['title'];
+			unset($task_id);
 			$page = "view/event.php";
 		}
+	break;
+
+	case "Remove":
+		$event = get_event($_POST['event']);
+		$signup_id = $_POST['signup'];
+		delete_signup($signup_id);
+		$page = "view/event.php";
+
+		unset($task_id);
 	break;
 
 	case "save_event_reminders":
@@ -148,6 +161,31 @@ switch($action) {
 	case "create_event":
 		$page = "view/event_creator.php";
 	break;
+
+	case "v1":
+		$volunteer_sign_in = true;
+		$event = get_event($event_id);
+		$page = "view/event.php";
+	break;
+
+	case "v0":
+		unset($_SESSION['VOL_ID']);
+		$volunteer_id = -1;
+		unset($volunteer);
+		$event = get_event($event_id);
+		$page = "view/event.php";
+	break;
+
+	case "vol_sign_in":
+		$email = $_POST['email'];
+		$volunteer = auth_volunteer($email);
+		if($volunteer != -1) {
+			$_SESSION['VOL_ID'] = $volunteer['ID'];
+			$volunteer_id = $volunteer['ID'];
+		}
+		$event = get_event($event_id);
+		$page = "view/event.php";
+	break;
 	
 	case "none":
 		if(isset($_GET['e'])) {
@@ -167,5 +205,3 @@ $page_title = "PT Volunteer";
 include 'view/header.php';
 include "$page";
 include isset($footer) ? $footer : 'view/footer.php';
-
-

@@ -189,6 +189,20 @@ function user_exists($email) {
 }
 
 /*
+    Returns a volunteer with that email.
+    If the volunteer does not exist, -1 is returned.
+*/
+function auth_volunteer($email) {
+    $query = "SELECT ID, fname, lname FROM accounts WHERE email = ? AND registered = 0";
+    $result = execute_query($query, array($email));
+
+    if($result->rowCount() == 0) 
+        return -1;
+
+    return $result->fetch();
+}
+
+/*
     Authenticates a registered user when signing in & returns their id.
 */
 function auth_user($email, $password) {
