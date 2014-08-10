@@ -105,7 +105,12 @@ function update_task($id, $internalID, $desc, $numSlots, $comments) {
 /*Edits account information.*/
 function edit_account($id, $fname, $lname, $email, $phone, $pass) {
     $query = "UPDATE accounts SET fname = ?, lname = ?, email = ?, phone = ?".($pass == "" ? "" : ", password=?")." WHERE ID = ?";
-    execute_query($query, array($fname, $lname, $email, $phone, $pass, $id));
+    if($pass != "") {
+        $params = array($fname, $lname, $email, $phone, $pass, $id);
+    } else {
+        $params = array($fname, $lname, $email, $phone, $id);
+    }
+    execute_query($query, $params);
 }
 
 /*Deletes account given id*/
@@ -176,7 +181,7 @@ function register_user($fname, $lname, $email, $phone, $password, $registered) {
     global $db;
     $query = "INSERT INTO accounts (fname, lname, email, phone, password, registered) VALUES (?, ?, ?, ?, ?, ?)";
     execute_query($query, func_get_args());
-	return $db->lastInsertId();
+    return $db->lastInsertId();
 }
 
 /*
@@ -185,7 +190,8 @@ function register_user($fname, $lname, $email, $phone, $password, $registered) {
 */
 function user_exists($email) {
     $query = "SELECT ID FROM accounts WHERE email = ? AND registered = 1";
-    return execute_query($query, func_get_args())->rowCount() > 0;
+    $rowCount = execute_query($query, func_get_args())->rowCount();
+    return $rowCount != 0;
 }
 
 /*
@@ -193,13 +199,13 @@ function user_exists($email) {
     If the volunteer does not exist, -1 is returned.
 */
 function auth_volunteer($email) {
-    $query = "SELECT ID, fname, lname FROM accounts WHERE email = ? AND registered = 0";
+    $query = "SELECT ID FROM accounts WHERE email = ?";
     $result = execute_query($query, array($email));
 
     if($result->rowCount() == 0) 
         return -1;
 
-    return $result->fetch();
+    return $result->fetch()[0];
 }
 
 /*
@@ -339,6 +345,15 @@ function sanitizeHTML($data) {
     return $data; 
 }
 
+function sanitizeTXT($data) {
+    $data = sanitizeJS($data);
+
+    $data = str_replace('\"', '"', $data);
+    $data = str_replace("\'", "'", $data);
+    
+    return $data;
+}
+
 function removeAllNewLines($data, $spaces=false) {
     $line_breaks = array("<br />", "<br/>", "<BR />", "<BR/>", "<br >", "<br>", "<BR >", "<BR>");
     $data = str_replace($line_breaks, "\n", $data);
@@ -350,4 +365,35 @@ function removeJSNewLines($data, $spaces = false) {
     $data = str_replace("\n", " ", $data);
     $data = str_replace("\r", " ", $data);
     return $data;
+}
+
+function validate($data, $fields) {
+    $fields_filled_in = true;
+    foreach($fields as $field) {
+        $fields_filled_in &= isset($data[$field]) && strlen(str_replace(" ", "", $data[$field])) > 0;    
+    }
+    /*
+    $fields_filled_in &= isset($data['fname']) && strlen(str_replace(" ", "", $data['fname'])) > 0;
+    $fields_filled_in &= isset($data['lname']) && strlen(str_replace(" ", "", $data['lname'])) > 0;
+    $fields_filled_in &= isset($data['email']) && strlen(str_replace(" ", "", $data['email'])) > 0;
+    $fields_filled_in &= isset($data['phone']) && strlen(str_replace(" ", "", $data['phone'])) > 0;
+    */
+
+    if(isset($data['email']) && isset($fields['email']))
+        $email = $data['email'];
+
+    if(isset($data['phone']) && isset($fields['phone']))
+        $pnum = $data['phone'];
+
+    if(!$fields_filled_in) {
+        return "Please fill in all fields!";
+    } else if(isset($email) && (strpos($email, "@") === false || strpos($email, ".") === false)) {
+        return "Please enter a valid <br /> email address!";
+    } else if (isset($pnum) && strlen($pnum) < 10) {
+        return "Please provide all digits in <br /> your phone number,<br /> including the area code!";
+    } else if(isset($pnum) && strlen($pnum) > 10) {
+        return "Please provide a <br /><u><b>real</b></u> phone number.";
+    }
+
+    return "none";
 }

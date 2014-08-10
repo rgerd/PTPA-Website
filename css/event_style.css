@@ -7,6 +7,11 @@
 	margin-bottom: 10px;
 }
 
+#vol_info {
+	margin-top: -10px;
+	display: block;
+}
+
 #task_sign_up_title {
 	font-size: 1.5em;
 	color: #0f0f0f;
@@ -143,6 +148,7 @@
     padding: 5px;
     font-size: 1.25em;
     margin: -2px;
+    word-wrap: break-word;
 }
 
 #details_title{

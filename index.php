@@ -22,6 +22,8 @@ if($volunteer_id != -1)
 
 $event_id = isset($_GET['e']) ? $_GET['e'] : -1;
 $event_id = $event_id == -1 ? (isset($_POST['event']) ? $_POST['event'] : -1) : $event_id;
+
+
 switch($action) {
 	case "acc":
 		$page = "view/account_manager.php";
@@ -50,7 +52,6 @@ switch($action) {
 	break;
 	
 	case "view_task_sign_up":
-		$event_id = $_POST['event'];
 		$event = get_event($event_id);
 		$task_id = $_POST['task'];
 		$page = "view/event.php";
@@ -58,60 +59,72 @@ switch($action) {
 
 	case "task_sign_up":
 		$task_id = $_POST['task'];
+		
+		$sign_up_error_message = validate($_POST, array('fname', 'lname', 'email', 'phone'));
+		if(isset($_POST["comment"]) && strlen(str_replace(" ", "", $_POST['comment'])) == 0)
+			$sign_up_error_message = "Please leave a comment!";
 
-		$fields_filled_in = true;
-		$fields_filled_in &= isset($_POST['fname']) && strlen($_POST['fname']) > 0;
-		$fields_filled_in &= isset($_POST['lname']) && strlen($_POST['lname']) > 0;
-		$fields_filled_in &= isset($_POST['email']) && strlen($_POST['email']) > 0;
-		$fields_filled_in &= isset($_POST['phone']) && strlen($_POST['phone']) > 0;
+		if($sign_up_error_message == "none")
+			unset($sign_up_error_message);
 
-		$email = isset($_POST['email']) ? $_POST['email'] : "none";
-		$pnum = isset($_POST['phone']) ? $_POST['phone'] : "none";
-
-		if(!$fields_filled_in) {
-			$sign_up_error_message = "Please fill in all fields!";
-		} else if(strpos($email, "@") === false || strpos($email, ".") === false) {
-			$sign_up_error_message = "Please enter a valid <br /> email address!";
-		} else if (strlen($pnum) < 10) {
-			$sign_up_error_message = "Please provide all digits in <br /> your phone number,<br /> including the area code!";
-		} else if(strlen($pnum) > 10) {
-			$sign_up_error_message = "Please provide a <br /><u><b>real</b></u> phone number.";
-		} else {
-			if($volunteer_id != -1 && isset($_POST['editing'])) {
-				$signup_id = $_POST['signup'];
-				edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], ' ');
-				if(isset($_POST["comment"]))
-					edit_signup_comment($signup_id, $_POST['comment']);
-			} else {
-				if($volunteer_id == -1) {
-					$account_id = register_user($_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], ' ', 0);
+		if(!isset($sign_up_error_message)) {
+			if($volunteer_id != -1) {
+				if(isset($_POST['editing'])) {
+					$signup_id = $_POST['signup'];
+					edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], '');
+					if($signup_id  != -1)
+						if(isset($_POST["comment"]))
+							edit_signup_comment($signup_id, $_POST['comment']);
+					else
+						sign_up_for_task($task_id, $account_id);
 				} else {
 					$account_id = $volunteer_id;
+					if(isset($_POST['comment'])) {
+						sign_up_for_task($task_id, $account_id, $_POST['comment']);
+					} else {
+						sign_up_for_task($task_id, $account_id);
+					}
 				}
+			} else {
+				$volunteer_id = auth_volunteer($_POST['email']);
+				if($volunteer_id != -1) {
+					$account_id = $volunteer_id;
+					edit_account($account_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], '');
+					$signup_id = get_signup($task_id, $account_id)['ID'];
+					if($signup_id  != -1)
+						if(isset($_POST["comment"]))
+							edit_signup_comment($signup_id, $_POST['comment']);
+					else
+						sign_up_for_task($task_id, $account_id);
+				} else {
+					$account_id = register_user($_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], '', 0);
+					if(isset($_POST['comment'])) {
+						sign_up_for_task($task_id, $account_id, $_POST['comment']);
+					} else {
+						sign_up_for_task($task_id, $account_id);
+					}
+				}
+				
 				set_cookie_for_user($account_id, true);
 				$_SESSION['VOL_ID'] = $account_id;
 				$volunteer_id = $account_id;
-				if(isset($_POST['comment'])) {
-					sign_up_for_task($task_id, $account_id, $_POST['comment']);
-				} else {
-					sign_up_for_task($task_id, $account_id);
-				}
+				$volunteer = get_user($account_id);
 			}
 		}
 
 		if(isset($sign_up_error_message)) {
 			$_SESSION['task'] = $task_id;
-			$page = "view/task_sign_up.php";
 		} else {
-			$event = get_event($event_id);
-			$page_title = $event['title'];
 			unset($task_id);
-			$page = "view/event.php";
 		}
+
+		$event = get_event($event_id);
+		$page_title = $event['title'];
+		$page = "view/event.php";
 	break;
 
 	case "Remove":
-		$event = get_event($_POST['event']);
+		$event = get_event($event_id);
 		$signup_id = $_POST['signup'];
 		delete_signup($signup_id);
 		$page = "view/event.php";
@@ -169,20 +182,48 @@ switch($action) {
 	break;
 
 	case "v0":
-		unset($_SESSION['VOL_ID']);
-		$volunteer_id = -1;
+		clear_cookie_for_volunteer();
 		unset($volunteer);
+		$volunteer_id = -1;
+		$event = get_event($event_id);
+		$page = "view/event.php";
+	break;
+
+	case "ve":
+		$volunteer_edit = true;
+		$event = get_event($event_id);
+		$page = "view/event.php";
+	break;
+
+	case "edit_volunteer":
+		$volunteer_edit_error = validate($_POST, array('fname', 'lname', 'phone'));
+		if($volunteer_edit_error == "none")
+			unset($volunteer_edit_error);
+
+		$email = isset($_POST['email']) ? $_POST['email'] : get_user($volunteer_id)['email'];
+
+		if(!isset($volunteer_edit_error))
+			edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $email, $_POST['phone'], '');
+		else
+			$volunteer_edit = true;
+
+		$volunteer = get_user($volunteer_id);
 		$event = get_event($event_id);
 		$page = "view/event.php";
 	break;
 
 	case "vol_sign_in":
 		$email = $_POST['email'];
-		$volunteer = auth_volunteer($email);
-		if($volunteer != -1) {
-			$_SESSION['VOL_ID'] = $volunteer['ID'];
-			$volunteer_id = $volunteer['ID'];
+		$volunteer_id = auth_volunteer($email);
+		if($volunteer_id != -1) {
+			set_cookie_for_user($volunteer_id, true);
+		} else {
+			$volunteer_sign_in = true;
+			if(str_replace(" ", "", $email) != 0)
+				$vol_sign_in_error = "This email is not registered!"; 
+			echo $vol_sign_in_error;
 		}
+		$volunteer = get_user($volunteer_id);
 		$event = get_event($event_id);
 		$page = "view/event.php";
 	break;
@@ -195,12 +236,20 @@ switch($action) {
 			$page_title = $event['title'];
 			$page = $user_id == $event['accountID'] ? "view/event_creator.php" : "view/event.php";
 		}
+		$home_link = ".";
 	break;
 }
 
 $page = isset($page) ? $page : "view/front.php";
 
 $page_title = "PT Volunteer";
+
+if(!isset($home_link)) {
+	if($event_id != -1)
+		$home_link = ".?e=".$event_id;
+	else
+		$home_link = "."; 
+}
 
 include 'view/header.php';
 include "$page";

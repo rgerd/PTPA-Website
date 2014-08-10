@@ -25,8 +25,8 @@
 
 <form method = "POST" action=".">
 <div class="event_creator_top_div">
-    <input class="event_creator_top_field" type="text" name="event_title" placeholder="Event Name" value="<?php if(isset($event)) echo sanitizeJS($event['title']);?>"/>
-    <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"><?php if(isset($event)) echo sanitizeJS($event['description']);?></textarea>
+    <input class="event_creator_top_field" type="text" name="event_title" placeholder="Event Name" value="<?php if(isset($event)) echo sanitizeTXT($event['title']);?>"/>
+    <textarea id="event_creator_textarea" class="event_creator_top_field" type="text" name="event_desc" rows="4" placeholder="Event Description"><?php if(isset($event)) echo sanitizeTXT($event['description']);?></textarea>
 </div>
 
 <fieldset id="date_fieldset">

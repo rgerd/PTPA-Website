@@ -1,3 +1,18 @@
+jQuery.fn.putCursorAtEnd = function() {
+  return this.each(function() {
+    $(this).focus()
+    if (this.setSelectionRange) {
+      var len = $(this).val().length * 2;
+      this.setSelectionRange(len, len);
+    } else {
+      $(this).val($(this).val());      
+    }
+    this.scrollTop = 999999;
+  });
+};
+
+$("#search").putCursorAtEnd();
+
 $(document).ready(function() {
 	$("#sign_in_focus").focus();
 	var tabs_div = $("#tabs");
@@ -9,6 +24,7 @@ $(document).ready(function() {
 		if(this.getAttribute("top") == "true") {
 			$(this).addClass("selected");
 			content.css("display", "block");
+			$(_content + "_focus").putCursorAtEnd();
 		} else {
 			content.css("display", "none");
 		}
@@ -23,7 +39,7 @@ $(document).ready(function() {
 			if(_content == __content) {
 				$(this).addClass("selected");
 				content.css("display", "block");
-				$(_content + "_focus").focus();
+				$(_content + "_focus").putCursorAtEnd();
 			} else {
 				$(this).removeClass("selected");
 				content.css("display", "none");
@@ -34,3 +50,4 @@ $(document).ready(function() {
 
 	$(".error_message").slideDown(450).delay(10000).slideUp(450);
 });
+

@@ -33,3 +33,9 @@ function clear_cookie_for_user() {
 	setcookie("u_id", time() - 2048);
 	unset($_SESSION['USER_ID']);
 }
+
+function clear_cookie_for_volunteer() {
+	setcookie("v_id", time() - 2048);
+	unset($_SESSION['VOL_ID']);
+	$volunteer_id = -1;
+}

@@ -20,11 +20,11 @@
 </head>
 <body>
 <!--<div id="info"></div>--> <!-- UNCOMMENT TO ENABLE INFO BOX -->
-<?php if($user_id != -1): ?>
+<?php if($user_id != -1): ?> 
 <div >
     <div id="nav_bar">
         <div id="inner_navbar">
-            <div id="float_left" style="background-color:black"><a href="index.php"><img src="css/images/logo_white.png" alt="PT Volunteer" height="70px"/></a></div>
+            <div id="float_left" style="background-color:black"><a href="<?php echo $home_link; ?>"><img src="css/images/logo_white.png" alt="PT Volunteer" height="70px"/></a></div>
             <div id="float_right">
                 <?php if($user_id != -1): ?>
                     <div class="header_button info_request" info="Settings"><a href=".?a=acc"><img src="css/images/gear_white.png" alt="User Settings" height="60px"/></a></div>
@@ -36,7 +36,7 @@
 </div>
 <?php endif; ?>
 <?php if($user_id == -1 && $event_id != -1): ?>
-    <a href="."><div><img height="70px" src="css/images/logo1.png"/></div></a>
+    <a href="<?php echo $home_link; ?>"><div><img height="70px" src="css/images/logo1.png"/></div></a>
 <?php endif; ?>
 <div id="page_content" <?php if($user_id == -1) echo "class='front".($event_id != -1 ? " event" : "")."'"; ?>>
     <div id="view_content" <?php if($user_id == -1) echo "class='front".($event_id != -1 ? " event" : "")."'"; ?>>

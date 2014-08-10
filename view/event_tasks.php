@@ -1,16 +1,21 @@
-<div id="vol_info" style="margin-top: -15px; margin-bottom: 30px; height: 30px">
+<?php if(!$preview): ?>
+<div id="vol_info">
 	<?php if($volunteer_id != -1): ?>
-		<div id="vol_info_left" style="float:left; vertical-align: middle;">
+		<div id="vol_info_left" style="float:left; vertical-align: middle; margin-bottom: 20px">
 			Signed in as: <b><?php echo $volunteer['fname']." ".$volunteer['lname']; ?></b>
 		</div>
 	<?php endif; ?>
 
-	<div id="vol_info_right" style="float:right">	
+	<div id="vol_info_right" style="float:right; margin-bottom: 20px">	
 		<?php
+			if($volunteer_id != -1) {
+				echo '<a class="button" href=".?e='.$event_id.'&a=ve" style="margin-right: 5px">Edit Info</a>';
+			}
 			echo '<a class="button" href=".?e='.$event_id.'&a=v'.($volunteer_id != -1 ? '0' : '1').'">Sign '.($volunteer_id != -1 ? 'Out' : 'In').'</a>';
 		?>
 	</div>
 </div>
+<?php endif; ?>
 
 <div id="event_tasks">
 	<?php
@@ -60,18 +65,18 @@
 				<?php endif; ?>
 		</div>
 		<?php if($volunteer_id != -1 && get_signup($task_id, $volunteer_id) !== false): ?>
-			<form action="." method="POST">
+			<form action=".?e=<?php echo $event_id; ?>" method="POST">
 				<input type="submit" class="button event_sign_up_button" value="Edit"/>
 				<input type="hidden" name="action" value="view_task_sign_up"/>
-				<input type="hidden" name="event" value="<?php echo $event_id; ?>"/>
+				<!--<input type="hidden" name="event" value="<?php echo $event_id; ?>"/>-->
 				<input type="hidden" name="task" value="<?php echo $task['ID']; ?>"/>
 			</form>
 		<?php elseif(!$task_full): ?>
 			<?php if(!$preview): ?>
-				<form action="." method="POST">
+				<form action=".?e=<?php echo $event_id; ?>" method="POST">
 					<input type="submit" class="button event_sign_up_button" value="Sign Up"/>
 					<input type="hidden" name="action" value="view_task_sign_up"/>
-					<input type="hidden" name="event" value="<?php echo $event_id; ?>"/>
+					<!--<input type="hidden" name="event" value="<?php echo $event_id; ?>"/>-->
 					<input type="hidden" name="task" value="<?php echo $task['ID']; ?>"/>
 				</form>
 			<?php else: ?>

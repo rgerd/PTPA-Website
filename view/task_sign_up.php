@@ -17,7 +17,6 @@
 
 	$editing = $volunteer_id != -1 && $signup['accountID'] == $volunteer_id;
 
-
 	if($comments_enabled) {
 		if(isset($signup["comment"]))
 			$comment = $signup["comment"];
@@ -31,7 +30,7 @@
 	<div id="task_sign_up_title"><?php echo $task['description']; ?></div>
 	<br />
 	<div id="task_sign_up_fields">
-		<form action="." method="POST">
+		<form action=".?e=<?php echo $event_id; ?>" method="POST">
 			<input type="hidden" name="action" value="task_sign_up"/>
 			<input type="hidden" name="task" value="<?php echo $_POST['task']; ?>"/>
 			<input type="hidden" name="event" value="<?php echo $_POST['event']; ?>"/>
