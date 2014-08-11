@@ -1,3 +1,13 @@
+<?php
+	if($password_changed):
+?>
+	<script type='text/javascript'>
+		alert("Your password has been changed to '1234'. Please sign in with this password and change it again to something more secure in your account settings.");
+	</script>
+<?php
+	endif;
+?>
+
 <div id="about">
 	Welcome to PT Volunteer.<br />
 	You can finally organize an event without spending more than a few minutes.

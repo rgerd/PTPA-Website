@@ -63,6 +63,11 @@ function get_user($id) {
     return execute_query($query, func_get_args())->fetch();
 }
 
+function get_id_by_email($email) {
+    $query = "SELECT ID FROM accounts WHERE email = ?";
+    return execute_query($query, func_get_args())->fetch()["ID"];   
+}
+
 /*Returns event given id*/
 function get_event($id) {
     $query = "SELECT * FROM events WHERE ID = ?";
@@ -115,6 +120,12 @@ function edit_account($id, $fname, $lname, $email, $phone, $pass) {
     } else {
         $params = array($fname, $lname, $email, $phone, $id);
     }
+    execute_query($query, $params);
+}
+
+function set_password($id, $pass) {
+    $query = "UPDATE accounts SET password=? WHERE ID = ?";
+    $params = array($pass, $id);
     execute_query($query, $params);
 }
 

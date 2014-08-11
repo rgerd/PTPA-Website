@@ -19,7 +19,10 @@ var ZERO = 48;
 var NINE = 57;
 
 $(document).ready(function() {
-  $(".error_message").slideDown(450).delay(10000).slideUp(450);
+  if(error_message_return)
+    $(".error_message").slideDown(450).delay(10000).slideUp(450);
+  else
+    $(".error_message").slideDown(450).delay(10000);
   
   $(".success_message").slideDown(450).delay(500).fadeOut(450);
 

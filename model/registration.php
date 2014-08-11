@@ -10,7 +10,8 @@ if($action == "sign_in") {
 	} else {
 		$user_id = auth_user($email, $password);
 		if($user_id == -1) {
-			$sign_in_error_message = "Incorrect email or password!<br /><a href='.'>Forgot your password?</a>";
+			$sign_in_error_message = "This email is already registered!<br /><a href='.?a=fp&b=".get_id_by_email($email)."'>Forgot your password?</a>";
+			$error_message_return = false;
 		} else {
 			set_cookie_for_user($user_id, false);
 			$_SESSION['USER_ID'] = $user_id;
@@ -22,8 +23,10 @@ if($action == "sign_in") {
 
 	$sign_up_error_message = validate($_POST, array('fname', 'lname', 'email', 'pnum'));
 	
-	if(user_exists($email))
-		$sign_up_error_message = "This email is already registered!<br /><a href='.'>Forgot your password?</a>";
+	if(user_exists($email)) {
+		$sign_up_error_message = "This email is already registered!<br /><a href='.?a=fp&b=".get_id_by_email($email)."'>Forgot your password?</a>";
+		$error_message_return = false;
+	}
 
 	if($sign_up_error_message == "none")
 		unset($sign_up_error_message);

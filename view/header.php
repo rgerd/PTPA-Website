@@ -11,6 +11,9 @@
     <link rel="stylesheet" type="text/css" href="css/jQuery-UI.css"/>
     <link rel="stylesheet" type="text/css" href="css/button.css"/>
     <link rel="stylesheet" type="text/css" href="css/footer.css"/>
+    <script type = "text/javascript">
+        var error_message_return = <?php echo !isset($error_message_return) || $error_message_return ? "true" : "false"; ?>
+    </script>
     <script type = "text/javascript" src="js/jQuery.js"></script>
     <script type = "text/javascript" src="js/jQuery-UI.js"></script>
     <script type = "text/javascript" src="js/jQuery-UI-effects.js"></script>

