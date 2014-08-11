@@ -46,6 +46,11 @@ function get_signup($taskID, $userID) {
     return execute_query($query, func_get_args())->fetch();
 }
 
+function user_signed_up($userID, $taskID) {
+    $query = "SELECT ID FROM signups WHERE accountID = ? AND taskID = ?";
+    return execute_query($query, func_get_args())->rowCount() > 0;
+}
+
 /**/
 function get_unregistered_user($code) {
     $query = "SELECT * FROM accounts WHERE password = ? AND registered = 0";
@@ -255,18 +260,25 @@ function get_task($task_id) {
     If comments are disabled, the comment will just be an empty string
 */
 function sign_up_for_task($task_id, $user_id, $comment = null) {
+    if(user_signed_up($user_id, $task_id))
+        return false;
+
     $query = "SELECT comments FROM tasks WHERE ID = ?";
     $results = execute_query($query, array($task_id))->fetch()['comments'];
 
     $comm = $results == 0 ? "" : $comment;
     $query = "INSERT INTO signups (taskID, accountID, comment) VALUES (?, ?, ?)";
     execute_query($query, array($task_id, $user_id, $comm));
+    return true;
 }
 
 /*Edits comment of a signup*/
 function edit_signup_comment($id, $comment){
+    if(!user_signed_up($user_id, $task_id))
+        return false;
     $query = "UPDATE signups SET comment = ? WHERE ID = ?";
     execute_query($query, array($comment, $id));
+    return true;
 }
 
 /*

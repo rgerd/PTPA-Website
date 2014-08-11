@@ -1,10 +1,10 @@
 <?php if(!$preview): ?>
 <div id="vol_info">
-	<?php if($volunteer_id != -1): ?>
-		<div id="vol_info_left" style="float:left; vertical-align: middle; margin-bottom: 20px">
+	<div id="vol_info_left" style="float:left; vertical-align: middle; margin-bottom: 20px">
+		<?php if($volunteer_id != -1): ?>
 			Signed in as: <b><?php echo $volunteer['fname']." ".$volunteer['lname']; ?></b>
-		</div>
-	<?php endif; ?>
+		<?php endif; ?>
+	</div>
 
 	<div id="vol_info_right" style="float:right; margin-bottom: 20px">	
 		<?php
@@ -13,6 +13,7 @@
 			}
 			echo '<a class="button" href=".?e='.$event_id.'&a=v'.($volunteer_id != -1 ? '0' : '1').'">Sign '.($volunteer_id != -1 ? 'Out' : 'In').'</a>';
 		?>
+		<a class="button" href=".?e=<?php echo $event_id; ?>&a=cc">Contact Creator</a>
 	</div>
 </div>
 <?php endif; ?>

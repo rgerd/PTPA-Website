@@ -68,22 +68,24 @@ switch($action) {
 			unset($sign_up_error_message);
 
 		if(!isset($sign_up_error_message)) {
+			$task_action = "none";
+
 			if($volunteer_id != -1) {
 				if(isset($_POST['editing'])) {
-					$signup_id = $_POST['signup'];
+					$success = "Edit successful!"; // We are predicting great success at 100%
 					edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], '');
+					$signup_id = $_POST['signup'];
+					$task_action = ($signup_id == -1) ? "sign_up" : "edit";
+					/*
 					if($signup_id  != -1)
 						if(isset($_POST["comment"]))
 							edit_signup_comment($signup_id, $_POST['comment']);
 					else
 						sign_up_for_task($task_id, $account_id);
+					*/
 				} else {
 					$account_id = $volunteer_id;
-					if(isset($_POST['comment'])) {
-						sign_up_for_task($task_id, $account_id, $_POST['comment']);
-					} else {
-						sign_up_for_task($task_id, $account_id);
-					}
+					$task_action = "sign_up";
 				}
 			} else {
 				$volunteer_id = auth_volunteer($_POST['email']);
@@ -91,24 +93,40 @@ switch($action) {
 					$account_id = $volunteer_id;
 					edit_account($account_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], '');
 					$signup_id = get_signup($task_id, $account_id)['ID'];
+
+					$task_action = ($signup_id == -1) ? "sign_up" : "edit";
+
+					/*
 					if($signup_id  != -1)
 						if(isset($_POST["comment"]))
 							edit_signup_comment($signup_id, $_POST['comment']);
 					else
 						sign_up_for_task($task_id, $account_id);
+					*/
 				} else {
 					$account_id = register_user($_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], '', 0);
-					if(isset($_POST['comment'])) {
-						sign_up_for_task($task_id, $account_id, $_POST['comment']);
-					} else {
-						sign_up_for_task($task_id, $account_id);
-					}
+					$task_action = "sign_up";
 				}
 				
 				set_cookie_for_user($account_id, true);
 				$_SESSION['VOL_ID'] = $account_id;
 				$volunteer_id = $account_id;
 				$volunteer = get_user($account_id);
+			}
+
+			if($task_action == "sign_up") {
+				if(isset($_POST['comment'])) {
+					$success = sign_up_for_task($task_id, $account_id, $_POST['comment']);
+				} else {
+					$success = sign_up_for_task($task_id, $account_id);
+				}
+				if($success)
+					$event_success_message = "Sign up successful!";
+			} else if($task_action == "edit") {
+				if(isset($_POST["comment"]))
+					$success = edit_signup_comment($signup_id, $_POST['comment']);
+				if($success)
+					$event_success_message = "Edit successful!";
 			}
 		}
 
@@ -127,9 +145,9 @@ switch($action) {
 		$event = get_event($event_id);
 		$signup_id = $_POST['signup'];
 		delete_signup($signup_id);
-		$page = "view/event.php";
-
 		unset($task_id);
+		$event_success_message = "Removal successful!";
+		$page = "view/event.php";
 	break;
 
 	case "save_event_reminders":
@@ -226,6 +244,16 @@ switch($action) {
 		$volunteer = get_user($volunteer_id);
 		$event = get_event($event_id);
 		$page = "view/event.php";
+	break;
+
+	case "cc":
+		$contact_creator = true;
+		$event = get_event($event_id);
+		$page = "view/event.php";
+	break;
+
+	case "send_message":
+
 	break;
 	
 	case "none":

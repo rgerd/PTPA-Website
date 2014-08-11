@@ -12,7 +12,7 @@
 		<form action=".?e=<?php echo $event_id;?>" method="POST">
 			<input type="hidden" name="action" value="edit_volunteer"/>
 			<input type="hidden" name="event" value="<?php echo $_POST['event']; ?>"/>
-			<input class="form_text_field sign_up_field" type="text" name="fname" placeholder="First Name" value="<?php if(isset($data['fname'])) echo sanitizeHTML($data['fname']); ?>" autofocus/>
+			<input class="form_text_field sign_up_field focus_field" type="text" name="fname" placeholder="First Name" value="<?php if(isset($data['fname'])) echo sanitizeHTML($data['fname']); ?>" autofocus/>
 			<input class="form_text_field sign_up_field" type="text" name="lname" placeholder="Last Name" value="<?php if(isset($data['lname'])) echo sanitizeHTML($data['lname']); ?>"/>
 			<?php if(!user_exists($data['email'])): ?>
 				<input class="form_text_field sign_up_field" type="text" name="email" placeholder="Email" value="<?php if(isset($data['email'])) echo sanitizeHTML($data['email']); ?>"/>
