@@ -10,7 +10,7 @@ if($action == "sign_in") {
 	} else {
 		$user_id = auth_user($email, $password);
 		if($user_id == -1) {
-			$sign_in_error_message = "Incorrect username or password!<br /><a href='.'>Forgot your password?</a>";
+			$sign_in_error_message = "Incorrect email or password!<br /><a href='.'>Forgot your password?</a>";
 		} else {
 			set_cookie_for_user($user_id, false);
 			$_SESSION['USER_ID'] = $user_id;
@@ -20,7 +20,7 @@ if($action == "sign_in") {
 } else if($action == "sign_up") {
 	$top_tab =  "sign_up";
 
-	$sign_up_error_message = validate($_POST);
+	$sign_up_error_message = validate($_POST, array('fname', 'lname', 'email', 'pnum'));
 	
 	if(user_exists($email))
 		$sign_up_error_message = "This email is already registered!<br /><a href='.'>Forgot your password?</a>";
@@ -28,10 +28,13 @@ if($action == "sign_in") {
 	if($sign_up_error_message == "none")
 		unset($sign_up_error_message);
 
+	$fname = $_POST['fname'];
+	$lname = $_POST['lname'];
+	$pnum = unformat_number($_POST['pnum']);
+
 	if(!isset($sign_up_error_message)) {
-		$user_id = register_user($fname, $lname, $email, $pnum, $password, 1);
+		$user_id = register_user($fname, $lname, $email, unformat_number($pnum), $password, 1);
 		set_cookie_for_user($user_id, false);
-		$_SESSION['USER_ID'] = $user_id;
 		$page = "view/home.php";
 	}
 }

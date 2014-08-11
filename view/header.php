@@ -24,6 +24,8 @@
 </head>
 <body>
 <!--<div id="info"></div>--> <!-- UNCOMMENT TO ENABLE INFO BOX -->
+
+<!--
 <?php if($user_id != -1): ?> 
 <div >
     <div id="nav_bar">
@@ -44,3 +46,14 @@
 <?php endif; ?>
 <div id="page_content" <?php if($user_id == -1) echo "class='front".($event_id != -1 ? " event" : "")."'"; ?>>
     <div id="view_content" <?php if($user_id == -1) echo "class='front".($event_id != -1 ? " event" : "")."'"; ?>>
+-->
+
+<a href="<?php echo $home_link; ?>" id="header_left"><div><img height="70px" src="css/images/logo1.png"/></div></a>
+<?php if($user_id != -1): ?>
+    <div id="header_right">
+    <div class="header_button info_request" info="Settings"><a href=".?a=acc"><img src="css/images/gear_white.png" alt="User Settings" height="60px"/></a></div>
+    <div class="header_button info_request" info="Sign Out"><a href=".?a=sign_out"><img src="css/images/signout_white.png" alt="Log Out" height="60px"/></a></div>
+    </div>
+<?php endif; ?>
+<div id="page_content" class="front event" style="clear: both;">
+    <div id="view_content" class="front event">

@@ -22,11 +22,14 @@ function set_cookie_for_user($user_id, $volunteer) {
 	$data .= time();
 	$data = md5($data);
 	set_cookie_data($user_id, $data);
-	if($volunteer) {
-		setcookie("v_id", $data, time() + 60 * 60 * 24 * 30);
-	} else {
+	
+	setcookie("v_id", $data, time() + 60 * 60 * 24 * 30);
+	if(!$volunteer) {
 		setcookie("u_id", $data, time() + 60 * 60 * 24 * 30);
 	}
+
+	$_SESSION['USER_ID'] = $user_id;
+	$_SESSION['VOL_ID'] = $user_id;
 }
 
 function clear_cookie_for_user() {

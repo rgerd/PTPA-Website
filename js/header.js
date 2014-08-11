@@ -48,19 +48,4 @@ $(document).ready(function() {
 			left: x + 10
 		});
 	}
-
-	var LEFT = 37;
-	var RIGHT = 39;
-	var DELETE = 46;
-	var BACKSPACE = 8;
-	var ZERO = 48;
-	var NINE = 57;
-
-	$(".phone_number").keypress(function(event) {
-		// 0 = 48
-		// 9 = 57
-		var code = event.which;
-		if(code < ZERO || code > NINE)
-			event.preventDefault();
-	});
 });

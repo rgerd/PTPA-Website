@@ -34,11 +34,13 @@
 }
 
 .header_button:hover {
-    background-color: #9E9E9E;
+    background-color: rgb(158, 158, 158);
+    background-color: rgba(158, 158, 158, 0.5);
 }
 
 .header_button:active {
     background-color: #5E5E5E;
+    background-color: rgba(94, 94, 94, 0.5);
 }
 
 .footer_button {

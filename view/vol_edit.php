@@ -19,7 +19,7 @@
 			<?php else: ?>
 				<div class="form_text_field sign_up_field" style="padding: 5px 0px 5px 0px; width: 196px"><?php if(isset($data['email'])) echo sanitizeHTML($data['email']); ?></div>
 			<?php endif; ?>
-			<input class="form_text_field sign_up_field phone_number" maxlength="10" type="text" name="phone" placeholder="Phone Number"  value="<?php if(isset($data['phone'])) echo $data['phone']; ?>"/>
+			<input class="form_text_field sign_up_field phone_number" maxlength="10" type="text" name="phone" placeholder="Phone Number"  value="<?php if(isset($data['phone'])) echo format_number($data['phone']); ?>"/>
 			<br />
 			<?php if(isset($volunteer_edit_error)):
 				echo "<span style='color:#f00'>".$volunteer_edit_error."</span><br /><br />";

@@ -36,7 +36,7 @@ switch($action) {
 			$new_password = "";
 		}
 
-		edit_account($user_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], $new_password);
+		edit_account($user_id, $_POST['fname'], $_POST['lname'], $_POST['email'], unformat_number($_POST['phone']), $new_password);
 	break;
 	
 	case "delete":
@@ -59,8 +59,9 @@ switch($action) {
 
 	case "task_sign_up":
 		$task_id = $_POST['task'];
-		
-		$sign_up_error_message = validate($_POST, array('fname', 'lname', 'email', 'phone'));
+		$email = isset($_POST['email']) ? $_POST['email'] : get_user($volunteer_id)['email'];
+		$_POST['email'] = $email;
+		$sign_up_error_message = validate($_POST, array('fname', 'lname', 'phone', 'email'));
 		if(isset($_POST["comment"]) && strlen(str_replace(" ", "", $_POST['comment'])) == 0)
 			$sign_up_error_message = "Please leave a comment!";
 
@@ -73,38 +74,24 @@ switch($action) {
 			if($volunteer_id != -1) {
 				if(isset($_POST['editing'])) {
 					$success = "Edit successful!"; // We are predicting great success at 100%
-					edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], '');
+					edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $_POST['email'], unformat_number($_POST['phone']), '');
 					$signup_id = $_POST['signup'];
 					$task_action = ($signup_id == -1) ? "sign_up" : "edit";
-					/*
-					if($signup_id  != -1)
-						if(isset($_POST["comment"]))
-							edit_signup_comment($signup_id, $_POST['comment']);
-					else
-						sign_up_for_task($task_id, $account_id);
-					*/
 				} else {
 					$account_id = $volunteer_id;
+					edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $_POST['email'], unformat_number($_POST['phone']), '');
 					$task_action = "sign_up";
 				}
 			} else {
 				$volunteer_id = auth_volunteer($_POST['email']);
 				if($volunteer_id != -1) {
 					$account_id = $volunteer_id;
-					edit_account($account_id, $_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], '');
+					edit_account($account_id, $_POST['fname'], $_POST['lname'], $_POST['email'], unformat_number($_POST['phone']), '');
 					$signup_id = get_signup($task_id, $account_id)['ID'];
 
 					$task_action = ($signup_id == -1) ? "sign_up" : "edit";
-
-					/*
-					if($signup_id  != -1)
-						if(isset($_POST["comment"]))
-							edit_signup_comment($signup_id, $_POST['comment']);
-					else
-						sign_up_for_task($task_id, $account_id);
-					*/
 				} else {
-					$account_id = register_user($_POST['fname'], $_POST['lname'], $_POST['email'], $_POST['phone'], '', 0);
+					$account_id = register_user($_POST['fname'], $_POST['lname'], $_POST['email'], unformat_number($_POST['phone']), '', 0);
 					$task_action = "sign_up";
 				}
 				
@@ -221,7 +208,7 @@ switch($action) {
 		$email = isset($_POST['email']) ? $_POST['email'] : get_user($volunteer_id)['email'];
 
 		if(!isset($volunteer_edit_error))
-			edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $email, $_POST['phone'], '');
+			edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $email, unformat_number($_POST['phone']), '');
 		else
 			$volunteer_edit = true;
 
@@ -253,7 +240,32 @@ switch($action) {
 	break;
 
 	case "send_message":
+		$contact_creator_error = validate($_POST, array('fname', 'lname', 'phone'));
+		if($contact_creator_error == "none")
+			unset($contact_creator_error);
+		$message = sanitizeHTML($_POST['message']);
+		if(strlen(str_replace(" ", "", $message)) == 0)
+			$contact_creator_error = "You must include a message!";
+		$contact_creator = true;
 
+		if(!$contact_creator_error) {
+			include "model/mailer.php";
+			$event = get_event($event_id);
+			$creator = get_user($event['accountID']);
+			$email = isset($_POST['email']) ? $_POST['email'] : get_user($volunteer_id)['email'];
+			$_POST['email'] = $email;
+			$phone_number = unformat_number($_POST['phone']);
+			$phone_number = format_number($phone_number);
+			edit_account($volunteer_id, $_POST['fname'], $_POST['lname'], $_POST['email'], unformat_number($_POST['phone']), '');
+
+			$message = "Hello %s,<br /><br />%s %s has sent you a message regarding your event <u>%s</u> :<br /><br />%s<br /><br />If you wish to respond, you may contact him or her by email at %s or by phone: %s";
+			$message = sprintf($message, $creator['fname'], $_POST['fname'], $_POST['lname'], $event['title'], $_POST['message'], $email, $phone_number);
+			sendMail($creator['email'], $creator['fname']." ".$creator['lname'], $event['title']." - Message", $message);
+			$event_success_message = "Message sent!";
+			$contact_creator = false;
+			$page = "view/event.php";
+		}
+		$event = get_event($event_id);
 	break;
 	
 	case "none":

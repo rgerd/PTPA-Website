@@ -401,11 +401,20 @@ function validate($data, $fields) {
         return "Please fill in all fields!";
     } else if(isset($email) && (strpos($email, "@") === false || strpos($email, ".") === false)) {
         return "Please enter a valid <br /> email address!";
-    } else if (isset($pnum) && strlen($pnum) < 10) {
+    } else if (isset($pnum) && strlen(unformat_number($pnum)) < 10) {
         return "Please provide all digits in <br /> your phone number,<br /> including the area code!";
     } else if(isset($pnum) && strlen($pnum) > 10) {
         return "Please provide a <br /><u><b>real</b></u> phone number.";
     }
 
     return "none";
+}
+
+function format_number($num) {
+    $num = unformat_number($num);
+    return "(".substr($num, 0, 3).") ".substr($num, 3, 3)."-".substr($num, 6, 4);
+}
+
+function unformat_number($num) {
+    return str_replace("-", "", (str_replace(" ", "", str_replace(")", "", str_replace("(", "", $num)))));
 }

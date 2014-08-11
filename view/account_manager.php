@@ -9,7 +9,7 @@
 		<input class="form_text_field" type="text" name="fname" value="<?php echo $user['fname']; ?>" placeholder="First Name"/>
 		<input class="form_text_field" type="text" name="lname" value="<?php echo $user['lname']; ?>" placeholder="Last Name"/>
 		<input class="form_text_field" type="text" name="email" value="<?php echo $user['email']; ?>" placeholder="Email"/>
-		<input class="form_text_field" type="text" name="phone" value="<?php echo $user['phone']; ?>" placeholder="Phone Number"/>
+		<input class="form_text_field" type="text" name="phone" value="<?php echo format_number($user['phone']); ?>" placeholder="Phone Number"/>
 		
 		<input class="form_text_field" id="pword_input" style="display: none;" type="password" name="pword" placeholder="New Password"/>
 		<input type="hidden" id="change_password" name="change_password" value="no"/>

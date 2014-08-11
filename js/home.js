@@ -9,6 +9,6 @@ $(document).ready(function() {
 
 	var client = new ZeroClipboard($(".share_button"));
 	client.on("complete", function(client, args) {
-		alert("The link to access this event has been copied to your clipboard.");
+		alert("The link to access this event has been copied to your clipboard. Send it to someone else so that they may sign up for your event!");
 	});
 });

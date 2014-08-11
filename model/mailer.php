@@ -1,5 +1,5 @@
 <?php 
-	include "../model/phpmailer/PHPMailerAutoload.php";
+	include "phpmailer/PHPMailerAutoload.php";
 	function sendMail($recipient, $recipient_name='', $subject, $body, $has_attachment=false, $attachment='', $attachment_name='') {
 		$mail = new PHPMailer();
 		$mail->IsSMTP();
@@ -8,9 +8,9 @@
 		$mail->Host = "smtp.gmail.com";
 		$mail->Port = 465;
 		$mail->IsHTML(true);
-		$mail->Username = "ptvolunteer.reminders@gmail.com";
-		$mail->Password = ",./;'[][]";
-		$mail->SetFrom("ptvolunteer.reminders@gmail.com", "PT Volunteer");
+		$mail->Username = "parktudor.volunteer@gmail.com";
+		$mail->Password = "parktudor";
+		$mail->SetFrom("parktudor.volunteer@gmail.com", "PT Volunteer");
 		$mail->addAddress($recipient, $recipient_name);
 		$mail->Subject = $subject;
 		$mail->Body = $body;
