@@ -2,7 +2,7 @@
 	if($password_changed):
 ?>
 	<script type='text/javascript'>
-		alert("Your password has been changed to '1234'. Please sign in with this password and change it again to something more secure in your account settings.");
+		alert("A link to reset your password has been sent to your email.");
 	</script>
 <?php
 	endif;

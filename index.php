@@ -5,6 +5,7 @@ include "model/mysql.php";
 include "model/cookie.php";
 $action = isset($_POST['action']) ? $_POST['action'] : "none";
 $action = isset($_GET['a']) ? $_GET['a'] : $action;
+include "model/mailer.php";
 include "model/registration.php";
 include "model/event_handler.php";
 
@@ -26,10 +27,16 @@ $event_id = $event_id == -1 ? (isset($_POST['event']) ? $_POST['event'] : -1) : 
 
 switch($action) {
 	case "acc":
+		if($user_id == -1)
+				break;
+
 		$page = "view/account_manager.php";
 	break;
 
 	case "update_acc":
+		if($user_id == -1)
+			break;
+
 		if($_POST['change_password'] == "yes" && isset($_POST['pword']) && strlen($_POST['pword']) > 0) {
 			$new_password = md5($_POST['pword']);
 		} else {
@@ -40,11 +47,17 @@ switch($action) {
 	break;
 	
 	case "delete":
+		if($user_id == -1)
+			break;
+
 		partially_delete_event($event_id);
 		$page = "view/home.php";
 	break;
 	
 	case "Reminders":
+		if($user_id == -1)
+				break;
+
 		$event_id = $_POST['event_id'];
 		$event = get_event($event_id);
 		$reminders = get_reminders_for_event($event_id);
@@ -138,6 +151,9 @@ switch($action) {
 	break;
 
 	case "save_event_reminders":
+		if($user_id == -1)
+				break;
+
 		$event_id = $_POST['event_id'];
 		save_event_reminders($event_id, $_POST);
 
@@ -147,6 +163,9 @@ switch($action) {
 	break;
 
 	case "preview_save":
+		if($user_id == -1)
+				break;
+
 		if(isset($_POST['event_id']) && $_POST['event_id'] != -1)
 			save_existing_event($_POST['event_id'], $_SESSION['preview_data']);
 		else
@@ -154,6 +173,9 @@ switch($action) {
 	break;
 
 	case "Save":
+		if($user_id == -1)
+			break;
+
 		if(isset($_POST['event_id']) && $_POST['event_id'] != -1)
 			save_existing_event($_POST['event_id'], $_POST);
 		else
@@ -161,6 +183,9 @@ switch($action) {
 	break;
 
 	case "preview_edit":
+		if($user_id == -1)
+			break;
+
 		$preview_data = $_SESSION['preview_data'];
 		$event = array(
 			"title" => $preview_data['event_title'],
@@ -173,10 +198,16 @@ switch($action) {
 	break;
 
 	case "Preview":
+		if($user_id == -1)
+			break;
+
 		$page = "view/event_preview.php";
 	break;
 	
 	case "create_event":
+		if($user_id == -1)
+			break;
+
 		$page = "view/event_creator.php";
 	break;
 
@@ -195,7 +226,7 @@ switch($action) {
 	break;
 
 	case "ve":
-		$volunteer_edit = true;
+		$volunteer_edit = true; 
 		$event = get_event($event_id);
 		$page = "view/event.php";
 	break;
@@ -269,7 +300,8 @@ switch($action) {
 	break;
 
 	case "fp":
-		set_password($_GET['b'], md5("1234"));
+		$account_id = $_GET['b'];
+		send_password_reset($account_id);
 		$password_changed = true;
 	break;
 	
@@ -277,9 +309,11 @@ switch($action) {
 		if(isset($_GET['e'])) {
 			$event_id = $_GET['e'];
 			$event = get_event($event_id);
+			$event_exists = $event;
 			$tasks = get_tasks_for_event($event_id);
 			$page_title = $event['title'];
-			$page = $user_id == $event['accountID'] ? "view/event_creator.php" : "view/event.php";
+			if($event_exists)
+				$page = $user_id == $event['accountID'] ? "view/event_creator.php" : "view/event.php";
 		}
 		$home_link = ".";
 	break;

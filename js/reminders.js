@@ -115,8 +115,10 @@ function createReminder(_id, _date) {
 
 
     if(!reminders_table_showing) {
+    	$("#custom_dates_title").show(0);
     	$("#reminders_table").show(0);
-    	event_task_table_showing = true;
+    	reminders_table_showing = true;
+
     }
 
 	document.getElementById("table_body").appendChild(container);

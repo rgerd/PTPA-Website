@@ -107,6 +107,11 @@
 	background-color: #aaa;
 }
 
+.link_button {
+    padding: 5px 0px 5px 0px; 
+    width: 196px;
+}
+
 /* EXPERIMENTAL */
 
 ._3D {

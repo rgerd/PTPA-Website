@@ -17,6 +17,7 @@
     <script type = "text/javascript" src="js/jQuery.js"></script>
     <script type = "text/javascript" src="js/jQuery-UI.js"></script>
     <script type = "text/javascript" src="js/jQuery-UI-effects.js"></script>
+    <script type = "text/javascript" src="js/jcaret.js"></script>
     <script type = "text/javascript" src="js/universal.js"></script>
     <script type = "text/javascript" src="js/event_task.js"></script>
     <script type = "text/javascript" src="js/header.js"></script>

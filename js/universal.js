@@ -36,7 +36,12 @@ $(document).ready(function() {
     var code = event.which;
     event.preventDefault();
 
-    var nums = $(this).val() + (code - ZERO);
+    var nums = $(this).val();
+    var start = nums.substr(0, $(this).getCursorPosition());
+    var end = nums.substr($(this).getCursorPosition());
+    nums = start + (code - ZERO) + end;
+
+    //var nums = $(this).val() + (code - ZERO);
     nums = nums.replace("(", "");
     nums = nums.replace(")", "");
     nums = nums.replace("-", "");

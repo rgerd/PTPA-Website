@@ -12,15 +12,7 @@ if(!isset($_SESSION['VOL_ID']) && isset($_COOKIE['v_id'])) {
 }
 
 function set_cookie_for_user($user_id, $volunteer) {
-	$_user_id = str_split($user_id);
-	$chars = count($_user_id);
-	$data = "";
-	for($i = 0; $i < $chars; $i++) {
-		$data .= $_user_id[$i];
-		$data .= 8;
-	}
-	$data .= time();
-	$data = md5($data);
+	$data = get_cookie_data($user_id);
 	set_cookie_data($user_id, $data);
 	
 	setcookie("v_id", $data, time() + 60 * 60 * 24 * 30);
@@ -33,6 +25,7 @@ function set_cookie_for_user($user_id, $volunteer) {
 }
 
 function clear_cookie_for_user() {
+	clear_cookie_data($_SESSION['USER_ID']);
 	setcookie("u_id", time() - 2048);
 	unset($_SESSION['USER_ID']);
 }

@@ -14,6 +14,8 @@
 		foreach($tasks as $task) {
 			add_task($event_id, $task['internalID'], $task['description'], $task['numSlots'], $task['comments']);
 		}
+
+		add_reminder($event_id, 1, "");
 	}
 
 	function save_existing_event($event_id, $data) {

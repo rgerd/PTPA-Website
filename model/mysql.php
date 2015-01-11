@@ -137,7 +137,6 @@ function delete_account($id) {
 
 /*Deletes event given id*/
 function delete_event($event_id, $user_id) {
-    global $db;
     $query = "SELECT * FROM events WHERE ID = ?";
     $result = execute_query($query, array($event_id))->fetch();
 
@@ -165,6 +164,19 @@ function delete_event($event_id, $user_id) {
 
     foreach ($results as $reminder)
         delete_reminder($reminder['ID']);
+}
+
+function cleanup_events() {
+    $query = "SELECT ID, accountID, event_date FROM events";
+    $results = execute_query($query, array())->fetchAll();
+    $today = new DateTime();
+
+    foreach($results as $event) {
+        $event_date = new DateTime($event["event_date"]);
+        if($today > $event_date) {
+            delete_event($event['ID'], $event['accountID']);
+        }
+    }
 }
 
 /*Deletes event given id*/
@@ -296,8 +308,40 @@ function edit_signup_comment($id, $comment){
     Gets all reminders matching today
 */ 
 function get_reminders_for_today() {
-    $query = "SELECT * FROM event_reminders WHERE reminder_date = CURDATE()";
-    return execute_query($query)->fetchAll();
+    $reminders = array();
+    
+    $query = "SELECT eventID, date_type FROM event_reminders WHERE date_type = 0 AND reminder_date = CURDATE()";
+    array_merge($reminders, execute_query($query)->fetchAll());
+    
+    $query = "SELECT eventID, date_type FROM event_reminders WHERE date_type = 1";
+    $reminders_1 = execute_query($query)->fetchAll();
+
+    foreach($reminders_1 as $reminder) {
+        $event_id = $reminder['eventID'];
+        $event_date = get_event($event_id)['event_date'];
+        
+        $today = new DateTime();
+        $today->add(new DateInterval('P1D'));
+        if($today->format('Y-m-d') == $event_date) {
+            array_push($reminders, $reminder);
+        }
+    }
+
+    $query = "SELECT eventID, date_type FROM event_reminders WHERE date_type = 2";
+    $reminders_2 = execute_query($query)->fetchAll();
+
+    foreach($reminders_2 as $reminder) {
+        $event_id = $reminder['eventID'];
+        $event_date = get_event($event_id)['event_date'];
+        
+        $today = new DateTime();
+        $today->add(new DateInterval('P7D'));
+        if($today->format('Y-m-d') == $event_date) {
+            array_push($reminders, $reminder);
+        }
+    }
+
+    return $reminders;
 }
 
 /*
@@ -312,7 +356,7 @@ function get_reminders_for_event($event_id) {
     Adds a reminder to an event
 */
 function add_reminder($event_id, $date_type, $date) {
-    $query = "INSERT INTO event_reminders (eventID, type, date_type".($date_type == 0 ? ", reminder_date" : "").") VALUES (?, 1, ?".($date_type == 0 ? ", ?" : "").")";
+    $query = "INSERT INTO event_reminders (eventID, date_type".($date_type == 0 ? ", reminder_date" : "").") VALUES (?, ?".($date_type == 0 ? ", ?" : "").")";
     $params = array($event_id, $date_type);
     if($date_type == 0)
         array_push($params, $date);
@@ -423,9 +467,38 @@ function validate($data, $fields) {
 
 function format_number($num) {
     $num = unformat_number($num);
+    if(strlen($num) == 0)
+        return "";
     return "(".substr($num, 0, 3).") ".substr($num, 3, 3)."-".substr($num, 6, 4);
 }
 
 function unformat_number($num) {
     return str_replace("-", "", (str_replace(" ", "", str_replace(")", "", str_replace("(", "", $num)))));
+}
+
+function get_cookie_data($user_id) {
+    $_user_id = str_split($user_id);
+    $chars = count($_user_id);
+    $data = "";
+    for($i = 0; $i < $chars; $i++) {
+        $data .= $_user_id[$i];
+        $data .= 8;
+    }
+    $data .= time();
+    $data = md5($data);
+    return $data;
+}
+
+function get_password_reset_link($user_id) {
+    $data = get_user($user_id)['cookieData'];
+    if(strlen($data) == 0) {
+        $data = get_cookie_data($user_id);
+        set_cookie_data($user_id, $data);
+    }
+    return "http://192.185.4.11/~ptcs/ptpa/pr.php?i=".$data;
+}
+
+function clear_cookie_data($user_id) {
+    $query = "UPDATE events SET cookieData = '' WHERE ID = ?";
+    execute_query($query, array($user_id));
 }

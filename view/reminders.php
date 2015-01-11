@@ -13,7 +13,6 @@
                     echo "document.getElementById('week_before').checked = true;";
                 break;
             }
-
         }
         ?>
     }
@@ -24,7 +23,7 @@
 <div>
     Event: <?php echo $event['title']; ?><br />
     Date: <?php echo convert_date($event['event_date'], 'm/d/Y'); ?><br />
-    Description: <?php echo $event['description']; ?>
+    Description: <?php echo sanitizeHTML($event['description']); ?>
 </div>
 <br /><br />
 <div>
@@ -38,7 +37,7 @@
         <table id="reminders_table">
             <thead>
                 <tr>
-                    <td>Date</td>
+                    <td id="custom_dates_title" style="display: none;">Custom Dates</td>
                 </tr>
             </thead>
             <tbody id="table_body"></tbody>

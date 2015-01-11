@@ -10,7 +10,7 @@ if($action == "sign_in") {
 	} else {
 		$user_id = auth_user($email, $password);
 		if($user_id == -1) {
-			$sign_in_error_message = "This email is already registered!<br /><a href='.?a=fp&b=".get_id_by_email($email)."'>Forgot your password?</a>";
+			$sign_in_error_message = "Incorrect email or password!<br /><a href='.?a=fp&b=".get_id_by_email($email)."'>Forgot your password?</a>";
 			$error_message_return = false;
 		} else {
 			set_cookie_for_user($user_id, false);
@@ -40,4 +40,12 @@ if($action == "sign_in") {
 		set_cookie_for_user($user_id, false);
 		$page = "view/home.php";
 	}
+}
+
+
+function send_password_reset($account_id) {
+	$user = get_user($account_id);
+	$message = "Hello %s,<br /><br />You requested a password reset for your acount.<br />To reset your password, please visit the following link:<br /><br />%s<br /><br />If you did not request a reset, you may simply ignore this email.<br /><br />Thanks!<br />PT Volunteer";
+	$message = sprintf($message, $user['fname'], get_password_reset_link($user['ID']));
+	sendMail($user['email'], $user['fname']." ".$user['lname'], "Password Reset - PT Volunteer", $message);
 }

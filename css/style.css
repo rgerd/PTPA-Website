@@ -224,7 +224,7 @@ a.hover_link:hover {
     display: block; 
     text-decoration: none; 
     font-size: 1.5em; 
-    color: #888;
+    color: #444;
 }
 
 .success_message {
@@ -237,6 +237,12 @@ a.hover_link:hover {
     padding: 5px;
     display: block;
     clear: both;
+}
+
+.centered {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 ::-webkit-input-placeholder {
